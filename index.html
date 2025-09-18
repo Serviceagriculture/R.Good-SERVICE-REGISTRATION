@@ -1364,18 +1364,10 @@
   <!-- คำอธิบายสั้น -->
   <div style="font-size:.9rem;color:#666;margin-top:6px">
     มือถือจะพยายามเปิดแอป WeChat ให้อัตโนมัติ<br>
-    ถ้าเปิดไม่ได้ ให้สแกน QR ด้านล่างแทน
+   
   </div>
 
-  <!-- QR (ฝังรูปจากไฟล์ที่คุณส่งมา) -->
-  <div id="wechat-qr-wrap" style="display:none;margin-top:14px">
-    <img
-      alt="WeChat QR"
-      style="width:240px;max-width:80%;border-radius:12px;border:1px solid #e5e5e5"
-      src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4SQ0RXhpZgAATU0AKgAAAAgABgESAAMAAAABAAEAAAEaAAUAAA... (ตัดทอน) ..."
-    >
-    <div style="color:#888;margin-top:8px">สแกน QR นี้เพื่อเพิ่มเพื่อน</div>
-  </div>
+
 </div>
 
 <script>
@@ -1476,7 +1468,8 @@
 
     <!-- Live Chat Button -->
     <button class="live-chat-btn" onclick="openLineChat()">
-        💬 แชท Line
+    <a href="https://line.me/R/ti/p/@991cyisb" target="แชทไลน์</a>
+        
     </button>
 
     <!-- Back to Top Button -->
@@ -2075,6 +2068,9 @@
                         <button onclick="this.closest('div').closest('div').remove()" 
                                 style="position: absolute; top: 10px; right: 15px; background: none; 
                                        border: none; font-size: 1.5rem; cursor: pointer; color: #999;">×</button>
+                                    .overlay {
+    pointer-events: none; /* คลิกทะลุได้ */
+}
                     </div>
                 </div>
             `;
