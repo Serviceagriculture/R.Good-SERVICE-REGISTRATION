@@ -16,6 +16,7 @@
             line-height: 1.6;
             color: #333;
             background-color: #f8f9fa;
+            scroll-behavior: smooth;
         }
 
         .container {
@@ -34,6 +35,12 @@
             width: 100%;
             top: 0;
             z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 0.5rem 0;
+            backdrop-filter: blur(10px);
         }
 
         .header-content {
@@ -48,6 +55,7 @@
             font-weight: bold;
             display: flex;
             align-items: center;
+            cursor: pointer;
         }
 
         .logo::before {
@@ -68,11 +76,29 @@
             font-weight: 500;
             padding: 0.5rem 1rem;
             border-radius: 5px;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
+            position: relative;
         }
 
         nav a:hover {
             background-color: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 80%;
         }
 
         .contact-btn {
@@ -83,11 +109,44 @@
             border-radius: 25px;
             font-weight: bold;
             transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .contact-btn:hover::before {
+            left: 100%;
         }
 
         .contact-btn:hover {
             background: #e64a19;
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,87,34,0.4);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
         }
 
         /* Hero Section */
@@ -98,12 +157,32 @@
             text-align: center;
             padding: 8rem 0 4rem 0;
             margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="25" cy="25" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="75" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(1deg); }
+            66% { transform: translateY(10px) rotate(-1deg); }
         }
 
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: slideInDown 1s ease-out;
         }
 
         .hero p {
@@ -112,6 +191,7 @@
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            animation: slideInUp 1s ease-out 0.3s both;
         }
 
         .hero-buttons {
@@ -119,6 +199,17 @@
             gap: 2rem;
             justify-content: center;
             flex-wrap: wrap;
+            animation: slideInUp 1s ease-out 0.6s both;
+        }
+
+        @keyframes slideInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .btn {
@@ -133,11 +224,32 @@
             border: none;
             cursor: pointer;
             font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.5s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         .btn:hover {
             background: #e64a19;
             transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255,87,34,0.3);
         }
 
         .btn-secondary {
@@ -148,6 +260,40 @@
         .btn-secondary:hover {
             background: white;
             color: #1976d2;
+        }
+
+        /* Notification Bar */
+        .notification-bar {
+            background: #ff9800;
+            color: white;
+            text-align: center;
+            padding: 0.5rem;
+            font-size: 0.9rem;
+            animation: slideDown 0.5s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .notification-bar::before {
+            content: '📢';
+            margin-right: 0.5rem;
+        }
+
+        .notification-close {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
         }
 
         /* Services Section */
@@ -161,6 +307,19 @@
             font-size: 2.5rem;
             color: #1976d2;
             margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(45deg, #ff5722, #2196f3);
+            border-radius: 2px;
         }
 
         .services-grid {
@@ -176,19 +335,41 @@
             padding: 2rem;
             text-align: center;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: all 0.3s;
             border: 3px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(33,150,243,0.1), transparent);
+            transition: left 0.8s;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
         }
 
         .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
             border-color: #2196f3;
         }
 
         .service-icon {
             font-size: 4rem;
             margin-bottom: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
         }
 
         .service-card h3 {
@@ -202,13 +383,6 @@
             margin-bottom: 1.5rem;
         }
 
-        .service-price {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #ff5722;
-            margin: 1rem 0;
-        }
-
         .service-features {
             list-style: none;
             text-align: left;
@@ -219,6 +393,12 @@
             padding: 0.3rem 0;
             display: flex;
             align-items: center;
+            transition: all 0.3s;
+        }
+
+        .service-features li:hover {
+            transform: translateX(5px);
+            color: #1976d2;
         }
 
         .service-features li::before {
@@ -226,6 +406,7 @@
             color: #4caf50;
             font-weight: bold;
             margin-right: 0.5rem;
+            font-size: 1.2rem;
         }
 
         /* Process Section */
@@ -246,13 +427,20 @@
             padding: 2rem;
             text-align: center;
             position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
 
         .step-number {
-            background: #2196f3;
+            background: linear-gradient(45deg, #2196f3, #1976d2);
             color: white;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -260,83 +448,18 @@
             font-size: 1.5rem;
             font-weight: bold;
             margin: 0 auto 1rem auto;
+            box-shadow: 0 4px 10px rgba(33,150,243,0.3);
+            transition: all 0.3s;
+        }
+
+        .step-card:hover .step-number {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(33,150,243,0.5);
         }
 
         .step-card h3 {
             color: #1976d2;
             margin-bottom: 1rem;
-        }
-
-        /* Contact Form Section */
-        .contact-section {
-            padding: 4rem 0;
-            background: white;
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
-        }
-
-        .contact-form {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 15px;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #2196f3;
-        }
-
-        .contact-info {
-            background: #1976d2;
-            color: white;
-            padding: 2rem;
-            border-radius: 15px;
-        }
-
-        .contact-info h3 {
-            margin-bottom: 2rem;
-            color: #bbdefb;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-item-icon {
-            font-size: 1.5rem;
-            margin-right: 1rem;
-            width: 40px;
         }
 
         /* Status Check Section */
@@ -352,12 +475,14 @@
             text-align: center;
             max-width: 600px;
             margin: 0 auto;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
 
         .status-input {
             display: flex;
             gap: 1rem;
             margin: 2rem 0;
+            flex-wrap: wrap;
         }
 
         .status-input input {
@@ -366,6 +491,14 @@
             border: 2px solid #ddd;
             border-radius: 10px;
             font-size: 1rem;
+            transition: all 0.3s;
+            min-width: 250px;
+        }
+
+        .status-input input:focus {
+            outline: none;
+            border-color: #2196f3;
+            box-shadow: 0 0 10px rgba(33,150,243,0.2);
         }
 
         .status-result {
@@ -373,6 +506,7 @@
             padding: 1rem;
             border-radius: 10px;
             display: none;
+            animation: slideInUp 0.5s ease-out;
         }
 
         .status-result.success {
@@ -408,22 +542,46 @@
             margin: 2rem 0;
             transition: all 0.3s;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .upload-area::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(33,150,243,0.1), transparent);
+            transition: left 0.8s;
+        }
+
+        .upload-area:hover::before {
+            left: 100%;
         }
 
         .upload-area:hover {
             border-color: #1976d2;
             background: #f0f8ff;
+            transform: translateY(-2px);
         }
 
         .upload-area.dragover {
             border-color: #1976d2;
             background: #e3f2fd;
+            transform: scale(1.02);
         }
 
         .upload-icon {
             font-size: 4rem;
             color: #2196f3;
             margin-bottom: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .upload-area:hover .upload-icon {
+            transform: scale(1.1);
         }
 
         .upload-text {
@@ -448,6 +606,11 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .image-preview:hover {
+            transform: scale(1.05);
         }
 
         .image-preview img {
@@ -464,32 +627,97 @@
             color: white;
             border: none;
             border-radius: 50%;
-            width: 25px;
-            height: 25px;
+            width: 30px;
+            height: 30px;
             cursor: pointer;
-            font-size: 0.8rem;
-        }
-
-        /* Live Chat Button */
-        .live-chat-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #25d366;
-            color: white;
-            border: none;
-            border-radius: 50px;
-            padding: 15px 20px;
             font-size: 1rem;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            z-index: 1000;
             transition: all 0.3s;
         }
 
-        .live-chat-btn:hover {
-            background: #20ba5a;
+        .image-remove:hover {
+            background: #d32f2f;
+            transform: scale(1.1);
+        }
+
+        /* Contact Form Section */
+        .contact-section {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-form {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2196f3;
+            box-shadow: 0 0 10px rgba(33,150,243,0.2);
             transform: translateY(-2px);
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #1976d2, #2196f3);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .contact-info h3 {
+            margin-bottom: 2rem;
+            color: #bbdefb;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .contact-item:hover {
+            transform: translateX(5px);
+        }
+
+        .contact-item-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            width: 40px;
         }
 
         /* Quick Contact Cards */
@@ -503,19 +731,44 @@
         .contact-card {
             background: white;
             padding: 1.5rem;
-            border-radius: 10px;
+            border-radius: 15px;
             text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(33,150,243,0.1), transparent);
+            transition: left 0.8s;
+        }
+
+        .contact-card:hover::before {
+            left: 100%;
         }
 
         .contact-card:hover {
-            transform: translateY(-3px);
+            transform: translateY(-5px);
+            border-color: #2196f3;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
 
         .contact-card-icon {
             font-size: 2.5rem;
             margin-bottom: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .contact-card:hover .contact-card-icon {
+            transform: scale(1.2);
         }
 
         .contact-card h4 {
@@ -527,13 +780,46 @@
             color: #2196f3;
             text-decoration: none;
             font-weight: bold;
+            transition: color 0.3s;
         }
 
         .contact-card a:hover {
             color: #1976d2;
         }
+
+        /* Live Chat Button */
+        .live-chat-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #25d366, #20ba5a);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(37,211,102,0.4);
+            z-index: 1000;
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 4px 15px rgba(37,211,102,0.4); }
+            50% { box-shadow: 0 4px 25px rgba(37,211,102,0.8); }
+            100% { box-shadow: 0 4px 15px rgba(37,211,102,0.4); }
+        }
+
+        .live-chat-btn:hover {
+            background: linear-gradient(45deg, #20ba5a, #1ea84c);
+            transform: translateY(-3px) scale(1.05);
+            animation: none;
+        }
+
+        /* Footer */
         footer {
-            background: #1976d2;
+            background: linear-gradient(135deg, #1976d2, #1565c0);
             color: white;
             padding: 3rem 0 1rem 0;
         }
@@ -548,6 +834,17 @@
         .footer-section h3 {
             margin-bottom: 1rem;
             color: #bbdefb;
+            position: relative;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: #bbdefb;
         }
 
         .footer-section ul {
@@ -556,38 +853,136 @@
 
         .footer-section ul li {
             margin-bottom: 0.5rem;
+            transition: transform 0.3s;
+        }
+
+        .footer-section ul li:hover {
+            transform: translateX(5px);
         }
 
         .footer-section ul li a {
             color: white;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: all 0.3s;
         }
 
         .footer-section ul li a:hover {
             color: #bbdefb;
         }
 
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-icon:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
         .footer-bottom {
             text-align: center;
             padding-top: 2rem;
             border-top: 1px solid #1565c0;
+            position: relative;
         }
 
-        /* Responsive */
+        /* Loading Spinner */
+        .loading-spinner {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #2196f3;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Success Message */
+        .success-message {
+            background: #e8f5e8;
+            border: 2px solid #4caf50;
+            color: #2e7d32;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            display: none;
+            animation: slideInUp 0.5s ease-out;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background: #1976d2;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: #1565c0;
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
                 gap: 1rem;
             }
 
+            nav {
+                width: 100%;
+            }
+
             nav ul {
-                flex-direction: column;
-                gap: 0.5rem;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 1rem;
             }
 
             .hero h1 {
                 font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
             }
 
             .hero-buttons {
@@ -603,41 +998,75 @@
             .status-input {
                 flex-direction: column;
             }
+
+            .status-input input {
+                min-width: auto;
+            }
+
+            .quick-contact {
+                grid-template-columns: 1fr;
+            }
+
+            .live-chat-btn {
+                bottom: 15px;
+                right: 15px;
+                padding: 12px 16px;
+                font-size: 0.9rem;
+            }
+
+            .back-to-top {
+                bottom: 70px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+            }
         }
 
-        /* Animation */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
 
-        .service-card,
-        .step-card {
-            animation: fadeInUp 0.6s ease-out;
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
+    <!-- Notification Bar -->
+    <div class="notification-bar" id="notificationBar">
+        โปรโมชั่นพิเศษ! ปรึกษาฟรี + ส่วนลด 20% สำหรับลูกค้าใหม่ ติดต่อเลย!
+        <button class="notification-close" onclick="closeNotification()">×</button>
+    </div>
+
+    <header id="header">
         <div class="container">
             <div class="header-content">
-                <div class="logo">อาร์.กู้ด เซอร์วิส รีจีสเตรชั่น</div>
+                <div class="logo" onclick="scrollToSection('home')">อาร์.กู้ด เซอร์วิส รีจีสเตรชั่น</div>
                 <nav>
                     <ul>
-                        <li><a href="#home">หน้าแรก</a></li>
-                        <li><a href="#services">บริการ</a></li>
-                        <li><a href="#process">ขั้นตอน</a></li>
-                        <li><a href="#status">ตรวจสถานะ</a></li>
-                        <li><a href="#contact">ติดต่อ</a></li>
+                        <li><a href="#home" onclick="scrollToSection('home')">หน้าแรก</a></li>
+                        <li><a href="#services" onclick="scrollToSection('services')">บริการ</a></li>
+                        <li><a href="#process" onclick="scrollToSection('process')">ขั้นตอน</a></li>
+                        <li><a href="#status" onclick="scrollToSection('status')">ตรวจสถานะ</a></li>
+                        <li><a href="#contact" onclick="scrollToSection('contact')">ติดต่อ</a></li>
                     </ul>
                 </nav>
-                <a href="#contact" class="contact-btn">ปรึกษาฟรี</a>
+                <a href="#contact" class="contact-btn" onclick="scrollToSection('contact')">ปรึกษาฟรี</a>
+                <div class="mobile-menu" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
     </header>
@@ -647,8 +1076,8 @@
             <h1>บริการขึ้นทะเบียนปุ๋ยและวัตถุอันตราย</h1>
             <p>ผู้เชี่ยวชาญด้านการขึ้นทะเบียนวัตถุอันตรายทางการเกษตรและปุ๋ยเคมี ครบวงจร รวดเร็ว ถูกต้องตามกฎหมาย พร้อมให้คำปรึกษาทุกขั้นตอน</p>
             <div class="hero-buttons">
-                <a href="#services" class="btn">ดูบริการทั้งหมด</a>
-                <a href="#contact" class="btn btn-secondary">ปรึกษาฟรี</a>
+                <a href="#services" class="btn" onclick="scrollToSection('services')">ดูบริการทั้งหมด</a>
+                <a href="#contact" class="btn btn-secondary" onclick="scrollToSection('contact')">ปรึกษาฟรี</a>
             </div>
         </div>
     </section>
@@ -669,7 +1098,7 @@
                         <li>วิเคราะห์ห้องปฏิบัติการ</li>
                         <li>จัดทำเอกสารครบชุด</li>
                     </ul>
-                    <a href="#contact" class="btn">สอบถามราคา</a>
+                    <a href="#contact" class="btn" onclick="selectService('fertilizer')">สอบถามราคา</a>
                 </div>
 
                 <div class="service-card">
@@ -681,11 +1110,11 @@
                         <li>สารกำจัดวัชพืช</li>
                         <li>สารป้องกันกำจัดโรคพืช</li>
                         <li>สารชีวภัณฑ์</li>
-                         <li>สารควบคุมการเจริญเติบโตของพืช</li>
+                        <li>สารควบคุมการเจริญเติบโตของพืช</li>
                         <li>ทดสอบประสิทธิภาพ</li>
                         <li>การศึกษาความปลอดภัย</li>
                     </ul>
-                    <a href="#contact" class="btn">สอบถามราคา</a>
+                    <a href="#contact" class="btn" onclick="selectService('chemical')">สอบถามราคา</a>
                 </div>
 
                 <div class="service-card">
@@ -700,7 +1129,7 @@
                         <li>แผนฉุกเฉิน</li>
                         <li>การฝึกอบรมบุคลากร</li>
                     </ul>
-                    <a href="#contact" class="btn">สอบถามราคา</a>
+                    <a href="#contact" class="btn" onclick="selectService('hazardous')">สอบถามราคา</a>
                 </div>
 
                 <div class="service-card">
@@ -715,7 +1144,7 @@
                         <li>แก้ไขปัญหาข้อบกพร่อง</li>
                         <li>อบรมเจ้าหน้าที่</li>
                     </ul>
-                    <a href="#contact" class="btn">สอบถามราคา</a>
+                    <a href="#contact" class="btn" onclick="selectService('consult')">สอบถามราคา</a>
                 </div>
 
                 <div class="service-card">
@@ -730,7 +1159,7 @@
                         <li>รับใบอนุญาตใหม่</li>
                         <li>แนะนำการปฏิบัติตามกฎหมาย</li>
                     </ul>
-                    <a href="#contact" class="btn">สอบถามราคา</a>
+                    <a href="#contact" class="btn" onclick="selectService('license')">สอบถามราคา</a>
                 </div>
 
                 <div class="service-card">
@@ -743,9 +1172,8 @@
                         <li>ตรวจสอบเอกสารครบถ้วน</li>
                         <li>ประสานงานด่านศุลกากร</li>
                         <li>รับใบอนุญาตนำเข้า</li>
-                       
                     </ul>
-                    <a href="#contact" class="btn">สอบถามราคา</a>
+                    <a href="#contact" class="btn" onclick="selectService('import')">สอบถามราคา</a>
                 </div>
 
                 <div class="service-card">
@@ -760,7 +1188,7 @@
                         <li>ต่ออายุใบอนุญาตผลิตปุ๋ยเคมีเพื่อการค้า</li>
                         <li>จัดทำเอกสารต่ออายุและแจ้งเตือนก่อนหมดอายุ</li>
                     </ul>
-                    <a href="#contact" class="btn">สอบถามราคา</a>
+                    <a href="#contact" class="btn" onclick="selectService('renewal')">สอบถามราคา</a>
                 </div>
             </div>
         </div>
@@ -803,6 +1231,7 @@
                     <input type="text" id="statusInput" placeholder="กรอกเลขที่คำขอ เช่น REG-2024-001">
                     <button class="btn" onclick="checkStatus()">ตรวจสอบ</button>
                 </div>
+                <div class="loading-spinner" id="statusLoading"></div>
                 <div id="statusResult" class="status-result">
                     <!-- ผลการตรวจสอบจะแสดงที่นี่ -->
                 </div>
@@ -817,11 +1246,11 @@
                 แนบรูปภาพเอกสาร ฉลากสินค้า หรือข้อมูลที่เกี่ยวข้องเพื่อให้เราช่วยวิเคราะห์และให้คำแนะนำ
             </p>
             
-            <div class="upload-area" onclick="document.getElementById('fileInput').click()">
+            <div class="upload-area" id="uploadArea">
                 <div class="upload-icon">📎</div>
                 <div class="upload-text">คลิกเพื่อเลือกไฟล์หรือลากไฟล์มาวางที่นี่</div>
                 <small style="color: #999;">รองรับไฟล์: JPG, PNG, PDF (ขนาดไม่เกิน 10MB)</small>
-                <input type="file" id="fileInput" class="file-input" multiple accept="image/*,.pdf" onchange="handleFileUpload(event)">
+                <input type="file" id="fileInput" class="file-input" multiple accept="image/*,.pdf">
             </div>
             
             <div id="uploadedImages" class="uploaded-images">
@@ -836,28 +1265,28 @@
             
             <!-- Quick Contact Cards -->
             <div class="quick-contact">
-                <div class="contact-card">
+                <div class="contact-card" onclick="makePhoneCall()">
                     <div class="contact-card-icon">📱</div>
                     <h4>โทรเลย</h4>
                     <a href="tel:0843752399">084-375-2399</a>
                     <p>โทรสอบถามได้ตลอดเวลาทำการ</p>
                 </div>
                 
-                <div class="contact-card">
+                <div class="contact-card" onclick="openLineChat()">
                     <div class="contact-card-icon">💬</div>
                     <h4>Line Chat</h4>
                     <a href="https://line.me/ti/p/s-pKb_uHuX" target="_blank">เปิด Line แชท</a>
                     <p>แชทสอบถามผ่าน Line ได้เลย</p>
                 </div>
                 
-                <div class="contact-card">
+                <div class="contact-card" onclick="sendEmail()">
                     <div class="contact-card-icon">📧</div>
                     <h4>ส่งอีเมล</h4>
                     <a href="mailto:parungrung24@gmail.com">parungrung24@gmail.com</a>
                     <p>ส่งเอกสารและรายละเอียด</p>
                 </div>
                 
-                <div class="contact-card">
+                <div class="contact-card" onclick="openWhatsApp()">
                     <div class="contact-card-icon">🟢</div>
                     <h4>WhatsApp</h4>
                     <a href="https://wa.me/66843752399" target="_blank">ส่งข้อความ</a>
@@ -868,9 +1297,9 @@
             <div class="contact-content">
                 <div class="contact-form">
                     <h3>ส่งข้อความหาเรา</h3>
-                    <form onsubmit="submitForm(event)">
+                    <form id="contactForm">
                         <div class="form-group">
-                            <label for="name">ชื่อ-นามสกุล</label>
+                            <label for="name">ชื่อ-นามสกุล *</label>
                             <input type="text" id="name" name="name" required>
                         </div>
                         <div class="form-group">
@@ -878,7 +1307,7 @@
                             <input type="text" id="company" name="company">
                         </div>
                         <div class="form-group">
-                            <label for="phone">เบอร์โทรศัพท์</label>
+                            <label for="phone">เบอร์โทรศัพท์ *</label>
                             <input type="tel" id="phone" name="phone" required>
                         </div>
                         <div class="form-group">
@@ -886,20 +1315,27 @@
                             <input type="email" id="email" name="email">
                         </div>
                         <div class="form-group">
-                            <label for="service">บริการที่สนใจ</label>
+                            <label for="service">บริการที่สนใจ *</label>
                             <select id="service" name="service" required>
                                 <option value="">เลือกบริการ</option>
                                 <option value="fertilizer">ขึ้นทะเบียนปุ๋ย</option>
                                 <option value="chemical">ขึ้นทะเบียนสารเคมีเกษตร</option>
                                 <option value="hazardous">ขึ้นทะเบียนวัตถุอันตราย</option>
-                                <option value="consult">คำปรึกษา</option>
+                                <option value="consult">คำปรึกษาและตรวจสอบ</option>
+                                <option value="license">ต่อใบอนุญาตผลิต</option>
+                                <option value="import">ใบอนุญาตนำเข้า</option>
+                                <option value="renewal">บริการต่ออายุต่างๆ</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="message">รายละเอียด</label>
                             <textarea id="message" name="message" rows="4" placeholder="อธิบายผลิตภัณฑ์และความต้องการ"></textarea>
                         </div>
-                        <button type="submit" class="btn" style="width: 100%;" onclick="submitFormWithImages(event)">ส่งข้อความพร้อมรูปภาพ</button>
+                        <div class="loading-spinner" id="formLoading"></div>
+                        <div class="success-message" id="formSuccess">
+                            ✅ ส่งข้อความเรียบร้อยแล้ว! เราจะติดต่อกลับในเร็วๆ นี้
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%;">ส่งข้อความพร้อมรูปภาพ</button>
                     </form>
                 </div>
 
@@ -918,14 +1354,14 @@
                         <div class="contact-item-icon">📞</div>
                         <div>
                             <strong>โทรศัพท์</strong><br>
-                            084-375-2399
+                            <a href="tel:0843752399" style="color: #bbdefb;">084-375-2399</a>
                         </div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-item-icon">📧</div>
                         <div>
                             <strong>อีเมล</strong><br>
-                            parungrung24@gmail.com
+                            <a href="mailto:parungrung24@gmail.com" style="color: #bbdefb;">parungrung24@gmail.com</a>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -946,30 +1382,118 @@
         💬 แชทเลย
     </button>
 
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        ↑
+    </button>
+
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>เกี่ยวกับเรา</h3>
                     <p>ผู้เชี่ยวชาญด้านการขึ้นทะเบียนผลิตภัณฑ์เกษตรกรรม มีประสบการณ์กว่า 25 ปี พร้อมทีมงานมืออาชีพ - อาร์.กู้ด เซอร์วิส รีจีสเตรชั่น</p>
+                    <div class="social-icons">
+                        <a href="https://line.me/ti/p/s-pKb_uHuX" class="social-icon" target="_blank" title="Line">💬</a>
+                        <a href="https://wa.me/66843752399" class="social-icon" target="_blank" title="WhatsApp">📱</a>
+                        <a href="mailto:parungrung24@gmail.com" class="social-icon" target="_blank" title="Email">📧</a>
+                        <a href="tel:0843752399" class="social-icon" target="_blank" title="Phone">📞</a>
+                    </div>
                 </div>
                 <div class="footer-section">
-                    <h3>บริการ</h3>
+                    <h3>บริการหลัก</h3>
                     <ul>
-                        <li><a href="#services">ต่อใบอนุญาตผลิต</a></li>
-                        <li><a href="#services">ใบอนุญาตนำเข้า</a></li>
-                        <li><a href="#services">ต่ออายุครอบครอง</a></li>
-                        <li><a href="#services">คำปรึกษาฟรี</a></li>
+                        <li><a href="#services" onclick="selectService('fertilizer')">ขึ้นทะเบียนปุ๋ย</a></li>
+                        <li><a href="#services" onclick="selectService('chemical')">ขึ้นทะเบียนสารเคมีเกษตร</a></li>
+                        <li><a href="#services" onclick="selectService('hazardous')">ขึ้นทะเบียนวัตถุอันตราย</a></li>
+                        <li><a href="#services" onclick="selectService('consult')">คำปรึกษาฟรี</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>ข้อมูลสำคัญ</h3>
+                    <h3>บริการเพิ่มเติม</h3>
                     <ul>
-                        <li><a href="#">กฎหมายที่เกี่ยวข้อง</a></li>
-                        <li><a href="#">แบบฟอร์มคำขอ</a></li>
-                        <li><a href="#">อัตราค่าธรรมเนียม</a></li>
-                        <li><a href="#">คำถามที่พบบ่อย</a></li>
+                        <li><a href="#services" onclick="selectService('license')">ต่อใบอนุญาตผลิต</a></li>
+                        <li><a href="#services" onclick="selectService('import')">ใบอนุญาตนำเข้า</a></li>
+                        <li><a href="#services" onclick="selectService('renewal')">ต่ออายุครอบครอง</a></li>
+                        <li><a href="#status" onclick="scrollToSection('status')">ตรวจสถานะ</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>ติดตาม
+                    <h3>ติดตามเรา</h3>
+                    <ul>
+                        <li><a href="https://line.me/ti/p/s-pKb_uHuX" target="_blank">Line Official</a></li>
+                        <li><a href="https://wa.me/66843752399" target="_blank">WhatsApp Business</a></li>
+                        <li><a href="#contact" onclick="scrollToSection('contact')">ติดต่อเรา</a></li>
+                        <li><a href="#" onclick="showPrivacyPolicy()">นโยบายความเป็นส่วนตัว</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 อาร์.กู้ด เซอร์วิส รีจีสเตรชั่น - บริการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตร | ออกแบบด้วย ❤️ เพื่อลูกค้า</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Global Variables
+        let uploadedFiles = [];
+        let currentServiceSelection = '';
+
+        // Page Load Events
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeWebsite();
+            setupEventListeners();
+            showWelcomeMessage();
+        });
+
+        // Initialize Website
+        function initializeWebsite() {
+            // Add smooth scrolling
+            document.documentElement.style.scrollBehavior = 'smooth';
+            
+            // Setup header scroll effect
+            window.addEventListener('scroll', handleScroll);
+            
+            // Setup file upload
+            setupFileUpload();
+            
+            // Setup form validation
+            setupFormValidation();
+            
+            console.log('🚀 Website initialized successfully!');
+        }
+
+        // Setup Event Listeners
+        function setupEventListeners() {
+            // Contact form submission
+            const contactForm = document.getElementById('contactForm');
+            contactForm.addEventListener('submit', submitForm);
+            
+            // Status check
+            const statusInput = document.getElementById('statusInput');
+            statusInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    checkStatus();
+                }
+            });
+        }
+
+        // Show welcome message
+        function showWelcomeMessage() {
+            setTimeout(() => {
+                if (window.confirm('🎉 ยินดีต้อนรับสู่เว็บไซต์ของเรา! ต้องการให้เราช่วยอะไรไหมครับ?')) {
+                    scrollToSection('contact');
+                }
+            }, 3000);
+        }
+
+        // Header scroll effect
+        function handleScroll() {
+            const header = document.getElementById('header');
+            const backToTop = document.getElementById('backToTop');
+            
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+                backToTop.classList.add('show');
+            } else {
+                header.classList.remove('scroll
