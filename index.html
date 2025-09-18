@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="th">
 <head>
     <meta charset="UTF-8">
@@ -393,7 +393,145 @@
             color: #c62828;
         }
 
-        /* Footer */
+        /* Image Upload Section */
+        .image-upload-section {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+
+        .upload-area {
+            background: white;
+            border: 3px dashed #2196f3;
+            border-radius: 15px;
+            padding: 3rem;
+            text-align: center;
+            margin: 2rem 0;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .upload-area:hover {
+            border-color: #1976d2;
+            background: #f0f8ff;
+        }
+
+        .upload-area.dragover {
+            border-color: #1976d2;
+            background: #e3f2fd;
+        }
+
+        .upload-icon {
+            font-size: 4rem;
+            color: #2196f3;
+            margin-bottom: 1rem;
+        }
+
+        .upload-text {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .uploaded-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .image-preview {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .image-preview img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .image-remove {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: #f44336;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        /* Live Chat Button */
+        .live-chat-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        .live-chat-btn:hover {
+            background: #20ba5a;
+            transform: translateY(-2px);
+        }
+
+        /* Quick Contact Cards */
+        .quick-contact {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .contact-card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h4 {
+            color: #1976d2;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card a {
+            color: #2196f3;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact-card a:hover {
+            color: #1976d2;
+        }
         footer {
             background: #1976d2;
             color: white;
@@ -489,7 +627,7 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="logo">เดอะเบส ทีม รีจิสเทรชั่น</div>
+                <div class="logo">อาร์.กู้ด เซอร์วิส รีจีสเตรชั่น</div>
                 <nav>
                     <ul>
                         <li><a href="#home">หน้าแรก</a></li>
@@ -586,7 +724,7 @@
                     <ul class="service-features">
                         <li>ต่ออายุใบอนุญาตผลิต</li>
                         <li>ตรวจสอบเอกสารความถูกต้อง</li>
-                        <li>ประสานงานกับหน่วยงาน</li>
+                        <li>ประสานงานกับหน่วยงานราชการ</li>
                         <li>ติดตามสถานะการอนุมัติ</li>
                         <li>รับใบอนุญาตใหม่</li>
                         <li>แนะนำการปฏิบัติตามกฎหมาย</li>
@@ -596,15 +734,15 @@
 
                 <div class="service-card">
                     <div class="service-icon">🌐</div>
-                    <h3>ใบอนุญาตนำเข้า</h3>
+                    <h3>ใบอนุญาตนำเข้าวัตถุอันตรายทางการเกษตร</h3>
                     <p>บริการจัดทำใบอนุญาตนำเข้าสินค้าทางการเกษตร</p>
                     <ul class="service-features">
                         <li>ใบอนุญาตนำเข้าปุ๋ย</li>
-                        <li>ใบอนุญาตนำเข้าสารเคมี</li>
                         <li>ใบอนุญาตนำเข้าวัตถุอันตราย</li>
                         <li>ตรวจสอบเอกสารครบถ้วน</li>
                         <li>ประสานงานด่านศุลกากร</li>
                         <li>รับใบอนุญาตนำเข้า</li>
+                       
                     </ul>
                     <a href="#contact" class="btn">สอบถามราคา</a>
                 </div>
@@ -616,10 +754,10 @@
                     <ul class="service-features">
                         <li>ต่ออายุครอบครองวัตถุอันตราย</li>
                         <li>เพิ่มรายชื่อครอบครอง</li>
-                        <li>ต่ออายุทะเบียนผลิตภัณฑ์</li>
-                        <li>ตรวจสอบวันหมดอายุ</li>
-                        <li>แจ้งเตือนก่อนหมดอายุ</li>
-                        <li>จัดทำเอกสารต่ออายุ</li>
+                        <li>ต่ออายุอนุญาตผลิตวัตถุอันตรายทางการเกษตร</li>
+                        <li>ต่ออายุอนุญาตขายปุ๋ย</li>
+                        <li>ต่ออายุใบอนุญาตผลิตปุ๋ยเคมีเพื่อการค้า</li>
+                        <li>จัดทำเอกสารต่ออายุและแจ้งเตือนก่อนหมดอายุ</li>
                     </ul>
                     <a href="#contact" class="btn">สอบถามราคา</a>
                 </div>
@@ -671,9 +809,61 @@
         </div>
     </section>
 
+    <section class="image-upload-section">
+        <div class="container">
+            <h2 class="section-title">แนบรูปภาพเอกสาร</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 2rem;">
+                แนบรูปภาพเอกสาร ฉลากสินค้า หรือข้อมูลที่เกี่ยวข้องเพื่อให้เราช่วยวิเคราะห์และให้คำแนะนำ
+            </p>
+            
+            <div class="upload-area" onclick="document.getElementById('fileInput').click()">
+                <div class="upload-icon">📎</div>
+                <div class="upload-text">คลิกเพื่อเลือกไฟล์หรือลากไฟล์มาวางที่นี่</div>
+                <small style="color: #999;">รองรับไฟล์: JPG, PNG, PDF (ขนาดไม่เกิน 10MB)</small>
+                <input type="file" id="fileInput" class="file-input" multiple accept="image/*,.pdf" onchange="handleFileUpload(event)">
+            </div>
+            
+            <div id="uploadedImages" class="uploaded-images">
+                <!-- รูปภาพที่อัปโหลดจะแสดงที่นี่ -->
+            </div>
+        </div>
+    </section>
+
     <section class="contact-section" id="contact">
         <div class="container">
-            <h2 class="section-title">ติดต่อเรา</h2>
+            <h2 class="section-title">ติดต่อเราได้ทันที</h2>
+            
+            <!-- Quick Contact Cards -->
+            <div class="quick-contact">
+                <div class="contact-card">
+                    <div class="contact-card-icon">📱</div>
+                    <h4>โทรเลย</h4>
+                    <a href="tel:0843752399">084-375-2399</a>
+                    <p>โทรสอบถามได้ตลอดเวลาทำการ</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-card-icon">💬</div>
+                    <h4>Line Chat</h4>
+                    <a href="https://line.me/ti/p/s-pKb_uHuX" target="_blank">เปิด Line แชท</a>
+                    <p>แชทสอบถามผ่าน Line ได้เลย</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-card-icon">📧</div>
+                    <h4>ส่งอีเมล</h4>
+                    <a href="mailto:parungrung24@gmail.com">parungrung24@gmail.com</a>
+                    <p>ส่งเอกสารและรายละเอียด</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-card-icon">🟢</div>
+                    <h4>WhatsApp</h4>
+                    <a href="https://wa.me/66843752399" target="_blank">ส่งข้อความ</a>
+                    <p>สอบถามผ่าน WhatsApp</p>
+                </div>
+            </div>
+
             <div class="contact-content">
                 <div class="contact-form">
                     <h3>ส่งข้อความหาเรา</h3>
@@ -708,7 +898,7 @@
                             <label for="message">รายละเอียด</label>
                             <textarea id="message" name="message" rows="4" placeholder="อธิบายผลิตภัณฑ์และความต้องการ"></textarea>
                         </div>
-                        <button type="submit" class="btn" style="width: 100%;">ส่งข้อความ</button>
+                        <button type="submit" class="btn" style="width: 100%;" onclick="submitFormWithImages(event)">ส่งข้อความพร้อมรูปภาพ</button>
                     </form>
                 </div>
 
@@ -749,6 +939,11 @@
             </div>
         </div>
     </section>
+
+    <!-- Live Chat Button -->
+    <button class="live-chat-btn" onclick="openWhatsApp()">
+        💬 แชทเลย
+    </button>
 
     <footer>
         <div class="container">
