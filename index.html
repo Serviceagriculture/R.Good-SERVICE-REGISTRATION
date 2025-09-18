@@ -1,677 +1,2350 @@
-<!DOCTYPE html>
+'<!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title data-i18n="page-title">บริการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตร</title>
-  <style>
-    /* ——— (คงสไตล์เดิมทั้งหมดของคุณไว้) ——— */
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;line-height:1.6;color:#333;background:#f8f9fa;scroll-behavior:smooth}
-    .container{max-width:1200px;margin:0 auto;padding:0 20px}
-    header{background:linear-gradient(135deg,#1976d2,#2196f3);color:#fff;padding:1rem 0;box-shadow:0 2px 10px rgba(0,0,0,.1);position:fixed;width:100%;top:0;z-index:1000;transition:.3s}
-    header.scrolled{padding:.5rem 0;backdrop-filter:blur(10px)}
-    .header-content{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
-    .header-left{display:flex;align-items:center;gap:2rem}
-    .header-right{display:flex;align-items:center;gap:1rem}
-    .logo{font-size:1.8rem;font-weight:bold;display:flex;align-items:center;cursor:pointer}
-    .logo::before{content:"📋";margin-right:10px;font-size:2rem}
-    nav ul{display:flex;list-style:none;gap:2rem}
-    nav a{color:#fff;text-decoration:none;font-weight:500;padding:.5rem 1rem;border-radius:5px;transition:.3s;position:relative}
-    nav a:hover{background:rgba(255,255,255,.1);transform:translateY(-2px)}
-    nav a::after{content:'';position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);width:0;height:2px;background:#fff;transition:.3s}
-    nav a:hover::after{width:80%}
-    .contact-btn{background:#ff5722;color:#fff;padding:.8rem 1.5rem;text-decoration:none;border-radius:25px;font-weight:bold;transition:.3s;position:relative;overflow:hidden}
-    .contact-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);transition:.5s}
-    .contact-btn:hover::before{left:100%}
-    .contact-btn:hover{background:#e64a19;transform:translateY(-2px);box-shadow:0 5px 15px rgba(255,87,34,.4)}
-    .language-switcher{display:flex;gap:.5rem;align-items:center}
-    .lang-btn{background:rgba(255,255,255,.2);color:#fff;border:2px solid rgba(255,255,255,.3);border-radius:8px;padding:.4rem .8rem;cursor:pointer;transition:.3s;font-size:.9rem;text-decoration:none;display:flex;align-items:center;gap:.3rem}
-    .lang-btn:hover{background:rgba(255,255,255,.3);border-color:rgba(255,255,255,.5);transform:translateY(-1px)}
-    .lang-btn.active{background:rgba(255,255,255,.9);color:#1976d2;border-color:#fff;font-weight:bold}
-    .lang-flag{font-size:1.2rem}
-    .mobile-menu{display:none;flex-direction:column;cursor:pointer}
-    .mobile-menu span{width:25px;height:3px;background:#fff;margin:3px 0;transition:.3s}
-    .hero{background:linear-gradient(rgba(25,118,210,.9),rgba(33,150,243,.9)),url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23e3f2fd" width="1200" height="600"/><path fill="%23bbdefb" d="M0 200h1200v200H0z"/><circle fill="%232196f3" cx="200" cy="150" r="50"/><circle fill="%2364b5f6" cx="600" cy="180" r="40"/><circle fill="%2390caf9" cx="1000" cy="140" r="60"/></svg>');color:#fff;text-align:center;padding:8rem 0 4rem;margin-top:80px;position:relative;overflow:hidden}
-    .hero::before{content:'';position:absolute;inset:0;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="25" cy="25" r="2" fill="rgba(255,255,255,.1)"/><circle cx="75" cy="25" r="1" fill="rgba(255,255,255,.1)"/><circle cx="50" cy="75" r="1.5" fill="rgba(255,255,255,.1)"/></svg>');animation:float 20s ease-in-out infinite}
-    @keyframes float{0%,100%{transform:translateY(0) rotate(0)}33%{transform:translateY(-20px) rotate(1deg)}66%{transform:translateY(10px) rotate(-1deg)}}
-    .hero h1{font-size:3.5rem;margin-bottom:1rem;text-shadow:2px 2px 4px rgba(0,0,0,.3);animation:slideInDown 1s ease-out}
-    .hero p{font-size:1.3rem;margin-bottom:2rem;max-width:800px;margin-left:auto;margin-right:auto;animation:slideInUp 1s ease-out .3s both}
-    .hero-buttons{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;animation:slideInUp 1s ease-out .6s both}
-    @keyframes slideInDown{from{opacity:0;transform:translateY(-50px)}to{opacity:1;transform:translateY(0)}}
-    @keyframes slideInUp{from{opacity:0;transform:translateY(50px)}to{opacity:1;transform:translateY(0)}}
-    .btn{display:inline-block;background:#ff5722;color:#fff;padding:1rem 2rem;text-decoration:none;border-radius:25px;font-weight:bold;transition:.3s;border:none;cursor:pointer;font-size:1rem;position:relative;overflow:hidden}
-    .btn::before{content:'';position:absolute;top:50%;left:50%;width:0;height:0;background:rgba(255,255,255,.2);border-radius:50%;transform:translate(-50%,-50%);transition:.5s}
-    .btn:hover::before{width:300px;height:300px}
-    .btn:hover{background:#e64a19;transform:translateY(-2px);box-shadow:0 10px 25px rgba(255,87,34,.3)}
-    .btn-secondary{background:transparent;border:2px solid #fff}
-    .btn-secondary:hover{background:#fff;color:#1976d2}
-    .notification-bar{background:#ff9800;color:#fff;text-align:center;padding:.5rem;font-size:.9rem;animation:slideDown .5s ease-out;position:relative;overflow:hidden}
-    .notification-bar::before{content:'📢';margin-right:.5rem}
-    .notification-close{position:absolute;right:1rem;top:50%;transform:translateY(-50%);background:none;border:none;color:#fff;font-size:1.2rem;cursor:pointer}
-    @keyframes slideDown{from{transform:translateY(-100%)}to{transform:translateY(0)}}
-    .services-section{padding:4rem 0;background:#fff}
-    .section-title{text-align:center;font-size:2.5rem;color:#1976d2;margin-bottom:3rem;position:relative}
-    .section-title::after{content:'';position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);width:100px;height:3px;background:linear-gradient(45deg,#ff5722,#2196f3);border-radius:2px}
-    .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin-bottom:3rem}
-    .service-card{background:#f8f9fa;border-radius:15px;padding:2rem;text-align:center;box-shadow:0 5px 15px rgba(0,0,0,.1);transition:.3s;border:3px solid transparent;position:relative;overflow:hidden}
-    .service-card::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(33,150,243,.1),transparent);transition:.8s}
-    .service-card:hover::before{left:100%}
-    .service-card:hover{transform:translateY(-10px);box-shadow:0 15px 35px rgba(0,0,0,.2);border-color:#2196f3}
-    .service-icon{font-size:4rem;margin-bottom:1rem;transition:.3s}
-    .service-card:hover .service-icon{transform:scale(1.1) rotate(5deg)}
-    .service-card h3{color:#1976d2;margin-bottom:1rem;font-size:1.5rem}
-    .service-card p{color:#666;margin-bottom:1.5rem}
-    .service-features{list-style:none;text-align:left;margin:1rem 0}
-    .service-features li{padding:.3rem 0;display:flex;align-items:center;transition:.3s}
-    .service-features li:hover{transform:translateX(5px);color:#1976d2}
-    .service-features li::before{content:"✓";color:#4caf50;font-weight:bold;margin-right:.5rem;font-size:1.2rem}
-    .process-section{padding:4rem 0;background:#f8f9fa}
-    .process-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem}
-    .step-card{background:#fff;border-radius:15px;padding:2rem;text-align:center;position:relative;box-shadow:0 5px 15px rgba(0,0,0,.1);transition:.3s}
-    .step-card:hover{transform:translateY(-5px);box-shadow:0 10px 25px rgba(0,0,0,.15)}
-    .step-number{background:linear-gradient(45deg,#2196f3,#1976d2);color:#fff;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:bold;margin:0 auto 1rem;box-shadow:0 4px 10px rgba(33,150,243,.3);transition:.3s}
-    .step-card:hover .step-number{transform:scale(1.1);box-shadow:0 6px 15px rgba(33,150,243,.5)}
-    .step-card h3{color:#1976d2;margin-bottom:1rem}
-    .status-section{padding:4rem 0;background:#e3f2fd}
-    .status-checker{background:#fff;padding:2rem;border-radius:15px;text-align:center;max-width:600px;margin:0 auto;box-shadow:0 5px 20px rgba(0,0,0,.1)}
-    .status-input{display:flex;gap:1rem;margin:2rem 0;flex-wrap:wrap}
-    .status-input input{flex:1;padding:1rem;border:2px solid #ddd;border-radius:10px;font-size:1rem;transition:.3s;min-width:250px}
-    .status-input input:focus{outline:none;border-color:#2196f3;box-shadow:0 0 10px rgba(33,150,243,.2)}
-    .status-result{margin-top:2rem;padding:1rem;border-radius:10px;display:none;animation:slideInUp .5s ease-out}
-    .status-result.success{background:#e8f5e8;border:2px solid #4caf50;color:#2e7d32}
-    .status-result.pending{background:#fff3e0;border:2px solid #ff9800;color:#e65100}
-    .status-result.error{background:#ffebee;border:2px solid #f44336;color:#c62828}
-    .image-upload-section{padding:4rem 0;background:#f8f9fa}
-    .upload-area{background:#fff;border:3px dashed #2196f3;border-radius:15px;padding:3rem;text-align:center;margin:2rem 0;transition:.3s;cursor:pointer;position:relative;overflow:hidden}
-    .upload-area::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(33,150,243,.1),transparent);transition:.8s}
-    .upload-area:hover::before{left:100%}
-    .upload-area:hover{border-color:#1976d2;background:#f0f8ff;transform:translateY(-2px)}
-    .upload-area.dragover{border-color:#1976d2;background:#e3f2fd;transform:scale(1.02)}
-    .upload-icon{font-size:4rem;color:#2196f3;margin-bottom:1rem;transition:.3s}
-    .upload-area:hover .upload-icon{transform:scale(1.1)}
-    .upload-text{font-size:1.2rem;color:#666;margin-bottom:1rem}
-    .file-input{display:none}
-    .uploaded-images{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-top:2rem}
-    .image-preview{position:relative;border-radius:10px;overflow:hidden;box-shadow:0 4px 8px rgba(0,0,0,.1);transition:.3s}
-    .image-preview:hover{transform:scale(1.05)}
-    .image-preview img{width:100%;height:150px;object-fit:cover}
-    .image-remove{position:absolute;top:5px;right:5px;background:#f44336;color:#fff;border:none;border-radius:50%;width:30px;height:30px;cursor:pointer;font-size:1rem;transition:.3s}
-    .image-remove:hover{background:#d32f2f;transform:scale(1.1)}
-    .contact-section{padding:4rem 0;background:#fff}
-    .contact-content{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
-    .contact-form{background:#f8f9fa;padding:2rem;border-radius:15px;box-shadow:0 5px 15px rgba(0,0,0,.1)}
-    .form-group{margin-bottom:1.5rem}
-    .form-group label{display:block;margin-bottom:.5rem;font-weight:bold;color:#333}
-    .form-group input,.form-group select,.form-group textarea{width:100%;padding:1rem;border:2px solid #ddd;border-radius:10px;font-size:1rem;transition:.3s}
-    .form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:#2196f3;box-shadow:0 0 10px rgba(33,150,243,.2);transform:translateY(-2px)}
-    .contact-info{background:linear-gradient(135deg,#1976d2,#2196f3);color:#fff;padding:2rem;border-radius:15px;box-shadow:0 5px 15px rgba(0,0,0,.1)}
-    .contact-info h3{margin-bottom:2rem;color:#bbdefb}
-    .contact-item{display:flex;align-items:center;margin-bottom:1.5rem;transition:.3s}
-    .contact-item:hover{transform:translateX(5px)}
-    .contact-item-icon{font-size:1.5rem;margin-right:1rem;width:40px}
-    .quick-contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;margin:2rem 0}
-    .contact-card{background:#fff;padding:1.5rem;border-radius:15px;text-align:center;box-shadow:0 5px 15px rgba(0,0,0,.1);transition:.3s;border:2px solid transparent;position:relative;overflow:hidden}
-    .contact-card::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(33,150,243,.1),transparent);transition:.8s}
-    .contact-card:hover::before{left:100%}
-    .contact-card:hover{transform:translateY(-5px);border-color:#2196f3;box-shadow:0 10px 25px rgba(0,0,0,.15)}
-    .contact-card-icon{font-size:2.5rem;margin-bottom:1rem;transition:.3s}
-    .contact-card:hover .contact-card-icon{transform:scale(1.2)}
-    .contact-card h4{color:#1976d2;margin-bottom:.5rem}
-    .contact-card a{color:#2196f3;text-decoration:none;font-weight:bold;transition:.3s}
-    .contact-card a:hover{color:#1976d2}
-    .live-chat-btn{position:fixed;bottom:20px;right:20px;background:linear-gradient(45deg,#25d366,#20ba5a);color:#fff;border:none;border-radius:50px;padding:15px 20px;font-size:1rem;cursor:pointer;box-shadow:0 4px 15px rgba(37,211,102,.4);z-index:1000;transition:.3s;animation:pulse 2s infinite}
-    @keyframes pulse{0%{box-shadow:0 4px 15px rgba(37,211,102,.4)}50%{box-shadow:0 4px 25px rgba(37,211,102,.8)}100%{box-shadow:0 4px 15px rgba(37,211,102,.4)}}
-    .live-chat-btn:hover{background:linear-gradient(45deg,#20ba5a,#1ea84c);transform:translateY(-3px) scale(1.05);animation:none}
-    footer{background:linear-gradient(135deg,#1976d2,#1565c0);color:#fff;padding:3rem 0 1rem}
-    .footer-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin-bottom:2rem}
-    .footer-section h3{margin-bottom:1rem;color:#bbdefb;position:relative}
-    .footer-section h3::after{content:'';position:absolute;bottom:-5px;left:0;width:50px;height:2px;background:#bbdefb}
-    .footer-section ul{list-style:none}
-    .footer-section ul li{margin-bottom:.5rem;transition:.3s}
-    .footer-section ul li:hover{transform:translateX(5px)}
-    .footer-section ul li a{color:#fff;text-decoration:none;transition:.3s}
-    .footer-section ul li a:hover{color:#bbdefb}
-    .social-icons{display:flex;gap:1rem;margin-top:1rem}
-    .social-icon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;background:rgba(255,255,255,.1);color:#fff;border-radius:50%;text-decoration:none;transition:.3s}
-    .social-icon:hover{background:rgba(255,255,255,.2);transform:translateY(-2px)}
-    .footer-bottom{text-align:center;padding-top:2rem;border-top:1px solid #1565c0;position:relative}
-    .loading-spinner{display:none;width:40px;height:40px;border:4px solid #f3f3f3;border-top:4px solid #2196f3;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto}
-    @keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
-    .success-message{background:#e8f5e8;border:2px solid #4caf50;color:#2e7d32;padding:1rem;border-radius:10px;margin:1rem 0;display:none;animation:slideInUp .5s ease-out}
-    .back-to-top{position:fixed;bottom:80px;right:20px;background:#1976d2;color:#fff;border:none;border-radius:50%;width:50px;height:50px;cursor:pointer;font-size:1.2rem;box-shadow:0 4px 12px rgba(0,0,0,.3);transition:.3s;opacity:0;visibility:hidden;z-index:999}
-    .back-to-top.show{opacity:1;visibility:visible}
-    .back-to-top:hover{background:#1565c0;transform:translateY(-3px)}
-    @media (max-width:768px){.header-content{flex-direction:column;gap:1rem}nav{width:100%}nav ul{justify-content:center;flex-wrap:wrap;gap:1rem}.hero h1{font-size:2.5rem}.hero p{font-size:1.1rem}.hero-buttons{flex-direction:column;align-items:center}.contact-content{grid-template-columns:1fr;gap:2rem}.status-input{flex-direction:column}.status-input input{min-width:auto}.quick-contact{grid-template-columns:1fr}.live-chat-btn{bottom:15px;right:15px;padding:12px 16px;font-size:.9rem}.back-to-top{bottom:70px;right:15px;width:45px;height:45px}}
-    @media (max-width:480px){.hero h1{font-size:2rem}.services-grid{grid-template-columns:1fr}.process-steps{grid-template-columns:1fr}.section-title{font-size:2rem}}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page-title">บริการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตร</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1976d2, #2196f3);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 0.5rem 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .logo::before {
+            content: "📋";
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        nav a:hover {
+            background-color: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 80%;
+        }
+
+        .contact-btn {
+            background: #ff5722;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .contact-btn:hover::before {
+            left: 100%;
+        }
+
+        .contact-btn:hover {
+            background: #e64a19;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,87,34,0.4);
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .lang-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            padding: 0.4rem 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .lang-btn:hover {
+            background: rgba(255,255,255,0.3);
+            border-color: rgba(255,255,255,0.5);
+            transform: translateY(-1px);
+        }
+
+        .lang-btn.active {
+            background: rgba(255,255,255,0.9);
+            color: #1976d2;
+            border-color: white;
+            font-weight: bold;
+        }
+
+        .lang-flag {
+            font-size: 1.2rem;
+        }
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(25, 118, 210, 0.9), rgba(33, 150, 243, 0.9)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23e3f2fd" width="1200" height="600"/><path fill="%23bbdefb" d="M0 200h1200v200H0z"/><circle fill="%232196f3" cx="200" cy="150" r="50"/><circle fill="%2364b5f6" cx="600" cy="180" r="40"/><circle fill="%2390caf9" cx="1000" cy="140" r="60"/></svg>');
+            color: white;
+            text-align: center;
+            padding: 8rem 0 4rem 0;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="25" cy="25" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="75" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(1deg); }
+            66% { transform: translateY(10px) rotate(-1deg); }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: slideInDown 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: slideInUp 1s ease-out 0.3s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: slideInUp 1s ease-out 0.6s both;
+        }
+
+        @keyframes slideInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .btn {
+            display: inline-block;
+            background: #ff5722;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.5s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn:hover {
+            background: #e64a19;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255,87,34,0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #1976d2;
+        }
+
+        /* Notification Bar */
+        .notification-bar {
+            background: #ff9800;
+            color: white;
+            text-align: center;
+            padding: 0.5rem;
+            font-size: 0.9rem;
+            animation: slideDown 0.5s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .notification-bar::before {
+            content: '📢';
+            margin-right: 0.5rem;
+        }
+
+        .notification-close {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1976d2;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(45deg, #ff5722, #2196f3);
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .service-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border: 3px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(33,150,243,0.1), transparent);
+            transition: left 0.8s;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            border-color: #2196f3;
+        }
+
+        .service-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .service-card h3 {
+            color: #1976d2;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .service-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            list-style: none;
+            text-align: left;
+            margin: 1rem 0;
+        }
+
+        .service-features li {
+            padding: 0.3rem 0;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .service-features li:hover {
+            transform: translateX(5px);
+            color: #1976d2;
+        }
+
+        .service-features li::before {
+            content: "✓";
+            color: #4caf50;
+            font-weight: bold;
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .step-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .step-number {
+            background: linear-gradient(45deg, #2196f3, #1976d2);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem auto;
+            box-shadow: 0 4px 10px rgba(33,150,243,0.3);
+            transition: all 0.3s;
+        }
+
+        .step-card:hover .step-number {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(33,150,243,0.5);
+        }
+
+        .step-card h3 {
+            color: #1976d2;
+            margin-bottom: 1rem;
+        }
+
+        /* Status Check Section */
+        .status-section {
+            padding: 4rem 0;
+            background: #e3f2fd;
+        }
+
+        .status-checker {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .status-input {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .status-input input {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            min-width: 250px;
+        }
+
+        .status-input input:focus {
+            outline: none;
+            border-color: #2196f3;
+            box-shadow: 0 0 10px rgba(33,150,243,0.2);
+        }
+
+        .status-result {
+            margin-top: 2rem;
+            padding: 1rem;
+            border-radius: 10px;
+            display: none;
+            animation: slideInUp 0.5s ease-out;
+        }
+
+        .status-result.success {
+            background: #e8f5e8;
+            border: 2px solid #4caf50;
+            color: #2e7d32;
+        }
+
+        .status-result.pending {
+            background: #fff3e0;
+            border: 2px solid #ff9800;
+            color: #e65100;
+        }
+
+        .status-result.error {
+            background: #ffebee;
+            border: 2px solid #f44336;
+            color: #c62828;
+        }
+
+        /* Image Upload Section */
+        .image-upload-section {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+
+        .upload-area {
+            background: white;
+            border: 3px dashed #2196f3;
+            border-radius: 15px;
+            padding: 3rem;
+            text-align: center;
+            margin: 2rem 0;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .upload-area::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(33,150,243,0.1), transparent);
+            transition: left 0.8s;
+        }
+
+        .upload-area:hover::before {
+            left: 100%;
+        }
+
+        .upload-area:hover {
+            border-color: #1976d2;
+            background: #f0f8ff;
+            transform: translateY(-2px);
+        }
+
+        .upload-area.dragover {
+            border-color: #1976d2;
+            background: #e3f2fd;
+            transform: scale(1.02);
+        }
+
+        .upload-icon {
+            font-size: 4rem;
+            color: #2196f3;
+            margin-bottom: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .upload-area:hover .upload-icon {
+            transform: scale(1.1);
+        }
+
+        .upload-text {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .uploaded-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .image-preview {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .image-preview:hover {
+            transform: scale(1.05);
+        }
+
+        .image-preview img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .image-remove {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: #f44336;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .image-remove:hover {
+            background: #d32f2f;
+            transform: scale(1.1);
+        }
+
+        /* Contact Form Section */
+        .contact-section {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-form {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2196f3;
+            box-shadow: 0 0 10px rgba(33,150,243,0.2);
+            transform: translateY(-2px);
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #1976d2, #2196f3);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .contact-info h3 {
+            margin-bottom: 2rem;
+            color: #bbdefb;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .contact-item:hover {
+            transform: translateX(5px);
+        }
+
+        .contact-item-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            width: 40px;
+        }
+
+        /* Quick Contact Cards */
+        .quick-contact {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(33,150,243,0.1), transparent);
+            transition: left 0.8s;
+        }
+
+        .contact-card:hover::before {
+            left: 100%;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-color: #2196f3;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .contact-card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .contact-card:hover .contact-card-icon {
+            transform: scale(1.2);
+        }
+
+        .contact-card h4 {
+            color: #1976d2;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card a {
+            color: #2196f3;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .contact-card a:hover {
+            color: #1976d2;
+        }
+
+        /* Live Chat Button */
+        .live-chat-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #25d366, #20ba5a);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(37,211,102,0.4);
+            z-index: 1000;
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 4px 15px rgba(37,211,102,0.4); }
+            50% { box-shadow: 0 4px 25px rgba(37,211,102,0.8); }
+            100% { box-shadow: 0 4px 15px rgba(37,211,102,0.4); }
+        }
+
+        .live-chat-btn:hover {
+            background: linear-gradient(45deg, #20ba5a, #1ea84c);
+            transform: translateY(-3px) scale(1.05);
+            animation: none;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #1976d2, #1565c0);
+            color: white;
+            padding: 3rem 0 1rem 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #bbdefb;
+            position: relative;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: #bbdefb;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+            transition: transform 0.3s;
+        }
+
+        .footer-section ul li:hover {
+            transform: translateX(5px);
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #bbdefb;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-icon:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #1565c0;
+            position: relative;
+        }
+
+        /* Loading Spinner */
+        .loading-spinner {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #2196f3;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Success Message */
+        .success-message {
+            background: #e8f5e8;
+            border: 2px solid #4caf50;
+            color: #2e7d32;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            display: none;
+            animation: slideInUp 0.5s ease-out;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background: #1976d2;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: #1565c0;
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav {
+                width: 100%;
+            }
+
+            nav ul {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .status-input {
+                flex-direction: column;
+            }
+
+            .status-input input {
+                min-width: auto;
+            }
+
+            .quick-contact {
+                grid-template-columns: 1fr;
+            }
+
+            .live-chat-btn {
+                bottom: 15px;
+                right: 15px;
+                padding: 12px 16px;
+                font-size: 0.9rem;
+            }
+
+            .back-to-top {
+                bottom: 70px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Notification Bar -->
-  <div class="notification-bar" id="notificationBar" data-i18n="notification-promo">
-    โปรโมชั่นพิเศษ! ปรึกษาฟรี + ส่วนลด 20% สำหรับลูกค้าใหม่ ติดต่อเลย!
-    <button class="notification-close" onclick="closeNotification()">×</button>
-  </div>
-
-  <header id="header">
-    <div class="container">
-      <div class="header-content">
-        <div class="header-left">
-          <div class="logo" onclick="scrollToSection('home')" data-i18n="company-name">อาร์.กู้ด เซอร์วิส รีจีสเตรชั่น</div>
-          <nav>
-            <ul>
-              <li><a href="#home" onclick="scrollToSection('home')" data-i18n="nav-home">หน้าแรก</a></li>
-              <li><a href="#services" onclick="scrollToSection('services')" data-i18n="nav-services">บริการ</a></li>
-              <li><a href="#process" onclick="scrollToSection('process')" data-i18n="nav-process">ขั้นตอน</a></li>
-              <li><a href="#status" onclick="scrollToSection('status')" data-i18n="nav-status">ตรวจสถานะ</a></li>
-              <li><a href="#contact" onclick="scrollToSection('contact')" data-i18n="nav-contact">ติดต่อ</a></li>
-            </ul>
-          </nav>
-        </div>
-        <div class="header-right">
-          <div class="language-switcher">
-            <button class="lang-btn active" onclick="switchLanguage('th')" data-lang="th"><span class="lang-flag">🇹🇭</span> TH</button>
-            <button class="lang-btn" onclick="switchLanguage('en')" data-lang="en"><span class="lang-flag">🇺🇸</span> EN</button>
-            <button class="lang-btn" onclick="switchLanguage('cn')" data-lang="cn"><span class="lang-flag">🇨🇳</span> 中文</button>
-          </div>
-          <a href="#contact" class="contact-btn" onclick="scrollToSection('contact')" data-i18n="free-consult">ปรึกษาฟรี</a>
-        </div>
-      </div>
+    <!-- Notification Bar -->
+    <div class="notification-bar" id="notificationBar">
+        โปรโมชั่นพิเศษ! ปรึกษาฟรี + ส่วนลด 20% สำหรับลูกค้าใหม่ ติดต่อเลย!
+        <button class="notification-close" onclick="closeNotification()">×</button>
     </div>
-  </header>
 
-  <section class="hero" id="home">
-    <div class="container">
-      <h1 data-i18n="hero-title">บริการขึ้นทะเบียนปุ๋ยและวัตถุอันตราย</h1>
-      <p data-i18n="hero-subtitle">ผู้เชี่ยวชาญด้านการขึ้นทะเบียนวัตถุอันตรายทางการเกษตรและปุ๋ยเคมี ครบวงจร รวดเร็ว ถูกต้องตามกฎหมาย พร้อมให้คำปรึกษาทุกขั้นตอน</p>
-      <div class="hero-buttons">
-        <a href="#services" class="btn" onclick="scrollToSection('services')" data-i18n="view-all-services">ดูบริการทั้งหมด</a>
-        <a href="#contact" class="btn btn-secondary" onclick="scrollToSection('contact')" data-i18n="free-consult">ปรึกษาฟรี</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="services-section" id="services">
-    <div class="container">
-      <h2 class="section-title" data-i18n="our-services">บริการของเรา</h2>
-      <div class="services-grid">
-        <!-- (การ์ดบริการของคุณเดิม – คง key data-i18n ไว้เหมือนโค้ดเดิม) -->
-        <div class="service-card">
-          <div class="service-icon">🌱</div>
-          <h3 data-i18n="fertilizer-title">ขึ้นทะเบียนปุ๋ย</h3>
-          <p data-i18n="fertilizer-desc">บริการขึ้นทะเบียนปุ๋ยทุกประเภท ตามมาตรฐาน กษ.</p>
-          <ul class="service-features">
-            <li data-i18n="fertilizer-feat1">ปุ๋ยเคมี</li>
-            <li data-i18n="fertilizer-feat2">ปุ๋ยอินทรีย์</li>
-            <li data-i18n="fertilizer-feat3">ปุ๋ยชีวภาพ</li>
-            <li data-i18n="fertilizer-feat4">ปุ๋ยผสม</li>
-            <li data-i18n="fertilizer-feat5">วิเคราะห์ห้องปฏิบัติการ</li>
-            <li data-i18n="fertilizer-feat6">จัดทำเอกสารครบชุด</li>
-          </ul>
-          <a href="#contact" class="btn" onclick="selectService('fertilizer')" data-i18n="ask-price">สอบถามราคา</a>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">🧪</div>
-          <h3 data-i18n="chemical-title">ขึ้นทะเบียนสารเคมีเกษตร</h3>
-          <p data-i18n="chemical-desc">บริการขึ้นทะเบียนสารป้องกันกำจัดศัตรูพืชและสัตว์</p>
-          <ul class="service-features">
-            <li data-i18n="chemical-feat1">สารกำจัดแมลง</li>
-            <li data-i18n="chemical-feat2">สารกำจัดวัชพืช</li>
-            <li data-i18n="chemical-feat3">สารป้องกันกำจัดโรคพืช</li>
-            <li data-i18n="chemical-feat4">สารชีวภัณฑ์</li>
-            <li data-i18n="chemical-feat5">สารควบคุมการเจริญเติบโตของพืช</li>
-            <li data-i18n="chemical-feat6">ทดสอบประสิทธิภาพ</li>
-            <li data-i18n="chemical-feat7">การศึกษาความปลอดภัย</li>
-          </ul>
-          <a href="#contact" class="btn" onclick="selectService('chemical')" data-i18n="ask-price">สอบถามราคา</a>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">⚠️</div>
-          <h3 data-i18n="hazardous-title">ขึ้นทะเบียนวัตถุอันตรายทางการเกษตร</h3>
-          <p data-i18n="hazardous-desc">บริการขึ้นทะเบียนวัตถุอันตรายตาม พรบ.วัตถุอันตราย</p>
-          <ul class="service-features">
-            <li data-i18n="hazardous-feat1">วัตถุอันตรายชนิดที่ 2</li>
-            <li data-i18n="hazardous-feat2">วัตถุอันตรายชนิดที่ 3</li>
-            <li data-i18n="hazardous-feat3">การจัดหมวดหมู่อันตราย</li>
-            <li data-i18n="hazardous-feat4">ฉลากและข้อมูลความปลอดภัย</li>
-            <li data-i18n="hazardous-feat5">แผนฉุกเฉิน</li>
-            <li data-i18n="hazardous-feat6">การฝึกอบรมบุคลากร</li>
-          </ul>
-          <a href="#contact" class="btn" onclick="selectService('hazardous')" data-i18n="ask-price">สอบถามราคา</a>
-        </div>
-        <!-- (การ์ดอื่น ๆ คง data-i18n เดิมไว้) -->
-      </div>
-    </div>
-  </section>
-
-  <section class="process-section" id="process">
-    <div class="container">
-      <h2 class="section-title" data-i18n="service-process">ขั้นตอนการให้บริการ</h2>
-      <div class="process-steps">
-        <div class="step-card">
-          <div class="step-number">1</div>
-          <h3 data-i18n="step1-title">ปรึกษาและวิเคราะห์</h3>
-          <p data-i18n="step1-desc">รับฟังความต้องการ วิเคราะห์ผลิตภัณฑ์ แนะนำแนวทางการขึ้นทะเบียนที่เหมาะสม</p>
-        </div>
-        <div class="step-card">
-          <div class="step-number">2</div>
-          <h3 data-i18n="step2-title">เตรียมเอกสาร</h3>
-          <p data-i18n="step2-desc">จัดเตรียมเอกสารครบถ้วน ทดสอบห้องปฏิบัติการ จัดทำรายงานผลการทดสอบ</p>
-        </div>
-        <div class="step-card">
-          <div class="step-number">3</div>
-          <h3 data-i18n="step3-title">ยื่นขออนุมัติ</h3>
-          <p data-i18n="step3-desc">ยื่นเอกสารต่อหน่วยงานที่เกี่ยวข้อง ติดตามความคืบหน้า ประสานงานกับเจ้าหน้าที่</p>
-        </div>
-        <div class="step-card">
-          <div class="step-number">4</div>
-          <h3 data-i18n="step4-title">รับใบอนุมัติ</h3>
-          <p data-i18n="step4-desc">รับใบอนุมัติ/ใบสำคัญการขึ้นทะเบียน พร้อมคำแนะนำการใช้งานและการต่ออายุ</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="status-section" id="status">
-    <div class="container">
-      <h2 class="section-title" data-i18n="check-status">ตรวจสอบสถานะการขึ้นทะเบียน</h2>
-      <div class="status-checker">
-        <h3 data-i18n="enter-request-id">ใส่เลขที่คำขอหรือรหัสติดตาม</h3>
-        <div class="status-input">
-          <input type="text" id="statusInput" data-i18n="placeholder-request" data-i18n-attr="placeholder" placeholder="กรอกเลขที่คำขอ เช่น REG-2024-001" />
-          <button class="btn" onclick="checkStatus()" data-i18n="check-btn">ตรวจสอบ</button>
-        </div>
-        <div class="loading-spinner" id="statusLoading"></div>
-        <div id="statusResult" class="status-result"></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="image-upload-section">
-    <div class="container">
-      <h2 class="section-title" data-i18n="attach-docs">แนบรูปภาพเอกสาร</h2>
-      <p style="text-align:center;color:#666;margin-bottom:2rem;" data-i18n="attach-desc">แนบรูปภาพเอกสาร ฉลากสินค้า หรือข้อมูลที่เกี่ยวข้องเพื่อให้เราช่วยวิเคราะห์และให้คำแนะนำ</p>
-      <div class="upload-area" id="uploadArea">
-        <div class="upload-icon">📎</div>
-        <div class="upload-text" data-i18n="attach-cta">คลิกเพื่อเลือกไฟล์หรือลากไฟล์มาวางที่นี่</div>
-        <small style="color:#999;" data-i18n="attach-note">รองรับไฟล์: JPG, PNG, PDF (ขนาดไม่เกิน 10MB)</small>
-        <input type="file" id="fileInput" class="file-input" multiple accept="image/*,.pdf" />
-      </div>
-      <div id="uploadedImages" class="uploaded-images"></div>
-    </div>
-  </section>
-
-  <section class="contact-section" id="contact">
-    <div class="container">
-      <h2 class="section-title" data-i18n="contact-us-now">ติดต่อเราได้ทันที</h2>
-      <div class="quick-contact">
-        <div class="contact-card" onclick="makePhoneCall()">
-          <div class="contact-card-icon">📱</div>
-          <h4 data-i18n="call-now">โทรเลย</h4>
-          <a href="tel:0843752399">084-375-2399</a>
-          <p data-i18n="call-hours">โทรสอบถามได้ตลอดเวลาทำการ</p>
-        </div>
-        <div class="contact-card" onclick="openLineChat()">
-          <div class="contact-card-icon">💬</div>
-          <h4>Line Official</h4>
-          <a href="https://line.me/R/ti/p/@991cyisb" target="_blank">@991cyisb</a>
-          <p data-i18n="line-text">แชทสอบถามผ่าน Line OA ได้เลย</p>
-        </div>
-        <div class="contact-card" onclick="sendEmail()">
-          <div class="contact-card-icon">📧</div>
-          <h4 data-i18n="send-email">ส่งอีเมล</h4>
-          <a href="mailto:parungrung24@gmail.com">parungrung24@gmail.com</a>
-          <p data-i18n="email-text">ส่งเอกสารและรายละเอียด</p>
-        </div>
-        <div class="contact-card" onclick="openWeChat()">
-          <div class="contact-card-icon">💬</div>
-          <h4>WeChat</h4>
-          <a href="javascript:void(0)">Ruby</a>
-          <p data-i18n="wechat-text">สแกน QR Code เพื่อแชท WeChat</p>
-        </div>
-      </div>
-
-      <div class="contact-content">
-        <div class="contact-form">
-          <h3 data-i18n="send-us-msg">ส่งข้อความหาเรา</h3>
-          <form id="contactForm">
-            <div class="form-group">
-              <label for="name" data-i18n="label-name">ชื่อ-นามสกุล *</label>
-              <input type="text" id="name" name="name" data-i18n="ph-name" data-i18n-attr="placeholder" placeholder="ชื่อ-นามสกุล" required />
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-left">
+                    <div class="logo" onclick="scrollToSection('home')" data-i18n="company-name">อาร์.กู้ด เซอร์วิส รีจีสเตรชั่น</div>
+                    <nav>
+                        <ul>
+                            <li><a href="#home" onclick="scrollToSection('home')" data-i18n="nav-home">หน้าแรก</a></li>
+                            <li><a href="#services" onclick="scrollToSection('services')" data-i18n="nav-services">บริการ</a></li>
+                            <li><a href="#process" onclick="scrollToSection('process')" data-i18n="nav-process">ขั้นตอน</a></li>
+                            <li><a href="#status" onclick="scrollToSection('status')" data-i18n="nav-status">ตรวจสถานะ</a></li>
+                            <li><a href="#contact" onclick="scrollToSection('contact')" data-i18n="nav-contact">ติดต่อ</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="header-right">
+                    <div class="language-switcher">
+                        <button class="lang-btn active" onclick="switchLanguage('th')" data-lang="th">
+                            <span class="lang-flag">🇹🇭</span> TH
+                        </button>
+                        <button class="lang-btn" onclick="switchLanguage('en')" data-lang="en">
+                            <span class="lang-flag">🇺🇸</span> EN
+                        </button>
+                        <button class="lang-btn" onclick="switchLanguage('cn')" data-lang="cn">
+                            <span class="lang-flag">🇨🇳</span> 中文
+                        </button>
+                    </div>
+                    <a href="#contact" class="contact-btn" onclick="scrollToSection('contact')" data-i18n="free-consult">ปรึกษาฟรี</a>
+                </div>
+                <div class="mobile-menu" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
-            <div class="form-group">
-              <label for="company" data-i18n="label-company">ชื่อบริษัท</label>
-              <input type="text" id="company" name="company" data-i18n="ph-company" data-i18n-attr="placeholder" placeholder="ชื่อบริษัท" />
-            </div>
-            <div class="form-group">
-              <label for="phone" data-i18n="label-phone">เบอร์โทรศัพท์ *</label>
-              <input type="tel" id="phone" name="phone" data-i18n="ph-phone" data-i18n-attr="placeholder" placeholder="เบอร์โทรศัพท์" required />
-            </div>
-            <div class="form-group">
-              <label for="email" data-i18n="label-email">อีเมล</label>
-              <input type="email" id="email" name="email" data-i18n="ph-email" data-i18n-attr="placeholder" placeholder="อีเมล" />
-            </div>
-            <div class="form-group">
-              <label for="service" data-i18n="label-service">บริการที่สนใจ *</label>
-              <select id="service" name="service" required>
-                <option value="" data-i18n="opt-choose">เลือกบริการ</option>
-                <option value="fertilizer" data-i18n="fertilizer-title">ขึ้นทะเบียนปุ๋ย</option>
-                <option value="chemical" data-i18n="chemical-title">ขึ้นทะเบียนสารเคมีเกษตร</option>
-                <option value="hazardous" data-i18n="hazardous-title">ขึ้นทะเบียนวัตถุอันตราย</option>
-                <option value="consult" data-i18n="consult-title">คำปรึกษาและตรวจสอบ</option>
-                <option value="license" data-i18n="license-title">ต่อใบอนุญาตผลิต</option>
-                <option value="import" data-i18n="import-title">ใบอนุญาตนำเข้า</option>
-                <option value="renewal" data-i18n="renewal-title">บริการต่ออายุต่างๆ</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="message" data-i18n="label-message">รายละเอียด</label>
-              <textarea id="message" name="message" rows="4" data-i18n="ph-message" data-i18n-attr="placeholder" placeholder="อธิบายผลิตภัณฑ์และความต้องการ"></textarea>
-            </div>
-            <div class="loading-spinner" id="formLoading"></div>
-            <div class="success-message" id="formSuccess" data-i18n="form-success">✅ ส่งข้อความเรียบร้อยแล้ว! เราจะติดต่อกลับในเร็วๆ นี้</div>
-            <button type="submit" class="btn" style="width:100%" data-i18n="send-with-attachments">ส่งข้อความพร้อมรูปภาพ</button>
-          </form>
         </div>
+    </header>
 
-        <div class="contact-info">
-          <h3 data-i18n="contact-info">ข้อมูลการติดต่อ</h3>
-          <div class="contact-item">
-            <div class="contact-item-icon">📍</div>
-            <div>
-              <strong data-i18n="office-address">ที่อยู่สำนักงาน</strong><br />
-              8, 68 ถ. เทพรักษ์<br />
-              แขวงท่าแร้ง เขตบางเขน<br />
-              กรุงเทพมหานคร 10220
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>บริการขึ้นทะเบียนปุ๋ยและวัตถุอันตราย</h1>
+            <p>ผู้เชี่ยวชาญด้านการขึ้นทะเบียนวัตถุอันตรายทางการเกษตรและปุ๋ยเคมี ครบวงจร รวดเร็ว ถูกต้องตามกฎหมาย พร้อมให้คำปรึกษาทุกขั้นตอน</p>
+            <div class="hero-buttons">
+                <a href="#services" class="btn" onclick="scrollToSection('services')">ดูบริการทั้งหมด</a>
+                <a href="#contact" class="btn btn-secondary" onclick="scrollToSection('contact')">ปรึกษาฟรี</a>
             </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-icon">📞</div>
-            <div>
-              <strong data-i18n="phone">โทรศัพท์</strong><br />
-              <a href="tel:0843752399" style="color:#bbdefb;">084-375-2399</a>
+        </div>
+    </section>
+
+    <section class="services-section" id="services">
+        <div class="container">
+            <h2 class="section-title" data-i18n="our-services">บริการของเรา</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🌱</div>
+                    <h3 data-i18n="fertilizer-title">ขึ้นทะเบียนปุ๋ย</h3>
+                    <p data-i18n="fertilizer-desc">บริการขึ้นทะเบียนปุ๋ยทุกประเภท ตามมาตรฐาน กษ.</p>
+                    <ul class="service-features" data-service="fertilizer">
+                        <li data-i18n="fertilizer-feat1">ปุ๋ยเคมี</li>
+                        <li data-i18n="fertilizer-feat2">ปุ๋ยอินทรีย์</li>
+                        <li data-i18n="fertilizer-feat3">ปุ๋ยชีวภาพ</li>
+                        <li data-i18n="fertilizer-feat4">ปุ๋ยผสม</li>
+                        <li data-i18n="fertilizer-feat5">วิเคราะห์ห้องปฏิบัติการ</li>
+                        <li data-i18n="fertilizer-feat6">จัดทำเอกสารครบชุด</li>
+                    </ul>
+                    <a href="#contact" class="btn" onclick="selectService('fertilizer')" data-i18n="ask-price">สอบถามราคา</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🧪</div>
+                    <h3 data-i18n="chemical-title">ขึ้นทะเบียนสารเคมีเกษตร</h3>
+                    <p data-i18n="chemical-desc">บริการขึ้นทะเบียนสารป้องกันกำจัดศัตรูพืชและสัตว์</p>
+                    <ul class="service-features" data-service="chemical">
+                        <li data-i18n="chemical-feat1">สารกำจัดแมลง</li>
+                        <li data-i18n="chemical-feat2">สารกำจัดวัชพืช</li>
+                        <li data-i18n="chemical-feat3">สารป้องกันกำจัดโรคพืช</li>
+                        <li data-i18n="chemical-feat4">สารชีวภัณฑ์</li>
+                        <li data-i18n="chemical-feat5">สารควบคุมการเจริญเติบโตของพืช</li>
+                        <li data-i18n="chemical-feat6">ทดสอบประสิทธิภาพ</li>
+                        <li data-i18n="chemical-feat7">การศึกษาความปลอดภัย</li>
+                    </ul>
+                    <a href="#contact" class="btn" onclick="selectService('chemical')" data-i18n="ask-price">สอบถามราคา</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">⚠️</div>
+                    <h3 data-i18n="hazardous-title">ขึ้นทะเบียนวัตถุอันตรายทางการเกษตร</h3>
+                    <p data-i18n="hazardous-desc">บริการขึ้นทะเบียนวัตถุอันตรายตาม พรบ.วัตถุอันตราย</p>
+                    <ul class="service-features" data-service="hazardous">
+                        <li data-i18n="hazardous-feat1">วัตถุอันตรายชนิดที่ 2</li>
+                        <li data-i18n="hazardous-feat2">วัตถุอันตรายชนิดที่ 3</li>
+                        <li data-i18n="hazardous-feat3">การจัดหมวดหมู่อันตราย</li>
+                        <li data-i18n="hazardous-feat4">ฉลากและข้อมูลความปลอดภัย</li>
+                        <li data-i18n="hazardous-feat5">แผนฉุกเฉิน</li>
+                        <li data-i18n="hazardous-feat6">การฝึกอบรมบุคลากร</li>
+                    </ul>
+                    <a href="#contact" class="btn" onclick="selectService('hazardous')" data-i18n="ask-price">สอบถามราคา</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3 data-i18n="consult-title">คำปรึกษาและตรวจสอบ</h3>
+                    <p data-i18n="consult-desc">บริการให้คำปรึกษาและตรวจสอบเอกสาร</p>
+                    <ul class="service-features" data-service="consult">
+                        <li data-i18n="consult-feat1">ตรวจสอบความถูกต้องเอกสาร</li>
+                        <li data-i18n="consult-feat2">คำปรึกษากฎหมายที่เกี่ยวข้อง</li>
+                        <li data-i18n="consult-feat3">วางแผนการขึ้นทะเบียน</li>
+                        <li data-i18n="consult-feat4">ติดตามสถานะการอนุมัติ</li>
+                        <li data-i18n="consult-feat5">แก้ไขปัญหาข้อบกพร่อง</li>
+                        <li data-i18n="consult-feat6">อบรมเจ้าหน้าที่</li>
+                    </ul>
+                    <a href="#contact" class="btn" onclick="selectService('consult')" data-i18n="ask-price">สอบถามราคา</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📄</div>
+                    <h3 data-i18n="license-title">ต่อใบอนุญาตผลิต</h3>
+                    <p data-i18n="license-desc">บริการต่อใบอนุญาตการผลิตปุ๋ยและสารเคมี</p>
+                    <ul class="service-features" data-service="license">
+                        <li data-i18n="license-feat1">ต่ออายุใบอนุญาตผลิต</li>
+                        <li data-i18n="license-feat2">ตรวจสอบเอกสารความถูกต้อง</li>
+                        <li data-i18n="license-feat3">ประสานงานกับหน่วยงานราชการ</li>
+                        <li data-i18n="license-feat4">ติดตามสถานะการอนุมัติ</li>
+                        <li data-i18n="license-feat5">รับใบอนุญาตใหม่</li>
+                        <li data-i18n="license-feat6">แนะนำการปฏิบัติตามกฎหมาย</li>
+                    </ul>
+                    <a href="#contact" class="btn" onclick="selectService('license')" data-i18n="ask-price">สอบถามราคา</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3 data-i18n="import-title">ใบอนุญาตนำเข้าวัตถุอันตรายทางการเกษตร</h3>
+                    <p data-i18n="import-desc">บริการจัดทำใบอนุญาตนำเข้าสินค้าทางการเกษตร</p>
+                    <ul class="service-features" data-service="import">
+                        <li data-i18n="import-feat1">ใบอนุญาตนำเข้าปุ๋ย</li>
+                        <li data-i18n="import-feat2">ใบอนุญาตนำเข้าวัตถุอันตราย</li>
+                        <li data-i18n="import-feat3">ตรวจสอบเอกสารครบถ้วน</li>
+                        <li data-i18n="import-feat4">ประสานงานด่านศุลกากร</li>
+                        <li data-i18n="import-feat5">รับใบอนุญาตนำเข้า</li>
+                    </ul>
+                    <a href="#contact" class="btn" onclick="selectService('import')" data-i18n="ask-price">สอบถามราคา</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🔄</div>
+                    <h3 data-i18n="renewal-title">บริการต่ออายุต่างๆ</h3>
+                    <p data-i18n="renewal-desc">บริการต่ออายุและเพิ่มรายชื่อครอบครอง</p>
+                    <ul class="service-features" data-service="renewal">
+                        <li data-i18n="renewal-feat1">ต่ออายุครอบครองวัตถุอันตราย</li>
+                        <li data-i18n="renewal-feat2">เพิ่มรายชื่อครอบครอง</li>
+                        <li data-i18n="renewal-feat3">ต่ออายุอนุญาตผลิตวัตถุอันตรายทางการเกษตร</li>
+                        <li data-i18n="renewal-feat4">ต่ออายุอนุญาตขายปุ๋ย</li>
+                        <li data-i18n="renewal-feat5">ต่ออายุใบอนุญาตผลิตปุ๋ยเคมีเพื่อการค้า</li>
+                        <li data-i18n="renewal-feat6">จัดทำเอกสารต่ออายุและแจ้งเตือนก่อนหมดอายุ</li>
+                    </ul>
+                    <a href="#contact" class="btn" onclick="selectService('renewal')" data-i18n="ask-price">สอบถามราคา</a>
+                </div>
             </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-icon">📧</div>
-            <div>
-              <strong data-i18n="email">อีเมล</strong><br />
-              <a href="mailto:parungrung24@gmail.com" style="color:#bbdefb;">parungrung24@gmail.com</a>
+        </div>
+    </section>
+
+    <section class="process-section" id="process">
+        <div class="container">
+            <h2 class="section-title">ขั้นตอนการให้บริการ</h2>
+            <div class="process-steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>ปรึกษาและวิเคราะห์</h3>
+                    <p>รับฟังความต้องการ วิเคราะห์ผลิตภัณฑ์ แนะนำแนวทางการขึ้นทะเบียนที่เหมาะสม</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>เตรียมเอกสาร</h3>
+                    <p>จัดเตรียมเอกสารครบถ้วน ทดสอบห้องปฏิบัติการ จัดทำรายงานผลการทดสอบ</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>ยื่นขออนุมัติ</h3>
+                    <p>ยื่นเอกสารต่อหน่วยงานที่เกี่ยวข้อง ติดตามความคืบหน้า ประสานงานกับเจ้าหน้าที่</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>รับใบอนุมัติ</h3>
+                    <p>รับใบอนุมัติ/ใบสำคัญการขึ้นทะเบียน พร้อมคำแนะนำการใช้งานและการต่ออายุ</p>
+                </div>
             </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-icon">🕒</div>
-            <div>
-              <strong data-i18n="business-hours">เวลาทำการ</strong><br />
-              <span data-i18n="hours-monfri">จันทร์-ศุกร์: 9:00-17:00</span><br />
-              <span data-i18n="hours-weekend">เสาร์-อาทิตย์: ปิด</span>
+        </div>
+    </section>
+
+    <section class="status-section" id="status">
+        <div class="container">
+            <h2 class="section-title">ตรวจสอบสถานะการขึ้นทะเบียน</h2>
+            <div class="status-checker">
+                <h3>ใส่เลขที่คำขอหรือรหัสติดตาม</h3>
+                <div class="status-input">
+                    <input type="text" id="statusInput" placeholder="กรอกเลขที่คำขอ เช่น REG-2024-001">
+                    <button class="btn" onclick="checkStatus()">ตรวจสอบ</button>
+                </div>
+                <div class="loading-spinner" id="statusLoading"></div>
+                <div id="statusResult" class="status-result">
+                    <!-- ผลการตรวจสอบจะแสดงที่นี่ -->
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <button class="live-chat-btn" onclick="openLineChat()">💬 <span data-i18n="chat-on-line">แชท Line</span></button>
-  <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
-
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3 data-i18n="about-us">เกี่ยวกับเรา</h3>
-          <p data-i18n="about-desc">ผู้เชี่ยวชาญด้านการขึ้นทะเบียนผลิตภัณฑ์เกษตรกรรม มีประสบการณ์กว่า 25 ปี พร้อมทีมงานมืออาชีพ - อาร์.กู้ด เซอร์วิส รีจีสเตรชั่น</p>
-          <div class="social-icons">
-            <a href="https://line.me/R/ti/p/@991cyisb" class="social-icon" target="_blank" title="Line Official">💬</a>
-            <a href="javascript:void(0)" onclick="openWeChat()" class="social-icon" title="WeChat">🇨🇳</a>
-            <a href="mailto:parungrung24@gmail.com" class="social-icon" target="_blank" title="Email">📧</a>
-            <a href="tel:0843752399" class="social-icon" target="_blank" title="Phone">📞</a>
-          </div>
+    <section class="image-upload-section">
+        <div class="container">
+            <h2 class="section-title">แนบรูปภาพเอกสาร</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 2rem;">
+                แนบรูปภาพเอกสาร ฉลากสินค้า หรือข้อมูลที่เกี่ยวข้องเพื่อให้เราช่วยวิเคราะห์และให้คำแนะนำ
+            </p>
+            
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">📎</div>
+                <div class="upload-text">คลิกเพื่อเลือกไฟล์หรือลากไฟล์มาวางที่นี่</div>
+                <small style="color: #999;">รองรับไฟล์: JPG, PNG, PDF (ขนาดไม่เกิน 10MB)</small>
+                <input type="file" id="fileInput" class="file-input" multiple accept="image/*,.pdf">
+            </div>
+            
+            <div id="uploadedImages" class="uploaded-images">
+                <!-- รูปภาพที่อัปโหลดจะแสดงที่นี่ -->
+            </div>
         </div>
-        <div class="footer-section">
-          <h3 data-i18n="main-services">บริการหลัก</h3>
-          <ul>
-            <li><a href="#services" onclick="selectService('fertilizer')" data-i18n="fertilizer-title">ขึ้นทะเบียนปุ๋ย</a></li>
-            <li><a href="#services" onclick="selectService('chemical')" data-i18n="chemical-title">ขึ้นทะเบียนสารเคมีเกษตร</a></li>
-            <li><a href="#services" onclick="selectService('hazardous')" data-i18n="hazardous-title">ขึ้นทะเบียนวัตถุอันตราย</a></li>
-            <li><a href="#services" onclick="selectService('consult')" data-i18n="consult-title">คำปรึกษาฟรี</a></li>
-          </ul>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">ติดต่อเราได้ทันที</h2>
+            
+            <!-- Quick Contact Cards -->
+            <div class="quick-contact">
+                <div class="contact-card" onclick="makePhoneCall()">
+                    <div class="contact-card-icon">📱</div>
+                    <h4>โทรเลย</h4>
+                    <a href="tel:0843752399">084-375-2399</a>
+                    <p>โทรสอบถามได้ตลอดเวลาทำการ</p>
+                </div>
+                
+                <div class="contact-card" onclick="openLineChat()">
+                    <div class="contact-card-icon">💬</div>
+                    <h4>Line Official</h4>
+                    <a href="https://line.me/R/ti/p/@991cyisb" target="_blank">@991cyisb</a>
+                    <p>แชทสอบถามผ่าน Line OA ได้เลย</p>
+                </div>
+                
+                <div class="contact-card" onclick="sendEmail()">
+                    <div class="contact-card-icon">📧</div>
+                    <h4>ส่งอีเมล</h4>
+                    <a href="mailto:parungrung24@gmail.com">parungrung24@gmail.com</a>
+                    <p>ส่งเอกสารและรายละเอียด</p>
+                </div>
+                
+                <div class="contact-card" onclick="openWeChat()">
+                    <div class="contact-card-icon">💬</div>
+                    <h4>WeChat</h4>
+                    <a href="javascript:void(0)">Ruby</a>
+                    <p>สแกน QR Code เพื่อแชท WeChat</p>
+                </div>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-form">
+                    <h3>ส่งข้อความหาเรา</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">ชื่อ-นามสกุล *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">ชื่อบริษัท</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">เบอร์โทรศัพท์ *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">อีเมล</label>
+                            <input type="email" id="email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">บริการที่สนใจ *</label>
+                            <select id="service" name="service" required>
+                                <option value="">เลือกบริการ</option>
+                                <option value="fertilizer">ขึ้นทะเบียนปุ๋ย</option>
+                                <option value="chemical">ขึ้นทะเบียนสารเคมีเกษตร</option>
+                                <option value="hazardous">ขึ้นทะเบียนวัตถุอันตราย</option>
+                                <option value="consult">คำปรึกษาและตรวจสอบ</option>
+                                <option value="license">ต่อใบอนุญาตผลิต</option>
+                                <option value="import">ใบอนุญาตนำเข้า</option>
+                                <option value="renewal">บริการต่ออายุต่างๆ</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">รายละเอียด</label>
+                            <textarea id="message" name="message" rows="4" placeholder="อธิบายผลิตภัณฑ์และความต้องการ"></textarea>
+                        </div>
+                        <div class="loading-spinner" id="formLoading"></div>
+                        <div class="success-message" id="formSuccess">
+                            ✅ ส่งข้อความเรียบร้อยแล้ว! เราจะติดต่อกลับในเร็วๆ นี้
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%;">ส่งข้อความพร้อมรูปภาพ</button>
+                    </form>
+                </div>
+
+                <div class="contact-info">
+                    <h3>ข้อมูลการติดต่อ</h3>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📍</div>
+                        <div>
+                            <strong>ที่อยู่สำนักงาน</strong><br>
+                            8, 68 ถ. เทพรักษ์<br>
+                            แขวงท่าแร้ง เขตบางเขน<br>
+                            กรุงเทพมหานคร 10220
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📞</div>
+                        <div>
+                            <strong>โทรศัพท์</strong><br>
+                            <a href="tel:0843752399" style="color: #bbdefb;">084-375-2399</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📧</div>
+                        <div>
+                            <strong>อีเมล</strong><br>
+                            <a href="mailto:parungrung24@gmail.com" style="color: #bbdefb;">parungrung24@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">🕒</div>
+                        <div>
+                            <strong>เวลาทำการ</strong><br>
+                            จันทร์-ศุกร์: 9:00-17:00<br>
+                            เสาร์-อาทิตย์: ปิด
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="footer-section">
-          <h3 data-i18n="more-services">บริการเพิ่มเติม</h3>
-          <ul>
-            <li><a href="#services" onclick="selectService('license')" data-i18n="license-title">ต่อใบอนุญาตผลิต</a></li>
-            <li><a href="#services" onclick="selectService('import')" data-i18n="import-title">ใบอนุญาตนำเข้า</a></li>
-            <li><a href="#services" onclick="selectService('renewal')" data-i18n="renewal-title">ต่ออายุครอบครอง</a></li>
-            <li><a href="#status" onclick="scrollToSection('status')" data-i18n="nav-status">ตรวจสถานะ</a></li>
-          </ul>
+    </section>
+
+    <!-- Live Chat Button -->
+    <button class="live-chat-btn" onclick="openLineChat()">
+        💬 แชท Line
+    </button>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        ↑
+    </button>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>เกี่ยวกับเรา</h3>
+                    <p>ผู้เชี่ยวชาญด้านการขึ้นทะเบียนผลิตภัณฑ์เกษตรกรรม มีประสบการณ์กว่า 25 ปี พร้อมทีมงานมืออาชีพ - อาร์.กู้ด เซอร์วิส รีจีสเตรชั่น</p>
+                    <div class="social-icons">
+                        <a href="https://line.me/R/ti/p/@991cyisb" class="social-icon" target="_blank" title="Line Official">💬</a>
+                        <a href="javascript:void(0)" onclick="openWeChat()" class="social-icon" title="WeChat">🇨🇳</a>
+                        <a href="mailto:parungrung24@gmail.com" class="social-icon" target="_blank" title="Email">📧</a>
+                        <a href="tel:0843752399" class="social-icon" target="_blank" title="Phone">📞</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>บริการหลัก</h3>
+                    <ul>
+                        <li><a href="#services" onclick="selectService('fertilizer')">ขึ้นทะเบียนปุ๋ย</a></li>
+                        <li><a href="#services" onclick="selectService('chemical')">ขึ้นทะเบียนสารเคมีเกษตร</a></li>
+                        <li><a href="#services" onclick="selectService('hazardous')">ขึ้นทะเบียนวัตถุอันตราย</a></li>
+                        <li><a href="#services" onclick="selectService('consult')">คำปรึกษาฟรี</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>บริการเพิ่มเติม</h3>
+                    <ul>
+                        <li><a href="#services" onclick="selectService('license')">ต่อใบอนุญาตผลิต</a></li>
+                        <li><a href="#services" onclick="selectService('import')">ใบอนุญาตนำเข้า</a></li>
+                        <li><a href="#services" onclick="selectService('renewal')">ต่ออายุครอบครอง</a></li>
+                        <li><a href="#status" onclick="scrollToSection('status')">ตรวจสถานะ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>ติดตามเรา</h3>
+                    <ul>
+                        <li><a href="https://line.me/R/ti/p/@991cyisb" target="_blank">Line Official @991cyisb</a></li>
+                        <li><a href="javascript:void(0)" onclick="openWeChat()">WeChat: Ruby</a></li>
+                        <li><a href="#contact" onclick="scrollToSection('contact')">ติดต่อเรา</a></li>
+                        <li><a href="#" onclick="showPrivacyPolicy()">นโยบายความเป็นส่วนตัว</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 อาร์.กู้ด เซอร์วิส รีจีสเตรชั่น - บริการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตร | ออกแบบด้วย ❤️ เพื่อลูกค้า</p>
+            </div>
         </div>
-        <div class="footer-section">
-          <h3 data-i18n="follow-us">ติดตามเรา</h3>
-          <ul>
-            <li><a href="https://line.me/R/ti/p/@991cyisb" target="_blank">Line Official @991cyisb</a></li>
-            <li><a href="javascript:void(0)" onclick="openWeChat()">WeChat: Ruby</a></li>
-            <li><a href="#contact" onclick="scrollToSection('contact')" data-i18n="nav-contact">ติดต่อเรา</a></li>
-            <li><a href="#" onclick="showPrivacyPolicy()" data-i18n="privacy">นโยบายความเป็นส่วนตัว</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2024 <span data-i18n="company-name">อาร์.กู้ด เซอร์วิส รีจีสเตรชั่น</span> — <span data-i18n="tagline">บริการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตร</span></p>
-      </div>
-    </div>
-  </footer>
+    </footer>
 
-  <script>
-    let uploadedFiles = [];
-    let currentServiceSelection = '';
-    let currentLanguage = 'th';
+    <script>
+        // Global Variables
+        let uploadedFiles = [];
+        let currentServiceSelection = '';
+        let currentLanguage = 'th'; // Default language
 
-    // ===== Translations =====
-    const translations = {
-      th: {
-        'page-title':'บริการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตร',
-        'company-name':'อาร์.กู้ด เซอร์วิส รีจีสเตรชั่น',
-        'notification-promo':'โปรโมชั่นพิเศษ! ปรึกษาฟรี + ส่วนลด 20% สำหรับลูกค้าใหม่ ติดต่อเลย!',
-        'nav-home':'หน้าแรก','nav-services':'บริการ','nav-process':'ขั้นตอน','nav-status':'ตรวจสถานะ','nav-contact':'ติดต่อ',
-        'free-consult':'ปรึกษาฟรี','view-all-services':'ดูบริการทั้งหมด',
-        'hero-title':'บริการขึ้นทะเบียนปุ๋ยและวัตถุอันตราย',
-        'hero-subtitle':'ผู้เชี่ยวชาญด้านการขึ้นทะเบียนวัตถุอันตรายทางการเกษตรและปุ๋ยเคมี ครบวงจร รวดเร็ว ถูกต้องตามกฎหมาย พร้อมให้คำปรึกษาทุกขั้นตอน',
-        'our-services':'บริการของเรา',
-        'fertilizer-title':'ขึ้นทะเบียนปุ๋ย','fertilizer-desc':'บริการขึ้นทะเบียนปุ๋ยทุกประเภท ตามมาตรฐาน กษ.',
-        'chemical-title':'ขึ้นทะเบียนสารเคมีเกษตร','chemical-desc':'บริการขึ้นทะเบียนสารป้องกันกำจัดศัตรูพืชและสัตว์',
-        'hazardous-title':'ขึ้นทะเบียนวัตถุอันตรายทางการเกษตร','hazardous-desc':'บริการขึ้นทะเบียนวัตถุอันตรายตาม พรบ.วัตถุอันตราย',
-        'consult-title':'คำปรึกษาและตรวจสอบ','consult-desc':'บริการให้คำปรึกษาและตรวจสอบเอกสาร',
-        'license-title':'ต่อใบอนุญาตผลิต','license-desc':'บริการต่อใบอนุญาตการผลิตปุ๋ยและสารเคมี',
-        'import-title':'ใบอนุญาตนำเข้าวัตถุอันตรายทางการเกษตร','import-desc':'บริการจัดทำใบอนุญาตนำเข้าสินค้าทางการเกษตร',
-        'renewal-title':'บริการต่ออายุต่างๆ','renewal-desc':'บริการต่ออายุและเพิ่มรายชื่อครอบครอง',
-        'ask-price':'สอบถามราคา',
-        'service-process':'ขั้นตอนการให้บริการ','step1-title':'ปรึกษาและวิเคราะห์','step1-desc':'รับฟังความต้องการ วิเคราะห์ผลิตภัณฑ์ แนะนำแนวทางการขึ้นทะเบียนที่เหมาะสม','step2-title':'เตรียมเอกสาร','step2-desc':'จัดเตรียมเอกสารครบถ้วน ทดสอบห้องปฏิบัติการ จัดทำรายงานผลการทดสอบ','step3-title':'ยื่นขออนุมัติ','step3-desc':'ยื่นเอกสารต่อหน่วยงานที่เกี่ยวข้อง ติดตามความคืบหน้า ประสานงานกับเจ้าหน้าที่','step4-title':'รับใบอนุมัติ','step4-desc':'รับใบอนุมัติ/ใบสำคัญการขึ้นทะเบียน พร้อมคำแนะนำการใช้งานและการต่ออายุ',
-        'check-status':'ตรวจสอบสถานะการขึ้นทะเบียน','enter-request-id':'ใส่เลขที่คำขอหรือรหัสติดตาม','placeholder-request':'กรอกเลขที่คำขอ เช่น REG-2024-001','check-btn':'ตรวจสอบ',
-        'attach-docs':'แนบรูปภาพเอกสาร','attach-desc':'แนบรูปภาพเอกสาร ฉลากสินค้า หรือข้อมูลที่เกี่ยวข้องเพื่อให้เราช่วยวิเคราะห์และให้คำแนะนำ','attach-cta':'คลิกเพื่อเลือกไฟล์หรือลากไฟล์มาวางที่นี่','attach-note':'รองรับไฟล์: JPG, PNG, PDF (ขนาดไม่เกิน 10MB)',
-        'contact-us-now':'ติดต่อเราได้ทันที','call-now':'โทรเลย','call-hours':'โทรสอบถามได้ตลอดเวลาทำการ','line-text':'แชทสอบถามผ่าน Line OA ได้เลย','send-email':'ส่งอีเมล','email-text':'ส่งเอกสารและรายละเอียด','wechat-text':'สแกน QR Code เพื่อแชท WeChat','send-us-msg':'ส่งข้อความหาเรา',
-        'label-name':'ชื่อ-นามสกุล *','label-company':'ชื่อบริษัท','label-phone':'เบอร์โทรศัพท์ *','label-email':'อีเมล','label-service':'บริการที่สนใจ *','label-message':'รายละเอียด',
-        'ph-name':'ชื่อ-นามสกุล','ph-company':'ชื่อบริษัท','ph-phone':'เบอร์โทรศัพท์','ph-email':'อีเมล','ph-message':'อธิบายผลิตภัณฑ์และความต้องการ','opt-choose':'เลือกบริการ',
-        'form-success':'✅ ส่งข้อความเรียบร้อยแล้ว! เราจะติดต่อกลับในเร็วๆ นี้','send-with-attachments':'ส่งข้อความพร้อมรูปภาพ',
-        'contact-info':'ข้อมูลการติดต่อ','office-address':'ที่อยู่สำนักงาน','phone':'โทรศัพท์','email':'อีเมล','business-hours':'เวลาทำการ','hours-monfri':'จันทร์-ศุกร์: 9:00-17:00','hours-weekend':'เสาร์-อาทิตย์: ปิด',
-        'chat-on-line':'แชท Line','about-us':'เกี่ยวกับเรา','about-desc':'ผู้เชี่ยวชาญด้านการขึ้นทะเบียนผลิตภัณฑ์เกษตรกรรม มีประสบการณ์กว่า 25 ปี พร้อมทีมงานมืออาชีพ - อาร์.กู้ด เซอร์วิส รีจีสเตรชั่น','main-services':'บริการหลัก','more-services':'บริการเพิ่มเติม','follow-us':'ติดตามเรา','privacy':'นโยบายความเป็นส่วนตัว','tagline':'บริการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตร',
-        'alert-empty-request':'กรุณากรอกเลขที่คำขอ'
-      },
-      en: {
-        'page-title':'Agricultural Registration Services - Fertilizers & Hazardous Materials',
-        'company-name':'R.Good Service Registration',
-        'notification-promo':'Special Promotion! Free consultation + 20% discount for new customers. Contact us now!',
-        'nav-home':'Home','nav-services':'Services','nav-process':'Process','nav-status':'Check Status','nav-contact':'Contact',
-        'free-consult':'Free Consultation','view-all-services':'View All Services',
-        'hero-title':'Agricultural Registration Services',
-        'hero-subtitle':'Expert in agricultural hazardous materials and fertilizer registration. Comprehensive, fast, legally compliant services with full consultation support.',
-        'our-services':'Our Services',
-        'fertilizer-title':'Fertilizer Registration','fertilizer-desc':'Complete fertilizer registration services according to MOA standards',
-        'chemical-title':'Agricultural Chemical Registration','chemical-desc':'Registration services for plant and animal pest control substances',
-        'hazardous-title':'Agricultural Hazardous Material Registration','hazardous-desc':'Hazardous material registration services under the Hazardous Substances Act',
-        'consult-title':'Consultation & Verification','consult-desc':'Advisory and document verification services',
-        'license-title':'Production License Renewal','license-desc':'Fertilizer and chemical production license renewal services',
-        'import-title':'Agricultural Import License','import-desc':'Import license services for agricultural products',
-        'renewal-title':'Renewal Services','renewal-desc':'License renewal and name addition services',
-        'ask-price':'Inquire Price',
-        'service-process':'Service Process','step1-title':'Consultation & Analysis','step1-desc':'Listen to requirements, analyze products, recommend appropriate registration approaches','step2-title':'Document Preparation','step2-desc':'Prepare complete documents, lab testing, compile test reports','step3-title':'Submit Application','step3-desc':'Submit to relevant agencies, track progress, coordinate with officials','step4-title':'Receive Approval','step4-desc':'Receive approval/registration certificate with usage guidance and renewal advice',
-        'check-status':'Check Registration Status','enter-request-id':'Enter Request Number or Tracking Code','placeholder-request':'Enter request number e.g. REG-2024-001','check-btn':'Check',
-        'attach-docs':'Attach Documents','attach-desc':'Attach document images, labels, or related information for analysis and advice','attach-cta':'Click to choose or drag files here','attach-note':'Supported: JPG, PNG, PDF (max 10MB)',
-        'contact-us-now':'Contact Us Now','call-now':'Call Now','call-hours':'Available during business hours','line-text':'Chat via Line OA','send-email':'Send Email','email-text':'Send documents and details','wechat-text':'Scan QR to chat on WeChat','send-us-msg':'Send us a message',
-        'label-name':'Full Name *','label-company':'Company','label-phone':'Phone *','label-email':'Email','label-service':'Service of interest *','label-message':'Details',
-        'ph-name':'Full Name','ph-company':'Company','ph-phone':'Phone','ph-email':'Email','ph-message':'Describe your product and needs','opt-choose':'Choose a service',
-        'form-success':'✅ Message sent! We will get back to you shortly.','send-with-attachments':'Send message with attachments',
-        'contact-info':'Contact Information','office-address':'Office Address','phone':'Phone','email':'Email','business-hours':'Business Hours','hours-monfri':'Mon–Fri: 9:00–17:00','hours-weekend':'Sat–Sun: Closed',
-        'chat-on-line':'Chat on Line','about-us':'About Us','about-desc':'Experts in agricultural product registration, 25+ years of experience. R.Good Service Registration.','main-services':'Main Services','more-services':'More Services','follow-us':'Follow Us','privacy':'Privacy Policy','tagline':'Fertilizer & hazardous materials registration services',
-        'alert-empty-request':'Please enter the request number'
-      },
-      cn: {
-        'page-title':'农业登记服务 - 肥料与危险物质',
-        'company-name':'R.Good 服务登记',
-        'notification-promo':'特别促销！新客户免费咨询 + 20% 折扣，立即联系！',
-        'nav-home':'首页','nav-services':'服务','nav-process':'流程','nav-status':'查询状态','nav-contact':'联系我们',
-        'free-consult':'免费咨询','view-all-services':'查看所有服务',
-        'hero-title':'农业登记服务',
-        'hero-subtitle':'农业危险物质与肥料登记专家。全面、快速、合法合规，并提供全程咨询支持。',
-        'our-services':'我们的服务',
-        'fertilizer-title':'肥料登记','fertilizer-desc':'依据农业部标准提供完整肥料登记服务',
-        'chemical-title':'农用化学品登记','chemical-desc':'植物与动物害虫防治物质登记服务',
-        'hazardous-title':'农业危险物质登记','hazardous-desc':'根据《危险物质法》办理登记',
-        'consult-title':'咨询与核验','consult-desc':'咨询与文件核验服务',
-        'license-title':'生产许可证续期','license-desc':'肥料与化学品生产许可证续期服务',
-        'import-title':'农业进口许可证','import-desc':'农产品进口许可证办理',
-        'renewal-title':'各类续期服务','renewal-desc':'许可证续期与新增持有人服务',
-        'ask-price':'询价',
-        'service-process':'服务流程','step1-title':'咨询与分析','step1-desc':'了解需求，分析产品，推荐合适登记方式','step2-title':'文件准备','step2-desc':'准备完整文件，实验室测试与报告','step3-title':'提交申请','step3-desc':'提交至相关机构，跟进进度并协调','step4-title':'获得批准','step4-desc':'获取批准/登记证，并提供使用与续期建议',
-        'check-status':'查询登记状态','enter-request-id':'输入申请号或跟踪码','placeholder-request':'请输入申请号，例如 REG-2024-001','check-btn':'查询',
-        'attach-docs':'上传文件','attach-desc':'上传文件图片、标签或相关信息，我们将提供分析与建议','attach-cta':'点击选择或拖拽文件至此','attach-note':'支持：JPG、PNG、PDF（最大10MB）',
-        'contact-us-now':'立即联系','call-now':'立即拨打','call-hours':'工作时间可咨询','line-text':'通过 Line OA 咨询','send-email':'发送邮件','email-text':'发送文件与详情','wechat-text':'扫描二维码通过 WeChat 联系','send-us-msg':'给我们留言',
-        'label-name':'姓名 *','label-company':'公司','label-phone':'电话 *','label-email':'邮箱','label-service':'意向服务 *','label-message':'详细信息',
-        'ph-name':'姓名','ph-company':'公司','ph-phone':'电话','ph-email':'邮箱','ph-message':'描述产品与需求','opt-choose':'选择服务',
-        'form-success':'✅ 已发送！我们将尽快联系您。','send-with-attachments':'连同附件一起发送',
-        'contact-info':'联系信息','office-address':'办公地址','phone':'电话','email':'邮箱','business-hours':'工作时间','hours-monfri':'周一至周五：9:00–17:00','hours-weekend':'周六周日：休息',
-        'chat-on-line':'在 Line 上聊天','about-us':'关于我们','about-desc':'农业产品登记专家，25+年经验。R.Good 服务登记。','main-services':'主要服务','more-services':'更多服务','follow-us':'关注我们','privacy':'隐私政策','tagline':'肥料与危险物质登记服务',
-        'alert-empty-request':'请输入申请号'
-      }
-    };
-
-    document.addEventListener('DOMContentLoaded', () => {
-      initializeWebsite();
-      setupEventListeners();
-      loadSavedLanguage();
-    });
-
-    function loadSavedLanguage(){
-      const saved = localStorage.getItem('selectedLanguage') || 'th';
-      switchLanguage(saved);
-    }
-
-    // —— Multilingual engine ——
-    function switchLanguage(lang){
-      currentLanguage = lang;
-      localStorage.setItem('selectedLanguage', lang);
-      document.documentElement.setAttribute('lang', lang === 'cn' ? 'zh' : lang);
-
-      // active button
-      document.querySelectorAll('.lang-btn').forEach(btn=>{
-        btn.classList.toggle('active', btn.getAttribute('data-lang')===lang);
-      });
-
-      // translate text nodes
-      document.querySelectorAll('[data-i18n]').forEach(el=>{
-        const key = el.getAttribute('data-i18n');
-        const attr = el.getAttribute('data-i18n-attr');
-        const dict = translations[lang] || translations.th;
-        if(!dict[key]) return;
-        if(attr){
-          // support multiple attrs split by |
-          attr.split('|').forEach(a=>{
-            if(a==='placeholder' || a==='title' || a==='value' || a==='aria-label'){
-              el.setAttribute(a, dict[key]);
-            } else if (a==='content') {
-              // e.g. <meta data-i18n-attr="content">
-              el.setAttribute('content', dict[key]);
+        // Language translations
+        const translations = {
+            th: {
+                'page-title': 'บริการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตร',
+                'company-name': 'อาร์.กู้ด เซอร์วิส รีจีสเตรชั่น',
+                'nav-home': 'หน้าแรก',
+                'nav-services': 'บริการ',
+                'nav-process': 'ขั้นตอน',
+                'nav-status': 'ตรวจสถานะ',
+                'nav-contact': 'ติดต่อ',
+                'free-consult': 'ปรึกษาฟรี',
+                'notification-promo': 'โปรโมชั่นพิเศษ! ปรึกษาฟรี + ส่วนลด 20% สำหรับลูกค้าใหม่ ติดต่อเลย!',
+                'hero-title': 'บริการขึ้นทะเบียนปุ๋ยและวัตถุอันตราย',
+                'hero-subtitle': 'ผู้เชี่ยวชาญด้านการขึ้นทะเบียนวัตถุอันตรายทางการเกษตรและปุ๋ยเคมี ครบวงจร รวดเร็ว ถูกต้องตามกฎหมาย พร้อมให้คำปรึกษาทุกขั้นตอน',
+                'view-all-services': 'ดูบริการทั้งหมด',
+                'our-services': 'บริการของเรา',
+                'fertilizer-title': 'ขึ้นทะเบียนปุ๋ย',
+                'fertilizer-desc': 'บริการขึ้นทะเบียนปุ๋ยทุกประเภท ตามมาตรฐาน กษ.',
+                'chemical-title': 'ขึ้นทะเบียนสารเคมีเกษตร',
+                'chemical-desc': 'บริการขึ้นทะเบียนสารป้องกันกำจัดศัตรูพืชและสัตว์',
+                'hazardous-title': 'ขึ้นทะเบียนวัตถุอันตรายทางการเกษตร',
+                'hazardous-desc': 'บริการขึ้นทะเบียนวัตถุอันตรายตาม พรบ.วัตถุอันตราย',
+                'consult-title': 'คำปรึกษาและตรวจสอบ',
+                'consult-desc': 'บริการให้คำปรึกษาและตรวจสอบเอกสาร',
+                'license-title': 'ต่อใบอนุญาตผลิต',
+                'license-desc': 'บริการต่อใบอนุญาตการผลิตปุ๋ยและสารเคมี',
+                'import-title': 'ใบอนุญาตนำเข้าวัตถุอันตรายทางการเกษตร',
+                'import-desc': 'บริการจัดทำใบอนุญาตนำเข้าสินค้าทางการเกษตร',
+                'renewal-title': 'บริการต่ออายุต่างๆ',
+                'renewal-desc': 'บริการต่ออายุและเพิ่มรายชื่อครอบครอง',
+                'ask-price': 'สอบถามราคา',
+                'service-process': 'ขั้นตอนการให้บริการ',
+                'step1-title': 'ปรึกษาและวิเคราะห์',
+                'step1-desc': 'รับฟังความต้องการ วิเคราะห์ผลิตภัณฑ์ แนะนำแนวทางการขึ้นทะเบียนที่เหมาะสม',
+                'step2-title': 'เตรียมเอกสาร',
+                'step2-desc': 'จัดเตรียมเอกสารครบถ้วน ทดสอบห้องปฏิบัติการ จัดทำรายงานผลการทดสอบ',
+                'step3-title': 'ยื่นขออนุมัติ',
+                'step3-desc': 'ยื่นเอกสารต่อหน่วยงานที่เกี่ยวข้อง ติดตามความคืบหน้า ประสานงานกับเจ้าหน้าที่',
+                'step4-title': 'รับใบอนุมัติ',
+                'step4-desc': 'รับใบอนุมัติ/ใบสำคัญการขึ้นทะเบียน พร้อมคำแนะนำการใช้งานและการต่ออายุ',
+                'check-status': 'ตรวจสอบสถานะการขึ้นทะเบียน',
+                'enter-request-id': 'ใส่เลขที่คำขอหรือรหัสติดตาม',
+                'placeholder-request': 'กรอกเลขที่คำขอ เช่น REG-2024-001',
+                'check-btn': 'ตรวจสอบ',
+                // Service Features - Fertilizer
+                'fertilizer-feat1': 'ปุ๋ยเคมี',
+                'fertilizer-feat2': 'ปุ๋ยอินทรีย์',
+                'fertilizer-feat3': 'ปุ๋ยชีวภาพ',
+                'fertilizer-feat4': 'ปุ๋ยผสม',
+                'fertilizer-feat5': 'วิเคราะห์ห้องปฏิบัติการ',
+                'fertilizer-feat6': 'จัดทำเอกสารครบชุด',
+                // Service Features - Chemical
+                'chemical-feat1': 'สารกำจัดแมลง',
+                'chemical-feat2': 'สารกำจัดวัชพืช',
+                'chemical-feat3': 'สารป้องกันกำจัดโรคพืช',
+                'chemical-feat4': 'สารชีวภัณฑ์',
+                'chemical-feat5': 'สารควบคุมการเจริญเติบโตของพืช',
+                'chemical-feat6': 'ทดสอบประสิทธิภาพ',
+                'chemical-feat7': 'การศึกษาความปลอดภัย',
+                // Service Features - Hazardous
+                'hazardous-feat1': 'วัตถุอันตรายชนิดที่ 2',
+                'hazardous-feat2': 'วัตถุอันตรายชนิดที่ 3',
+                'hazardous-feat3': 'การจัดหมวดหมู่อันตราย',
+                'hazardous-feat4': 'ฉลากและข้อมูลความปลอดภัย',
+                'hazardous-feat5': 'แผนฉุกเฉิน',
+                'hazardous-feat6': 'การฝึกอบรมบุคลากร',
+                // Service Features - Consult
+                'consult-feat1': 'ตรวจสอบความถูกต้องเอกสาร',
+                'consult-feat2': 'คำปรึกษากฎหมายที่เกี่ยวข้อง',
+                'consult-feat3': 'วางแผนการขึ้นทะเบียน',
+                'consult-feat4': 'ติดตามสถานะการอนุมัติ',
+                'consult-feat5': 'แก้ไขปัญหาข้อบกพร่อง',
+                'consult-feat6': 'อบรมเจ้าหน้าที่',
+                // Service Features - License
+                'license-feat1': 'ต่ออายุใบอนุญาตผลิต',
+                'license-feat2': 'ตรวจสอบเอกสารความถูกต้อง',
+                'license-feat3': 'ประสานงานกับหน่วยงานราชการ',
+                'license-feat4': 'ติดตามสถานะการอนุมัติ',
+                'license-feat5': 'รับใบอนุญาตใหม่',
+                'license-feat6': 'แนะนำการปฏิบัติตามกฎหมาย',
+                // Service Features - Import
+                'import-feat1': 'ใบอนุญาตนำเข้าปุ๋ย',
+                'import-feat2': 'ใบอนุญาตนำเข้าวัตถุอันตราย',
+                'import-feat3': 'ตรวจสอบเอกสารครบถ้วน',
+                'import-feat4': 'ประสานงานด่านศุลกากร',
+                'import-feat5': 'รับใบอนุญาตนำเข้า',
+                // Service Features - Renewal
+                'renewal-feat1': 'ต่ออายุครอบครองวัตถุอันตราย',
+                'renewal-feat2': 'เพิ่มรายชื่อครอบครอง',
+                'renewal-feat3': 'ต่ออายุอนุญาตผลิตวัตถุอันตรายทางการเกษตร',
+                'renewal-feat4': 'ต่ออายุอนุญาตขายปุ๋ย',
+                'renewal-feat5': 'ต่ออายุใบอนุญาตผลิตปุ๋ยเคมีเพื่อการค้า',
+                'renewal-feat6': 'จัดทำเอกสารต่ออายุและแจ้งเตือนก่อนหมดอายุ'
+            },
+            en: {
+                'page-title': 'Agricultural Registration Services - Fertilizers & Hazardous Materials',
+                'company-name': 'R.Good Service Registration',
+                'nav-home': 'Home',
+                'nav-services': 'Services',
+                'nav-process': 'Process',
+                'nav-status': 'Check Status',
+                'nav-contact': 'Contact',
+                'free-consult': 'Free Consultation',
+                'notification-promo': 'Special Promotion! Free consultation + 20% discount for new customers. Contact us now!',
+                'hero-title': 'Agricultural Registration Services',
+                'hero-subtitle': 'Expert in agricultural hazardous materials and fertilizer registration. Comprehensive, fast, legally compliant services with full consultation support.',
+                'view-all-services': 'View All Services',
+                'our-services': 'Our Services',
+                'fertilizer-title': 'Fertilizer Registration',
+                'fertilizer-desc': 'Complete fertilizer registration services according to MOA standards',
+                'chemical-title': 'Agricultural Chemical Registration',
+                'chemical-desc': 'Registration services for plant and animal pest control substances',
+                'hazardous-title': 'Agricultural Hazardous Material Registration',
+                'hazardous-desc': 'Hazardous material registration services under the Hazardous Substances Act',
+                'consult-title': 'Consultation & Verification',
+                'consult-desc': 'Advisory and document verification services',
+                'license-title': 'Production License Renewal',
+                'license-desc': 'Fertilizer and chemical production license renewal services',
+                'import-title': 'Agricultural Import License',
+                'import-desc': 'Import license services for agricultural products',
+                'renewal-title': 'Various Renewal Services',
+                'renewal-desc': 'License renewal and name addition services',
+                'ask-price': 'Inquire Price',
+                'service-process': 'Service Process',
+                'step1-title': 'Consultation & Analysis',
+                'step1-desc': 'Listen to requirements, analyze products, recommend appropriate registration approaches',
+                'step2-title': 'Document Preparation',
+                'step2-desc': 'Prepare complete documents, laboratory testing, compile test reports',
+                'step3-title': 'Submit Application',
+                'step3-desc': 'Submit documents to relevant agencies, track progress, coordinate with officials',
+                'step4-title': 'Receive Approval',
+                'step4-desc': 'Receive approval/registration certificate with usage guidance and renewal advice',
+                'check-status': 'Check Registration Status',
+                'enter-request-id': 'Enter Request Number or Tracking Code',
+                'placeholder-request': 'Enter request number e.g. REG-2024-001',
+                'check-btn': 'Check'
+            },
+            cn: {
+                'page-title': '农业登记服务 - 肥料和危险物质',
+                'company-name': 'R.Good 服务登记',
+                'nav-home': '首页',
+                'nav-services': '服务',
+                'nav-process': '流程',
+                'nav-status': '查询状态',
+                'nav-contact': '联系我们',
+                'free-consult': '免费咨询',
+                'notification-promo': '特别促销！免费咨询 + 新客户20%折扣。立即联系我们！',
+                'hero-title': '农业登记服务',
+                'hero-subtitle': '农业危险物质和肥料登记专家。全面、快速、合法合规的服务，提供全程咨询支持。',
+                'view-all-services': '查看所有服务',
+                'our-services': '我们的服务',
+                'fertilizer-title': '肥料登记',
+                'fertilizer-desc': '根据农业部标准提供完整的肥料登记服务',
+                'chemical-title': '农用化学品登记',
+                'chemical-desc': '植物和动物害虫防治物质登记服务',
+                'hazardous-title': '农业危险物质登记',
+                'hazardous-desc': '根据危险物质法的危险物质登记服务',
+                'consult-title': '咨询与验证',
+                'consult-desc': '咨询和文件验证服务',
+                'license-title': '生产许可证续期',
+                'license-desc': '肥料和化学品生产许可证续期服务',
+                'import-title': '农业进口许可证',
+                'import-desc': '农产品进口许可证服务',
+                'renewal-title': '各种续期服务',
+                'renewal-desc': '许可证续期和名称添加服务',
+                'ask-price': '询价',
+                'service-process': '服务流程',
+                'step1-title': '咨询与分析',
+                'step1-desc': '听取需求，分析产品，推荐合适的登记方法',
+                'step2-title': '文件准备',
+                'step2-desc': '准备完整文件，实验室测试，编制测试报告',
+                'step3-title': '提交申请',
+                'step3-desc': '向相关机构提交文件，跟踪进度，与官员协调',
+                'step4-title': '获得批准',
+                'step4-desc': '获得批准/登记证书，提供使用指导和续期建议',
+                'check-status': '查询登记状态',
+                'enter-request-id': '输入申请号或跟踪代码',
+                'placeholder-request': '输入申请号，例如 REG-2024-001',
+                'check-btn': '查询'
             }
-          });
-        } else if (el.tagName === 'TITLE') {
-          el.textContent = dict[key];
-          document.title = dict[key];
-        } else {
-          el.textContent = dict[key];
+        };
+
+        // Page Load Events
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeWebsite();
+            setupEventListeners();
+            loadSavedLanguage();
+            showWelcomeMessage();
+        });
+
+        // Load saved language from localStorage
+        function loadSavedLanguage() {
+            const savedLang = localStorage.getItem('selectedLanguage') || 'th';
+            switchLanguage(savedLang);
         }
-      });
-    }
 
-    function initializeWebsite(){
-      window.addEventListener('scroll', handleScroll);
-      setupFileUpload();
-      setupFormValidation();
-    }
-
-    function setupEventListeners(){
-      const contactForm = document.getElementById('contactForm');
-      contactForm.addEventListener('submit', submitForm);
-      const statusInput = document.getElementById('statusInput');
-      statusInput.addEventListener('keypress', e=>{ if(e.key==='Enter'){ checkStatus(); }});
-    }
-
-    // —— Line Config ——
-    const LINE_CONFIG = { personalUrl:'https://line.me/ti/p/s-pKb_uHuX', officialUrl:'https://line.me/R/ti/p/@991cyisb', useOfficial:true };
-
-    function selectService(serviceType){
-      currentServiceSelection = serviceType;
-      const msg = {
-        th:{
-          fertilizer:'สวัสดีครับ! สนใจสอบถามราคาบริการขึ้นทะเบียนปุ๋ย 🌱\n\nรบกวนส่งรายละเอียดผลิตภัณฑ์มาด้วยนะครับ',
-          chemical:'สวัสดีครับ! สนใจสอบถามราคาบริการขึ้นทะเบียนสารเคมีเกษตร 🧪',
-          hazardous:'สวัสดีครับ! สนใจสอบถามราคาบริการขึ้นทะเบียนวัตถุอันตราย ⚠️',
-          consult:'สวัสดีครับ! สนใจบริการคำปรึกษาและตรวจสอบเอกสาร 📊',
-          license:'สวัสดีครับ! สนใจบริการต่อใบอนุญาตผลิต 📄',
-          import:'สวัสดีครับ! สนใจบริการใบอนุญาตนำเข้า 🌐',
-          renewal:'สวัสดีครับ! สนใจบริการต่ออายุต่างๆ 🔄'
-        },
-        en:{
-          fertilizer:'Hello! I would like to inquire about fertilizer registration 🌱',
-          chemical:'Hello! I would like to inquire about agricultural chemical registration 🧪',
-          hazardous:'Hello! I would like to inquire about hazardous material registration ⚠️',
-          consult:'Hello! I need consultation & document check 📊',
-          license:'Hello! I need production license renewal 📄',
-          import:'Hello! I need an import license 🌐',
-          renewal:'Hello! I need renewal services 🔄'
-        },
-        cn:{
-          fertilizer:'您好！想咨询肥料登记费用 🌱',
-          chemical:'您好！想咨询农用化学品登记 🧪',
-          hazardous:'您好！想咨询危险物质登记 ⚠️',
-          consult:'您好！需要咨询与文件核验 📊',
-          license:'您好！需要办理生产许可证续期 📄',
-          import:'您好！需要办理进口许可证 🌐',
-          renewal:'您好！需要办理各类续期服务 🔄'
+        // Switch Language Function
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+            localStorage.setItem('selectedLanguage', lang);
+            
+            // Update active language button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Update all translatable elements
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    if (element.tagName === 'INPUT' && element.type === 'text') {
+                        element.placeholder = translations[lang][key];
+                    } else if (element.tagName === 'TITLE') {
+                        element.textContent = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+            
+            // Update dynamic content based on language
+            updateDynamicContent(lang);
         }
-      };
-      const lang = currentLanguage || 'th';
-      openLineWithMessage(msg[lang][serviceType] || msg[lang].consult);
-    }
 
-    function openLineChat(){
-      const dict = translations[currentLanguage] || translations.th;
-      openLineWithMessage(dict['chat-on-line'] ? `${dict['chat-on-line']} – ${dict['company-name']}` : 'สอบถามข้อมูลบริการ');
-    }
+        // Update dynamic content (service features, etc.)
+        function updateDynamicContent(lang) {
+            // This will be expanded to update service cards, form labels, etc.
+            console.log(`Language switched to: ${lang}`);
+        }
 
-    function openLineWithMessage(message){
-      if(LINE_CONFIG.useOfficial){
-        const url = `${LINE_CONFIG.officialUrl}?openExternalBrowser=1`;
-        window.open(url,'_blank');
-        setTimeout(()=>showLineOAMessage(message),500);
-      } else {
-        showLineMessage(message, LINE_CONFIG.personalUrl);
-      }
-    }
+        // Initialize Website
+        function initializeWebsite() {
+            // Add smooth scrolling
+            document.documentElement.style.scrollBehavior = 'smooth';
+            
+            // Setup header scroll effect
+            window.addEventListener('scroll', handleScroll);
+            
+            // Setup file upload
+            setupFileUpload();
+            
+            // Setup form validation
+            setupFormValidation();
+            
+            console.log('🚀 Website initialized successfully!');
+        }
 
-    function showLineOAMessage(message){
-      const wrap=document.createElement('div');
-      wrap.innerHTML=`<div style="position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:10001;display:flex;align-items:center;justify-content:center">
-        <div style="background:#fff;padding:2rem;border-radius:15px;max-width:500px;width:90%;position:relative;box-shadow:0 10px 30px rgba(0,0,0,.3)">
-          <h3 style="color:#00C300;margin-bottom:1rem">💚 คัดลอกข้อความแล้วส่งใน Line OA</h3>
-          <div style="background:#f0fff0;padding:1rem;border-radius:10px;border-left:4px solid #00C300;max-height:200px;overflow:auto"><pre style="white-space:pre-wrap;margin:0">${message}</pre></div>
-          <div style="display:flex;gap:1rem;margin-top:1rem"><button onclick="copyToClipboard(\`${message.replace(/
+        // Setup Event Listeners
+        function setupEventListeners() {
+            // Contact form submission
+            const contactForm = document.getElementById('contactForm');
+            contactForm.addEventListener('submit', submitForm);
+            
+            // Status check
+            const statusInput = document.getElementById('statusInput');
+            statusInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    checkStatus();
+                }
+            });
+        }
+
+        // Line Configuration
+        const LINE_CONFIG = {
+            // ใช้ Line Personal Account (สำรอง)
+            personalUrl: 'https://line.me/ti/p/s-pKb_uHuX',
+            // Line Official Account ของคุณ
+            officialUrl: 'https://line.me/R/ti/p/@991cyisb',
+            useOfficial: true // ใช้ Line OA หลัก
+        };
+
+        // Show welcome message
+        function showWelcomeMessage() {
+            setTimeout(() => {
+                if (window.confirm('🎉 ยินดีต้อนรับสู่เว็บไซต์ของเรา! ต้องการให้เราช่วยอะไรไหมครับ?')) {
+                    scrollToSection('contact');
+                }
+            }, 3000);
+        }
+
+        // Service Selection and Line Integration
+        function selectService(serviceType) {
+            currentServiceSelection = serviceType;
+            
+            // Service messages for Line
+            const serviceMessages = {
+                fertilizer: 'สวัสดีครับ! สนใจสอบถามราคาบริการขึ้นทะเบียนปุ๋ย 🌱\n\nต้องการขึ้นทะเบียน:\n- ปุ๋ยเคมี\n- ปุ๋ยอินทรีย์\n- ปุ๋ยชีวภาพ\n- ปุ๋ยผสม\n\nรบกวนส่งรายละเอียดผลิตภัณฑ์มาด้วยนะครับ',
+                
+                chemical: 'สวัสดีครับ! สนใจสอบถามราคาบริการขึ้นทะเบียนสารเคมีเกษตร 🧪\n\nต้องการขึ้นทะเบียน:\n- สารกำจัดแมลง\n- สารกำจัดวัชพืช\n- สารป้องกันกำจัดโรคพืช\n- สารชีวภัณฑ์\n\nรบกวนส่งรายละเอียดสินค้ามาด้วยนะครับ',
+                
+                hazardous: 'สวัสดีครับ! สนใจสอบถามราคาบริการขึ้นทะเบียนวัตถุอันตรายทางการเกษตร ⚠️\n\nต้องการขึ้นทะเบียน:\n- วัตถุอันตรายชนิดที่ 2\n- วัตถุอันตรายชนิดที่ 3\n- การจัดหมวดหมู่อันตราย\n\nรบกวนส่งข้อมูลสินค้ามาด้วยนะครับ',
+                
+                consult: 'สวัสดีครับ! สนใจบริการคำปรึกษาและตรวจสอบเอกสาร 📊\n\nบริการ:\n- ตรวจสอบความถูกต้องเอกสาร\n- คำปรึกษากฎหมายที่เกี่ยวข้อง\n- วางแผนการขึ้นทะเบียน\n\nมีเอกสารอะไรให้ช่วยตรวจสอบบ้างครับ?',
+                
+                license: 'สวัสดีครับ! สนใจบริการต่อใบอนุญาตผลิต 📄\n\nบริการ:\n- ต่ออายุใบอนุญาตผลิต\n- ตรวจสอบเอกสารความถูกต้อง\n- ประสานงานกับหน่วยงานราชการ\n\nใบอนุญาตหมดอายุเมื่อไหร่ครับ?',
+                
+                import: 'สวัสดีครับ! สนใจบริการใบอนุญาตนำเข้าวัตถุอันตรายทางการเกษตร 🌐\n\nบริการ:\n- ใบอนุญาตนำเข้าปุ๋ย\n- ใบอนุญาตนำเข้าวัตถุอันตราย\n- ประสานงานด่านศุลกากร\n\nต้องการนำเข้าสินค้าประเภทไหนครับ?',
+                
+                renewal: 'สวัสดีครับ! สนใจบริการต่ออายุต่างๆ 🔄\n\nบริการ:\n- ต่ออายุครอบครองวัตถุอันตราย\n- เพิ่มรายชื่อครอบครอง\n- ต่ออายุอนุญาตผลิตวัตถุอันตราย\n\nใบอนุญาตไหนที่ต้องการต่ออายุครับ?'
+            };
+
+            const message = serviceMessages[serviceType] || 'สวัสดีครับ! สนใจสอบถามบริการครับ';
+            
+            // Open Line with pre-filled message
+            openLineWithMessage(message);
+        }
+
+        // Open Line Chat with pre-filled message
+        function openLineWithMessage(message) {
+            if (LINE_CONFIG.useOfficial) {
+                // Use Line Official Account - ส่งข้อความได้ตรงๆ
+                const lineUrl = `${LINE_CONFIG.officialUrl}?openExternalBrowser=1`;
+                
+                // เปิด Line OA พร้อมแสดงข้อความให้ส่ง
+                window.open(lineUrl, '_blank');
+                
+                // แสดง popup เพื่อให้ copy ข้อความ (เพราะ Line OA บางครั้งไม่รับ text parameter)
+                setTimeout(() => {
+                    showLineOAMessage(message);
+                }, 500);
+            } else {
+                // Use Line Personal Account - fallback
+                const lineUrl = LINE_CONFIG.personalUrl;
+                showLineMessage(message, lineUrl);
+            }
+        }
+
+        // Show Line OA message popup
+        function showLineOAMessage(message) {
+            const popup = document.createElement('div');
+            popup.innerHTML = `
+                <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+                           background: rgba(0,0,0,0.8); z-index: 10001; display: flex; 
+                           align-items: center; justify-content: center;">
+                    <div style="background: white; padding: 2rem; border-radius: 15px; 
+                               max-width: 500px; width: 90%; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                               position: relative;">
+                        <h3 style="color: #00C300; margin-bottom: 1rem; display: flex; align-items: center;">
+                            💚 ส่งข้อความนี้ใน Line OA
+                        </h3>
+                        <div style="background: #f0fff0; padding: 1rem; border-radius: 10px; 
+                                   border-left: 4px solid #00C300; margin-bottom: 1rem; max-height: 200px; overflow-y: auto;">
+                            <pre style="white-space: pre-wrap; font-family: inherit; margin: 0; 
+                                       font-size: 0.9rem; line-height: 1.5;">${message}</pre>
+                        </div>
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <button onclick="copyToClipboard(\`${message.replace(/`/g, '\\`').replace(/'/g, "\\'")}\`); this.innerHTML='✅ Copy แล้ว!'; this.style.background='#4caf50';" 
+                                    style="flex: 1; padding: 0.8rem; background: #ff9800; color: white; 
+                                           border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
+                                📋 Copy ข้อความ
+                            </button>
+                        </div>
+                        <p style="font-size: 0.8rem; color: #666; margin-top: 1rem; text-align: center;">
+                            📱 Line OA เปิดแล้ว ให้ paste ข้อความไปส่งได้เลย
+                        </p>
+                        <button onclick="this.closest('div').closest('div').remove()" 
+                                style="position: absolute; top: 10px; right: 15px; background: none; 
+                                       border: none; font-size: 1.5rem; cursor: pointer; color: #999;">×</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(popup);
+        }
+
+        // Show Line message popup for personal account
+        function showLineMessage(message, lineUrl) {
+            // สร้าง popup
+            const popup = document.createElement('div');
+            popup.innerHTML = `
+                <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+                           background: rgba(0,0,0,0.7); z-index: 10000; display: flex; 
+                           align-items: center; justify-content: center;">
+                    <div style="background: white; padding: 2rem; border-radius: 15px; 
+                               max-width: 500px; width: 90%; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                        <h3 style="color: #1976d2; margin-bottom: 1rem; display: flex; align-items: center;">
+                            💬 ส่งข้อความนี้ใน Line
+                        </h3>
+                        <div style="background: #f0f8ff; padding: 1rem; border-radius: 10px; 
+                                   border-left: 4px solid #2196f3; margin-bottom: 1rem;">
+                            <pre style="white-space: pre-wrap; font-family: inherit; margin: 0; 
+                                       font-size: 0.9rem; line-height: 1.5;">${message}</pre>
+                        </div>
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <button onclick="copyToClipboard('${message.replace(/'/g, "\\'")}'); this.innerHTML='✅ Copy แล้ว!'; this.style.background='#4caf50';" 
+                                    style="flex: 1; padding: 0.8rem; background: #ff9800; color: white; 
+                                           border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
+                                📋 Copy ข้อความ
+                            </button>
+                            <button onclick="window.open('${lineUrl}', '_blank')" 
+                                    style="flex: 1; padding: 0.8rem; background: #00C300; color: white; 
+                                           border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
+                                💬 เปิด Line
+                            </button>
+                        </div>
+                        <button onclick="this.closest('div').closest('div').remove()" 
+                                style="position: absolute; top: 10px; right: 15px; background: none; 
+                                       border: none; font-size: 1.5rem; cursor: pointer; color: #999;">×</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(popup);
+        }
+
+        // Copy text to clipboard
+        function copyToClipboard(text) {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(text);
+            } else {
+                // Fallback for older browsers
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+            }
+        }
+
+        // Quick contact functions
+        function openLineChat() {
+            const message = 'สวัสดีครับ! สนใจสอบถามข้อมูลบริการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตรครับ';
+            openLineWithMessage(message);
+        }
+
+        // Header scroll effect
+        function handleScroll() {
+            const header = document.getElementById('header');
+            const backToTop = document.getElementById('backToTop');
+            
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+                backToTop.classList.add('show');
+            } else {
+                header.classList.remove('scrolled');
+                backToTop.classList.remove('show');
+            }
+        }
+
+        // Scroll to section
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                const headerHeight = 100;
+                const targetPosition = element.offsetTop - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Scroll to top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Contact functions
+        function makePhoneCall() {
+            window.location.href = 'tel:0843752399';
+        }
+
+        function sendEmail() {
+            const subject = 'สอบถามบริการขึ้นทะเบียนปุ๋ยและวัตถุอันตราย';
+            const body = 'สวัสดีครับ%0A%0Aสนใจสอบถามบริการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตรครับ%0A%0Aรบกวนติดต่อกลับด้วยนะครับ%0A%0Aขอบคุณครับ';
+            window.location.href = `mailto:parungrung24@gmail.com?subject=${subject}&body=${body}`;
+        }
+
+        function openWeChat() {
+            // แสดง QR Code สำหรับ WeChat
+            showWeChatQR();
+        }
+
+        // Show WeChat QR Code popup
+        function showWeChatQR() {
+            const popup = document.createElement('div');
+            popup.innerHTML = `
+                <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+                           background: rgba(0,0,0,0.8); z-index: 10002; display: flex; 
+                           align-items: center; justify-content: center;">
+                    <div style="background: white; padding: 2rem; border-radius: 15px; 
+                               max-width: 400px; width: 90%; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                               position: relative; text-align: center;">
+                        <h3 style="color: #1aad19; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center;">
+                            💬 เพิ่มเพื่อนใน WeChat
+                        </h3>
+                        <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k=" 
+                                 alt="Ruby Profile" 
+                                 style="width: 40px; height: 40px; border-radius: 50%; margin-right: 10px;">
+                            <div style="text-align: left;">
+                                <div style="font-weight: bold; color: #333;">Ruby</div>
+                                <div style="font-size: 0.8rem; color: #666;">WeChat ID: Ruby</div>
+                            </div>
+                        </div>
+                        <div style="margin: 1.5rem 0;">
+                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjEwMCIgeT0iMTA1IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPldlQ2hhdCBRUiBDb2RlPC90ZXh0Pgo8L3N2Zz4K" 
+                                 alt="WeChat QR Code" 
+                                 style="width: 200px; height: 200px; border: 1px solid #ddd; border-radius: 10px;">
+                        </div>
+                        <p style="font-size: 0.9rem; color: #666; margin-bottom: 1.5rem;">
+                            สแกน QR Code เพื่อเพิ่มเพื่อนใน WeChat
+                        </p>
+                        <div style="display: flex; gap: 1rem; justify-content: center;">
+                            <button onclick="copyToClipboard('สวัสดีครับ Ruby! สนใจสอบถามบริการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตรครับ'); this.innerHTML='✅ Copy แล้ว!'; this.style.background='#4caf50';" 
+                                    style="padding: 0.8rem 1.5rem; background: #ff9800; color: white; 
+                                           border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
+                                📋 Copy ข้อความ
+                            </button>
+                        </div>
+                        <button onclick="this.closest('div').closest('div').remove()" 
+                                style="position: absolute; top: 10px; right: 15px; background: none; 
+                                       border: none; font-size: 1.5rem; cursor: pointer; color: #999;">×</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(popup);
+        }
+
+        // Status check function
+        function checkStatus() {
+            const statusInput = document.getElementById('statusInput');
+            const statusResult = document.getElementById('statusResult');
+            const statusLoading = document.getElementById('statusLoading');
+            const requestId = statusInput.value.trim();
+
+            if (!requestId) {
+                alert('กرุณากรอกเลขที่คำขอ');
+                return;
+            }
+
+            // Show loading
+            statusLoading.style.display = 'block';
+            statusResult.style.display = 'none';
+            statusResult.className = 'status-result';
+
+            // Simulate API call
+            setTimeout(() => {
+                statusLoading.style.display = 'none';
+                statusResult.style.display = 'block';
+
+                // Mock status responses based on input
+                if (requestId.toUpperCase().includes('REG-2024')) {
+                    if (Math.random() > 0.5) {
+                        statusResult.className = 'status-result success';
+                        statusResult.innerHTML = `
+                            <h4>✅ สถานะ: อนุมัติแล้ว</h4>
+                            <p><strong>เลขที่คำขอ:</strong> ${requestId}</p>
+                            <p><strong>วันที่อนุมัติ:</strong> ${new Date().toLocaleDateString('th-TH')}</p>
+                            <p><strong>สถานะ:</strong> รอรับใบสำคัญ</p>
+                            <p><strong>หมายเหตุ:</strong> สามารถมารับใบสำคัญได้แล้ว</p>
+                            <button class="btn" onclick="openLineWithMessage('สวัสดีครับ มาติดตาม ${requestId} ครับ ได้อนุมัติแล้วใช่มั้ยครับ')" style="margin-top: 1rem;">📞 ติดต่อรับใบสำคัญ</button>
+                        `;
+                    } else {
+                        statusResult.className = 'status-result pending';
+                        statusResult.innerHTML = `
+                            <h4>⏳ สถานะ: อยู่ระหว่างดำเนินการ</h4>
+                            <p><strong>เลขที่คำขอ:</strong> ${requestId}</p>
+                            <p><strong>วันที่ยื่น:</strong> ${new Date(Date.now() - 7*24*60*60*1000).toLocaleDateString('th-TH')}</p>
+                            <p><strong>สถานะ:</strong> รอผลการตรวจสอบเอกสาร</p>
+                            <p><strong>ระยะเวลาโดยประมาณ:</strong> 15-30 วันทำการ</p>
+                            <button class="btn" onclick="openLineWithMessage('สวัสดีครับ อยากทราบความคืบหน้า ${requestId} ครับ')" style="margin-top: 1rem;">📞 สอบถามความคืบหน้า</button>
+                        `;
+                    }
+                } else {
+                    statusResult.className = 'status-result error';
+                    statusResult.innerHTML = `
+                        <h4>❌ ไม่พบข้อมูลคำขอ</h4>
+                        <p><strong>เลขที่คำขอ:</strong> ${requestId}</p>
+                        <p>กรุณาตรวจสอบเลขที่คำขออีกครั้ง หรือติดต่อเจ้าหน้าที่</p>
+                        <button class="btn" onclick="openLineWithMessage('สวัสดีครับ ไม่พบข้อมูล ${requestId} ช่วยตรวจสอบให้หน่อยครับ')" style="margin-top: 1rem;">📞 ติดต่อสอบถาม</button>
+                    `;
+                }
+            }, 2000);
+        }
+
+        // File Upload Setup
+        function setupFileUpload() {
+            const uploadArea = document.getElementById('uploadArea');
+            const fileInput = document.getElementById('fileInput');
+            const uploadedImages = document.getElementById('uploadedImages');
+
+            // Click to upload
+            uploadArea.addEventListener('click', () => fileInput.click());
+
+            // Drag and drop events
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.classList.add('dragover');
+            });
+
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.classList.remove('dragover');
+            });
+
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('dragover');
+                handleFiles(e.dataTransfer.files);
+            });
+
+            // File input change
+            fileInput.addEventListener('change', (e) => {
+                handleFiles(e.target.files);
+            });
+        }
+
+        // Handle uploaded files
+        function handleFiles(files) {
+            for (let file of files) {
+                if (file.size > 10 * 1024 * 1024) {
+                    alert(`ไฟล์ ${file.name} ใหญ่เกิน 10MB`);
+                    continue;
+                }
+
+                if (!file.type.match('image.*') && !file.type.match('application/pdf')) {
+                    alert(`ไฟล์ ${file.name} ไม่ใช่รูปภาพหรือ PDF`);
+                    continue;
+                }
+
+                uploadedFiles.push(file);
+                displayUploadedFile(file);
+            }
+        }
+
+        // Display uploaded file
+        function displayUploadedFile(file) {
+            const uploadedImages = document.getElementById('uploadedImages');
+            const preview = document.createElement('div');
+            preview.className = 'image-preview';
+            
+            if (file.type.match('image.*')) {
+                const img = document.createElement('img');
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+                preview.appendChild(img);
+            } else if (file.type === 'application/pdf') {
+                const pdfIcon = document.createElement('div');
+                pdfIcon.innerHTML = `
+                    <div style="display: flex; flex-direction: column; align-items: center; 
+                                justify-content: center; height: 150px; background: #f5f5f5;">
+                        <div style="font-size: 3rem;">📄</div>
+                        <div style="font-size: 0.8rem; margin-top: 0.5rem;">${file.name}</div>
+                    </div>
+                `;
+                preview.appendChild(pdfIcon);
+            }
+
+            const removeBtn = document.createElement('button');
+            removeBtn.className = 'image-remove';
+            removeBtn.innerHTML = '×';
+            removeBtn.onclick = () => {
+                uploadedFiles = uploadedFiles.filter(f => f !== file);
+                preview.remove();
+            };
+
+            preview.appendChild(removeBtn);
+            uploadedImages.appendChild(preview);
+        }
+
+        // Form validation setup
+        function setupFormValidation() {
+            const form = document.getElementById('contactForm');
+            const inputs = form.querySelectorAll('input[required], select[required]');
+
+            inputs.forEach(input => {
+                input.addEventListener('blur', validateField);
+                input.addEventListener('input', clearFieldError);
+            });
+        }
+
+        // Validate individual field
+        function validateField(e) {
+            const field = e.target;
+            const value = field.value.trim();
+
+            // Remove previous error styling
+            clearFieldError(e);
+
+            // Validate required fields
+            if (field.hasAttribute('required') && !value) {
+                showFieldError(field, 'กรุณากรอกข้อมูลนี้');
+                return false;
+            }
+
+            // Validate phone number
+            if (field.type === 'tel' && value) {
+                const phonePattern = /^[0-9]{9,10}$/;
+                if (!phonePattern.test(value)) {
+                    showFieldError(field, 'กรุณากรอกเบอร์โทรให้ถูกต้อง');
+                    return false;
+                }
+            }
+
+            // Validate email
+            if (field.type === 'email' && value) {
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(value)) {
+                    showFieldError(field, 'กรุณากรอกอีเมลให้ถูกต้อง');
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        // Show field error
+        function showFieldError(field, message) {
+            field.style.borderColor = '#f44336';
+            field.style.boxShadow = '0 0 10px rgba(244, 67, 54, 0.2)';
+            
+            // Add error message
+            let errorMsg = field.parentNode.querySelector('.error-message');
+            if (!errorMsg) {
+                errorMsg = document.createElement('div');
+                errorMsg.className = 'error-message';
+                errorMsg.style.color = '#f44336';
+                errorMsg.style.fontSize = '0.8rem';
+                errorMsg.style.marginTop = '0.25rem';
+                field.parentNode.appendChild(errorMsg);
+            }
+            errorMsg.textContent = message;
+        }
+
+        // Clear field error
+        function clearFieldError(e) {
+            const field = e.target;
+            field.style.borderColor = '#ddd';
+            field.style.boxShadow = '';
+            
+            const errorMsg = field.parentNode.querySelector('.error-message');
+            if (errorMsg) {
+                errorMsg.remove();
+            }
+        }
+
+        // Submit contact form
+        function submitForm(e) {
+            e.preventDefault();
+            
+            const form = document.getElementById('contactForm');
+            const formData = new FormData(form);
+            const loading = document.getElementById('formLoading');
+            const success = document.getElementById('formSuccess');
+
+            // Validate all fields
+            let isValid = true;
+            const inputs = form.querySelectorAll('input[required], select[required]');
+            inputs.forEach(input => {
+                if (!validateField({target: input})) {
+                    isValid = false;
+                }
+            });
+
+            if (!isValid) {
+                alert('กรุณากรอกข้อมูลให้ครบถ้วนและถูกต้อง');
+                return;
+            }
+
+            // Show loading
+            loading.style.display = 'block';
+            success.style.display = 'none';
+
+            // Prepare message for Line
+            const name = formData.get('name');
+            const company = formData.get('company');
+            const phone = formData.get('phone');
+            const email = formData.get('email');
+            const service = formData.get('service');
+            const message = formData.get('message');
+
+            const serviceNames = {
+                fertilizer: 'ขึ้นทะเบียนปุ๋ย',
+                chemical: 'ขึ้นทะเบียนสารเคมีเกษตร',
+                hazardous: 'ขึ้นทะเบียนวัตถุอันตราย',
+                consult: 'คำปรึกษาและตรวจสอบ',
+                license: 'ต่อใบอนุญาตผลิต',
+                import: 'ใบอนุญาตนำเข้า',
+                renewal: 'บริการต่ออายุต่างๆ'
+            };
+
+            const lineMessage = `📝 แบบฟอร์มใหม่จากเว็บไซต์
+            
+👤 ชื่อ: ${name}
+🏢 บริษัท: ${company || 'ไม่ระบุ'}
+📱 โทร: ${phone}
+📧 อีเมล: ${email || 'ไม่ระบุ'}
+🔧 บริการ: ${serviceNames[service] || service}
+💬 รายละเอียด: ${message || 'ไม่ระบุ'}
+📎 แนบไฟล์: ${uploadedFiles.length} ไฟล์`;
+
+            // Simulate form submission
+            setTimeout(() => {
+                loading.style.display = 'none';
+                success.style.display = 'block';
+                
+                // Auto-open Line with message
+                setTimeout(() => {
+                    openLineWithMessage(lineMessage);
+                }, 1000);
+
+                // Reset form after 3 seconds
+                setTimeout(() => {
+                    form.reset();
+                    success.style.display = 'none';
+                    uploadedFiles = [];
+                    document.getElementById('uploadedImages').innerHTML = '';
+                }, 3000);
+            }, 2000);
+        }
+
+        // Close notification
+        function closeNotification() {
+            const notification = document.getElementById('notificationBar');
+            notification.style.transform = 'translateY(-100%)';
+            setTimeout(() => {
+                notification.remove();
+            }, 300);
+        }
+
+        // Show privacy policy
+        function showPrivacyPolicy() {
+            alert('นโยบายความเป็นส่วนตัว:\n\nเราเก็บรักษาข้อมูลส่วนบุคคลของท่านอย่างปลอดภัย และใช้เพื่อการติดต่อและให้บริการเท่านั้น\n\nหากต้องการข้อมูลเพิ่มเติม กรุณาติดต่อเรา');
+        }
+
+        // Mobile menu toggle (for future enhancement)
+        function toggleMobileMenu() {
+            // This can be enhanced for mobile responsive menu
+            console.log('Mobile menu toggled');
+        }
+
+    </script>
+</body>
+</html>
