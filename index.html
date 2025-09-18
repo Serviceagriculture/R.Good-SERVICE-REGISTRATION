@@ -1094,7 +1094,7 @@
 <body>
     <!-- Notification Bar -->
     <div class="notification-bar" id="notificationBar">
-        โปรโมชั่นพิเศษ! ปรึกษาฟรี +  ติดต่อเลย!
+        โปรโมชั่นพิเศษ! ปรึกษาฟรี + ส่วนลด 20% สำหรับลูกค้าใหม่ ติดต่อเลย!
         <button class="notification-close" onclick="closeNotification()">×</button>
     </div>
 
@@ -1351,12 +1351,44 @@
                     <p>ส่งเอกสารและรายละเอียด</p>
                 </div>
                 
-                <div class="contact-card" onclick="openWeChat()">
-                    <div class="contact-card-icon">💬</div>
-                    <h4>WeChat</h4>
-                    <a href="wxid_kh9jrtenwgw522">Ruby</a>
-                    <p>สแกน QR Code เพื่อแชท WeChat</p>
-                </div>
+                <!-- WeChat quick add -->
+<div style="text-align:center;margin:16px 0;">
+  <!-- ปุ่มกดเปิดแอป WeChat ไปยังไอดี -->
+  <a
+    href="weixin://dl/add?wxid=wxid_kh9jrtenwgw522"
+    style="display:inline-block;padding:12px 18px;border-radius:10px;
+           background:#1aad19;color:#fff;font-weight:700;text-decoration:none;"
+    onclick="if(!/MicroMessenger|Android|iPhone|iPad/i.test(navigator.userAgent)){document.getElementById('wechat-qr-wrap').style.display='block';}"
+  >💬 เพิ่มเพื่อน WeChat</a>
+
+  <!-- คำอธิบายสั้น -->
+  <div style="font-size:.9rem;color:#666;margin-top:6px">
+    มือถือจะพยายามเปิดแอป WeChat ให้อัตโนมัติ<br>
+    ถ้าเปิดไม่ได้ ให้สแกน QR ด้านล่างแทน
+  </div>
+
+  <!-- QR (ฝังรูปจากไฟล์ที่คุณส่งมา) -->
+  <div id="wechat-qr-wrap" style="display:none;margin-top:14px">
+    <img
+      alt="WeChat QR"
+      style="width:240px;max-width:80%;border-radius:12px;border:1px solid #e5e5e5"
+      src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4SQ0RXhpZgAATU0AKgAAAAgABgESAAMAAAABAAEAAAEaAAUAAA... (ตัดทอน) ..."
+    >
+    <div style="color:#888;margin-top:8px">สแกน QR นี้เพื่อเพิ่มเพื่อน</div>
+  </div>
+</div>
+
+<script>
+  // แสดง QR อัตโนมัติถ้าอยู่บนเดสก์ท็อป (เพราะลิงก์ weixin:// มักเปิดไม่ได้)
+  (function () {
+    var isMobile = /Android|iPhone|iPad|iPod|MicroMessenger/i.test(navigator.userAgent);
+    if (!isMobile) {
+      var el = document.getElementById('wechat-qr-wrap');
+      if (el) el.style.display = 'block';
+    }
+  })();
+</script>
+
             </div>
 
             <div class="contact-content">
@@ -1975,7 +2007,7 @@
 
         function sendEmail() {
             const subject = 'สอบถามบริการขึ้นทะเบียนปุ๋ยและวัตถุอันตราย';
-            const body = 'สวัสดีครับสนใจสอบถามบริการ%0A%0Aขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตรครับ%0A%0Aรบกวนติดต่อกลับด้วยนะครับ%0A%0Aขอบคุณครับ';
+            const body = 'สวัสดีครับ%0A%0Aสนใจสอบถามบริการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตรครับ%0A%0Aรบกวนติดต่อกลับด้วยนะครับ%0A%0Aขอบคุณครับ';
             window.location.href = `mailto:parungrung24@gmail.com?subject=${subject}&body=${body}`;
         }
 
@@ -2344,7 +2376,50 @@
             // This can be enhanced for mobile responsive menu
             console.log('Mobile menu toggled');
         }
+function showWeChatQR() {
+    // ป้องกันไม่ให้สร้างซ้ำ
+    if (document.getElementById('wechat-overlay')) return;
 
+    const overlay = document.createElement('div');
+    overlay.id = "wechat-overlay";
+    overlay.style.cssText = `
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0,0,0,0.8); z-index: 10002;
+        display: flex; align-items: center; justify-content: center;
+    `;
+
+    const modal = document.createElement('div');
+    modal.style.cssText = `
+        background: white; padding: 2rem; border-radius: 15px;
+        max-width: 400px; width: 90%; text-align: center; position: relative;
+    `;
+
+    // ปุ่มปิด
+    const closeBtn = document.createElement('button');
+    closeBtn.innerHTML = "&times;";
+    closeBtn.style.cssText = `
+        position:absolute; top:10px; right:15px; font-size:1.5rem;
+        background:none; border:none; cursor:pointer; color:#999;
+    `;
+
+    // ✅ เวลาปิด ต้องลบ overlay ทั้งก้อน
+    closeBtn.onclick = () => overlay.remove();
+
+    modal.appendChild(closeBtn);
+    modal.innerHTML += `<h3>💬 เพิ่มเพื่อนใน WeChat</h3>
+        <p>WeChat ID: <b>wxid_kh9jrtenwgw522</b></p>
+        <a href="weixin://dl/add?wxid=wxid_kh9jrtenwgw522">กดเพื่อแอด</a>`;
+
+    overlay.appendChild(modal);
+
+    // ✅ ปิดเมื่อคลิกนอกกล่อง
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) overlay.remove();
+    });
+
+    document.body.appendChild(overlay);
+}
     </script>
+    
 </body>
 </html>
