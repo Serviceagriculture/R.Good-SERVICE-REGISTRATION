@@ -2354,5 +2354,86 @@
         }
 
     </script>
-</body>
+</body> 
+   <script>
+  function openWeChatPopup() {
+    // ถ้ามีอยู่แล้ว ไม่ต้องสร้างซ้ำ
+    if (document.getElementById('wechat-overlay')) return;
+
+    // ล็อกการเลื่อนหน้าหลัก
+    document.body.dataset.prevOverflow = document.body.style.overflow || '';
+    document.body.style.overflow = 'hidden';
+
+    // overlay
+    const overlay = document.createElement('div');
+    overlay.id = 'wechat-overlay';
+    overlay.style.cssText = `
+      position:fixed; inset:0; background:rgba(0,0,0,.6);
+      z-index:10000; display:flex; align-items:center; justify-content:center;
+    `;
+
+    // กล่องป๊อปอัพ
+    const modal = document.createElement('div');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.style.cssText = `
+      background:#fff; width:min(420px,92vw); border-radius:12px;
+      padding:20px 20px 24px; position:relative; text-align:center;
+      box-shadow:0 10px 30px rgba(0,0,0,.2);
+    `;
+
+    // ปุ่มปิด
+    const closeBtn = document.createElement('button');
+    closeBtn.innerHTML = '&times;';
+    closeBtn.setAttribute('aria-label', 'Close');
+    closeBtn.style.cssText = `
+      position:absolute; right:10px; top:8px; font-size:28px; line-height:1;
+      background:transparent; border:0; cursor:pointer; color:#888;
+    `;
+
+    // เนื้อหา
+    modal.innerHTML = `
+      <h3 style="margin:6px 0 14px; color:#1aad19;">เพิ่มเพื่อนใน WeChat</h3>
+      <img src="PATH/TO/your-qr.jpg" alt="WeChat QR" style="width:260px; max-width:80%; border-radius:8px;"/>
+      <div style="margin-top:14px;">
+        <a href="weixin://dl/add?wxid=wxid_kh9jrtenwgw522"
+           style="display:inline-block; padding:10px 18px; background:#07C160;
+                  color:#fff; border-radius:8px; text-decoration:none; font-weight:600;">
+          กดเพื่อแอด WeChat โดยตรง
+        </a>
+      </div>
+      <div style="margin-top:8px; font-size:12px; color:#666;">
+        ถ้าไม่เด้ง ให้ค้นหาไอดี: <b>wxid_kh9jrtenwgw522</b>
+      </div>
+    `;
+
+    modal.appendChild(closeBtn);
+    overlay.appendChild(modal);
+    document.body.appendChild(overlay);
+
+    // ฟังก์ชันปิด (คืนค่าทุกอย่าง)
+    function closePopup() {
+      const ov = document.getElementById('wechat-overlay');
+      if (ov) ov.remove();
+      document.body.style.overflow = document.body.dataset.prevOverflow || '';
+      document.removeEventListener('keydown', escHandler);
+    }
+
+    // ปิดเมื่อกดปุ่ม X
+    closeBtn.addEventListener('click', closePopup);
+
+    // ปิดเมื่อคลิกนอกกล่อง (คลิกที่ overlay)
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closePopup();
+    });
+
+    // ปิดเมื่อกด ESC
+    function escHandler(e) { if (e.key === 'Escape') closePopup(); }
+    document.addEventListener('keydown', escHandler);
+  }
+
+  // ตัวอย่าง: ผูกกับปุ่ม/ลิงก์ในหน้า
+  // <a href="#" onclick="openWeChatPopup(); return false;">WeChat</a>
+</script>
+ 
 </html>
