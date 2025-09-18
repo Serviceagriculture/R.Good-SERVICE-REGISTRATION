@@ -1,2 +1,786 @@
-# THE-BEST-TEAM-REGISTRATION
-เว็บไซต์บริการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตร ครบวงจร
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บริการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตร</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1976d2, #2196f3);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo::before {
+            content: "📋";
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .contact-btn {
+            background: #ff5722;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .contact-btn:hover {
+            background: #e64a19;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(25, 118, 210, 0.9), rgba(33, 150, 243, 0.9)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23e3f2fd" width="1200" height="600"/><path fill="%23bbdefb" d="M0 200h1200v200H0z"/><circle fill="%232196f3" cx="200" cy="150" r="50"/><circle fill="%2364b5f6" cx="600" cy="180" r="40"/><circle fill="%2390caf9" cx="1000" cy="140" r="60"/></svg>');
+            color: white;
+            text-align: center;
+            padding: 8rem 0 4rem 0;
+            margin-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #ff5722;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background: #e64a19;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #1976d2;
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1976d2;
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .service-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 3px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border-color: #2196f3;
+        }
+
+        .service-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: #1976d2;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .service-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ff5722;
+            margin: 1rem 0;
+        }
+
+        .service-features {
+            list-style: none;
+            text-align: left;
+            margin: 1rem 0;
+        }
+
+        .service-features li {
+            padding: 0.3rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .service-features li::before {
+            content: "✓";
+            color: #4caf50;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .step-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            background: #2196f3;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem auto;
+        }
+
+        .step-card h3 {
+            color: #1976d2;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Form Section */
+        .contact-section {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-form {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2196f3;
+        }
+
+        .contact-info {
+            background: #1976d2;
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 2rem;
+            color: #bbdefb;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            width: 40px;
+        }
+
+        /* Status Check Section */
+        .status-section {
+            padding: 4rem 0;
+            background: #e3f2fd;
+        }
+
+        .status-checker {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .status-input {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .status-input input {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+
+        .status-result {
+            margin-top: 2rem;
+            padding: 1rem;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .status-result.success {
+            background: #e8f5e8;
+            border: 2px solid #4caf50;
+            color: #2e7d32;
+        }
+
+        .status-result.pending {
+            background: #fff3e0;
+            border: 2px solid #ff9800;
+            color: #e65100;
+        }
+
+        .status-result.error {
+            background: #ffebee;
+            border: 2px solid #f44336;
+            color: #c62828;
+        }
+
+        /* Footer */
+        footer {
+            background: #1976d2;
+            color: white;
+            padding: 3rem 0 1rem 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #bbdefb;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #bbdefb;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #1565c0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .status-input {
+                flex-direction: column;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .service-card,
+        .step-card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">เดอะเบส ทีม รีจิสเทรชั่น</div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">หน้าแรก</a></li>
+                        <li><a href="#services">บริการ</a></li>
+                        <li><a href="#process">ขั้นตอน</a></li>
+                        <li><a href="#status">ตรวจสถานะ</a></li>
+                        <li><a href="#contact">ติดต่อ</a></li>
+                    </ul>
+                </nav>
+                <a href="#contact" class="contact-btn">ปรึกษาฟรี</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>บริการขึ้นทะเบียนปุ๋ยและวัตถุอันตราย</h1>
+            <p>ผู้เชี่ยวชาญด้านการขึ้นทะเบียนผลิตภัณฑ์เกษตรกรรม ครบวงจร รวดเร็ว ถูกต้องตามกฎหมาย พร้อมให้คำปรึกษาทุกขั้นตอน</p>
+            <div class="hero-buttons">
+                <a href="#services" class="btn">ดูบริการทั้งหมด</a>
+                <a href="#contact" class="btn btn-secondary">ปรึกษาฟรี</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-section" id="services">
+        <div class="container">
+            <h2 class="section-title">บริการของเรา</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🌱</div>
+                    <h3>ขึ้นทะเบียนปุ๋ย</h3>
+                    <p>บริการขึ้นทะเบียนปุ๋ยทุกประเภท ตามมาตรฐาน กษ.</p>
+                    <div class="service-price">15,000 บาท</div>
+                    <ul class="service-features">
+                        <li>ปุ๋ยเคมี</li>
+                        <li>ปุ๋ยอินทรีย์</li>
+                        <li>ปุ๋ยชีวภาพ</li>
+                        <li>ปุ๋ยผสม</li>
+                        <li>วิเคราะห์ห้องปฏิบัติการ</li>
+                        <li>จัดทำเอกสารครบชุด</li>
+                    </ul>
+                    <a href="#contact" class="btn">สอบถามราคา</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🧪</div>
+                    <h3>ขึ้นทะเบียนสารเคมีเกษตร</h3>
+                    <p>บริการขึ้นทะเบียนสารป้องกันกำจัดศัตรูพืชและสัตว์</p>
+                    <div class="service-price">50,000 บาท</div>
+                    <ul class="service-features">
+                        <li>สารกำจัดแมลง</li>
+                        <li>สารกำจัดวัชพืช</li>
+                        <li>สารกำจัดเชื้อรา</li>
+                        <li>สารไล่แมลง</li>
+                        <li>ทดสอบประสิทธิภาพ</li>
+                        <li>การศึกษาความปลอดภัย</li>
+                    </ul>
+                    <a href="#contact" class="btn">สอบถามราคา</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">⚠️</div>
+                    <h3>ขึ้นทะเบียนวัตถุอันตรายทางการเกษตร</h3>
+                    <p>บริการขึ้นทะเบียนวัตถุอันตรายตาม พรบ.วัตถุอันตราย</p>
+                    <div class="service-price">50,000 บาท</div>
+                    <ul class="service-features">
+                        <li>วัตถุอันตรายประเภท 3</li>
+                        <li>วัตถุอันตรายประเภท 4</li>
+                        <li>การจัดหมวดหมู่อันตราย</li>
+                        <li>ฉลากและข้อมูลความปลอดภัย</li>
+                        <li>แผนฉุกเฉิน</li>
+                        <li>การฝึกอบรมบุคลากร</li>
+                    </ul>
+                    <a href="#contact" class="btn">สอบถามราคา</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>คำปรึกษาและตรวจสอบ</h3>
+                    <p>บริการให้คำปรึกษาและตรวจสอบเอกสาร</p>
+                    <div class="service-price">ฟรี</div>
+                    <ul class="service-features">
+                        <li>ตรวจสอบความถูกต้องเอกสาร</li>
+                        <li>คำปรึกษากฎหมายที่เกี่ยวข้อง</li>
+                        <li>วางแผนการขึ้นทะเบียน</li>
+                        <li>ติดตามสถานะการอนุมัติ</li>
+                        <li>แก้ไขปัญหาข้อบกพร่อง</li>
+                        <li>อบรมเจ้าหน้าที่</li>
+                    </ul>
+                    <a href="#contact" class="btn">สอบถามราคา</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📄</div>
+                    <h3>ต่อใบอนุญาตผลิต</h3>
+                    <p>บริการต่อใบอนุญาตการผลิตปุ๋ยและสารเคมี</p>
+                    <div class="service-price">3,000 บาท</div>
+                    <ul class="service-features">
+                        <li>ต่ออายุใบอนุญาตผลิต</li>
+                        <li>ตรวจสอบเอกสารความถูกต้อง</li>
+                        <li>ประสานงานกับหน่วยงาน</li>
+                        <li>ติดตามสถานะการอนุมัติ</li>
+                        <li>รับใบอนุญาตใหม่</li>
+                        <li>แนะนำการปฏิบัติตามกฎหมาย</li>
+                    </ul>
+                    <a href="#contact" class="btn">สอบถามราคา</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3>ใบอนุญาตนำเข้า</h3>
+                    <p>บริการจัดทำใบอนุญาตนำเข้าสินค้าทางการเกษตร</p>
+                    <div class="service-price">3,000 บาท</div>
+                    <ul class="service-features">
+                        <li>ใบอนุญาตนำเข้าปุ๋ย</li>
+                        <li>ใบอนุญาตนำเข้าสารเคมี</li>
+                        <li>ใบอนุญาตนำเข้าวัตถุอันตราย</li>
+                        <li>ตรวจสอบเอกสารครบถ้วน</li>
+                        <li>ประสานงานด่านศุลกากร</li>
+                        <li>รับใบอนุญาตนำเข้า</li>
+                    </ul>
+                    <a href="#contact" class="btn">สอบถามราคา</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🔄</div>
+                    <h3>บริการต่ออายุต่างๆ</h3>
+                    <p>บริการต่ออายุและเพิ่มรายชื่อครอบครอง</p>
+                    <div class="service-price">3,000 บาท</div>
+                    <ul class="service-features">
+                        <li>ต่ออายุครอบครองวัตถุอันตราย</li>
+                        <li>เพิ่มรายชื่อครอบครอง</li>
+                        <li>ต่ออายุทะเบียนผลิตภัณฑ์</li>
+                        <li>ตรวจสอบวันหมดอายุ</li>
+                        <li>แจ้งเตือนก่อนหมดอายุ</li>
+                        <li>จัดทำเอกสารต่ออายุ</li>
+                    </ul>
+                    <a href="#contact" class="btn">สอบถามราคา</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process-section" id="process">
+        <div class="container">
+            <h2 class="section-title">ขั้นตอนการให้บริการ</h2>
+            <div class="process-steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>ปรึกษาและวิเคราะห์</h3>
+                    <p>รับฟังความต้องการ วิเคราะห์ผลิตภัณฑ์ แนะนำแนวทางการขึ้นทะเบียนที่เหมาะสม</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>เตรียมเอกสาร</h3>
+                    <p>จัดเตรียมเอกสารครบถ้วน ทดสอบห้องปฏิบัติการ จัดทำรายงานผลการทดสอบ</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>ยื่นขออนุมัติ</h3>
+                    <p>ยื่นเอกสารต่อหน่วยงานที่เกี่ยวข้อง ติดตามความคืบหน้า ประสานงานกับเจ้าหน้าที่</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>รับใบอนุมัติ</h3>
+                    <p>รับใบอนุมัติ/ใบสำคัญการขึ้นทะเบียน พร้อมคำแนะนำการใช้งานและการต่ออายุ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="status-section" id="status">
+        <div class="container">
+            <h2 class="section-title">ตรวจสอบสถานะการขึ้นทะเบียน</h2>
+            <div class="status-checker">
+                <h3>ใส่เลขที่คำขอหรือรหัสติดตาม</h3>
+                <div class="status-input">
+                    <input type="text" id="statusInput" placeholder="กรอกเลขที่คำขอ เช่น REG-2024-001">
+                    <button class="btn" onclick="checkStatus()">ตรวจสอบ</button>
+                </div>
+                <div id="statusResult" class="status-result">
+                    <!-- ผลการตรวจสอบจะแสดงที่นี่ -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">ติดต่อเรา</h2>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <h3>ส่งข้อความหาเรา</h3>
+                    <form onsubmit="submitForm(event)">
+                        <div class="form-group">
+                            <label for="name">ชื่อ-นามสกุล</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">ชื่อบริษัท</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">เบอร์โทรศัพท์</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">อีเมล</label>
+                            <input type="email" id="email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">บริการที่สนใจ</label>
+                            <select id="service" name="service" required>
+                                <option value="">เลือกบริการ</option>
+                                <option value="fertilizer">ขึ้นทะเบียนปุ๋ย</option>
+                                <option value="chemical">ขึ้นทะเบียนสารเคมีเกษตร</option>
+                                <option value="hazardous">ขึ้นทะเบียนวัตถุอันตราย</option>
+                                <option value="consult">คำปรึกษา</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">รายละเอียด</label>
+                            <textarea id="message" name="message" rows="4" placeholder="อธิบายผลิตภัณฑ์และความต้องการ"></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%;">ส่งข้อความ</button>
+                    </form>
+                </div>
+
+                <div class="contact-info">
+                    <h3>ข้อมูลการติดต่อ</h3>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📍</div>
+                        <div>
+                            <strong>ที่อยู่สำนักงาน</strong><br>
+                            8, 68 ถ. เทพรักษ์<br>
+                            แขวงท่าแร้ง เขตบางเขน<br>
+                            กรุงเทพมหานคร 10220
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📞</div>
+                        <div>
+                            <strong>โทรศัพท์</strong><br>
+                            084-375-2399
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📧</div>
+                        <div>
+                            <strong>อีเมล</strong><br>
+                            parungrung24@gmail.com
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">🕒</div>
+                        <div>
+                            <strong>เวลาทำการ</strong><br>
+                            จันทร์-ศุกร์: 9:00-17:00<br>
+                            เสาร์-อาทิตย์: ปิด
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>เกี่ยวกับเรา</h3>
+                    <p>ผู้เชี่ยวชาญด้านการขึ้นทะเบียนผลิตภัณฑ์เกษตรกรรม มีประสบการณ์กว่า 10 ปี พร้อมทีมงานมืออาชีพ - เดอะเบส ทีม รีจิสเทรชั่น</p>
+                </div>
+                <div class="footer-section">
+                    <h3>บริการ</h3>
+                    <ul>
+                        <li><a href="#services">ต่อใบอนุญาตผลิต</a></li>
+                        <li><a href="#services">ใบอนุญาตนำเข้า</a></li>
+                        <li><a href="#services">ต่ออายุครอบครอง</a></li>
+                        <li><a href="#services">คำปรึกษาฟรี</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>ข้อมูลสำคัญ</h3>
+                    <ul>
+                        <li><a href="#">กฎหมายที่เกี่ยวข้อง</a></li>
+                        <li><a href="#">แบบฟอร์มคำขอ</a></li>
+                        <li><a href="#">อัตราค่าธรรมเนียม</a></li>
+                        <li><a href="#">คำถามที่พบบ่อย</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>ติดตามเ
