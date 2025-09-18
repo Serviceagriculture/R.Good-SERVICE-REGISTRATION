@@ -1,9 +1,9 @@
-'<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="page-title">บริการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตร</title>
+    <title>บริการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตร</title>
     <style>
         * {
             margin: 0;
@@ -48,19 +48,6 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
         }
 
         .logo {
@@ -147,44 +134,7 @@
             box-shadow: 0 5px 15px rgba(255,87,34,0.4);
         }
 
-        /* Language Switcher */
-        .language-switcher {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-        }
-
-        .lang-btn {
-            background: rgba(255,255,255,0.2);
-            color: white;
-            border: 2px solid rgba(255,255,255,0.3);
-            border-radius: 8px;
-            padding: 0.4rem 0.8rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 0.9rem;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .lang-btn:hover {
-            background: rgba(255,255,255,0.3);
-            border-color: rgba(255,255,255,0.5);
-            transform: translateY(-1px);
-        }
-
-        .lang-btn.active {
-            background: rgba(255,255,255,0.9);
-            color: #1976d2;
-            border-color: white;
-            font-weight: bold;
-        }
-
-        .lang-flag {
-            font-size: 1.2rem;
-        }
+        /* Mobile Menu */
         .mobile-menu {
             display: none;
             flex-direction: column;
@@ -1101,32 +1051,17 @@
     <header id="header">
         <div class="container">
             <div class="header-content">
-                <div class="header-left">
-                    <div class="logo" onclick="scrollToSection('home')" data-i18n="company-name">อาร์.กู้ด เซอร์วิส รีจีสเตรชั่น</div>
-                    <nav>
-                        <ul>
-                            <li><a href="#home" onclick="scrollToSection('home')" data-i18n="nav-home">หน้าแรก</a></li>
-                            <li><a href="#services" onclick="scrollToSection('services')" data-i18n="nav-services">บริการ</a></li>
-                            <li><a href="#process" onclick="scrollToSection('process')" data-i18n="nav-process">ขั้นตอน</a></li>
-                            <li><a href="#status" onclick="scrollToSection('status')" data-i18n="nav-status">ตรวจสถานะ</a></li>
-                            <li><a href="#contact" onclick="scrollToSection('contact')" data-i18n="nav-contact">ติดต่อ</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="header-right">
-                    <div class="language-switcher">
-                        <button class="lang-btn active" onclick="switchLanguage('th')" data-lang="th">
-                            <span class="lang-flag">🇹🇭</span> TH
-                        </button>
-                        <button class="lang-btn" onclick="switchLanguage('en')" data-lang="en">
-                            <span class="lang-flag">🇺🇸</span> EN
-                        </button>
-                        <button class="lang-btn" onclick="switchLanguage('cn')" data-lang="cn">
-                            <span class="lang-flag">🇨🇳</span> 中文
-                        </button>
-                    </div>
-                    <a href="#contact" class="contact-btn" onclick="scrollToSection('contact')" data-i18n="free-consult">ปรึกษาฟรี</a>
-                </div>
+                <div class="logo" onclick="scrollToSection('home')">อาร์.กู้ด เซอร์วิส รีจีสเตรชั่น</div>
+                <nav>
+                    <ul>
+                        <li><a href="#home" onclick="scrollToSection('home')">หน้าแรก</a></li>
+                        <li><a href="#services" onclick="scrollToSection('services')">บริการ</a></li>
+                        <li><a href="#process" onclick="scrollToSection('process')">ขั้นตอน</a></li>
+                        <li><a href="#status" onclick="scrollToSection('status')">ตรวจสถานะ</a></li>
+                        <li><a href="#contact" onclick="scrollToSection('contact')">ติดต่อ</a></li>
+                    </ul>
+                </nav>
+                <a href="#contact" class="contact-btn" onclick="scrollToSection('contact')">ปรึกษาฟรี</a>
                 <div class="mobile-menu" onclick="toggleMobileMenu()">
                     <span></span>
                     <span></span>
@@ -1149,111 +1084,111 @@
 
     <section class="services-section" id="services">
         <div class="container">
-            <h2 class="section-title" data-i18n="our-services">บริการของเรา</h2>
+            <h2 class="section-title">บริการของเรา</h2>
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">🌱</div>
-                    <h3 data-i18n="fertilizer-title">ขึ้นทะเบียนปุ๋ย</h3>
-                    <p data-i18n="fertilizer-desc">บริการขึ้นทะเบียนปุ๋ยทุกประเภท ตามมาตรฐาน กษ.</p>
-                    <ul class="service-features" data-service="fertilizer">
-                        <li data-i18n="fertilizer-feat1">ปุ๋ยเคมี</li>
-                        <li data-i18n="fertilizer-feat2">ปุ๋ยอินทรีย์</li>
-                        <li data-i18n="fertilizer-feat3">ปุ๋ยชีวภาพ</li>
-                        <li data-i18n="fertilizer-feat4">ปุ๋ยผสม</li>
-                        <li data-i18n="fertilizer-feat5">วิเคราะห์ห้องปฏิบัติการ</li>
-                        <li data-i18n="fertilizer-feat6">จัดทำเอกสารครบชุด</li>
+                    <h3>ขึ้นทะเบียนปุ๋ย</h3>
+                    <p>บริการขึ้นทะเบียนปุ๋ยทุกประเภท ตามมาตรฐาน กษ.</p>
+                    <ul class="service-features">
+                        <li>ปุ๋ยเคมี</li>
+                        <li>ปุ๋ยอินทรีย์</li>
+                        <li>ปุ๋ยชีวภาพ</li>
+                        <li>ปุ๋ยผสม</li>
+                        <li>วิเคราะห์ห้องปฏิบัติการ</li>
+                        <li>จัดทำเอกสารครบชุด</li>
                     </ul>
-                    <a href="#contact" class="btn" onclick="selectService('fertilizer')" data-i18n="ask-price">สอบถามราคา</a>
+                    <a href="#contact" class="btn" onclick="selectService('fertilizer')">สอบถามราคา</a>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">🧪</div>
-                    <h3 data-i18n="chemical-title">ขึ้นทะเบียนสารเคมีเกษตร</h3>
-                    <p data-i18n="chemical-desc">บริการขึ้นทะเบียนสารป้องกันกำจัดศัตรูพืชและสัตว์</p>
-                    <ul class="service-features" data-service="chemical">
-                        <li data-i18n="chemical-feat1">สารกำจัดแมลง</li>
-                        <li data-i18n="chemical-feat2">สารกำจัดวัชพืช</li>
-                        <li data-i18n="chemical-feat3">สารป้องกันกำจัดโรคพืช</li>
-                        <li data-i18n="chemical-feat4">สารชีวภัณฑ์</li>
-                        <li data-i18n="chemical-feat5">สารควบคุมการเจริญเติบโตของพืช</li>
-                        <li data-i18n="chemical-feat6">ทดสอบประสิทธิภาพ</li>
-                        <li data-i18n="chemical-feat7">การศึกษาความปลอดภัย</li>
+                    <h3>ขึ้นทะเบียนสารเคมีเกษตร</h3>
+                    <p>บริการขึ้นทะเบียนสารป้องกันกำจัดศัตรูพืชและสัตว์</p>
+                    <ul class="service-features">
+                        <li>สารกำจัดแมลง</li>
+                        <li>สารกำจัดวัชพืช</li>
+                        <li>สารป้องกันกำจัดโรคพืช</li>
+                        <li>สารชีวภัณฑ์</li>
+                        <li>สารควบคุมการเจริญเติบโตของพืช</li>
+                        <li>ทดสอบประสิทธิภาพ</li>
+                        <li>การศึกษาความปลอดภัย</li>
                     </ul>
-                    <a href="#contact" class="btn" onclick="selectService('chemical')" data-i18n="ask-price">สอบถามราคา</a>
+                    <a href="#contact" class="btn" onclick="selectService('chemical')">สอบถามราคา</a>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">⚠️</div>
-                    <h3 data-i18n="hazardous-title">ขึ้นทะเบียนวัตถุอันตรายทางการเกษตร</h3>
-                    <p data-i18n="hazardous-desc">บริการขึ้นทะเบียนวัตถุอันตรายตาม พรบ.วัตถุอันตราย</p>
-                    <ul class="service-features" data-service="hazardous">
-                        <li data-i18n="hazardous-feat1">วัตถุอันตรายชนิดที่ 2</li>
-                        <li data-i18n="hazardous-feat2">วัตถุอันตรายชนิดที่ 3</li>
-                        <li data-i18n="hazardous-feat3">การจัดหมวดหมู่อันตราย</li>
-                        <li data-i18n="hazardous-feat4">ฉลากและข้อมูลความปลอดภัย</li>
-                        <li data-i18n="hazardous-feat5">แผนฉุกเฉิน</li>
-                        <li data-i18n="hazardous-feat6">การฝึกอบรมบุคลากร</li>
+                    <h3>ขึ้นทะเบียนวัตถุอันตรายทางการเกษตร</h3>
+                    <p>บริการขึ้นทะเบียนวัตถุอันตรายตาม พรบ.วัตถุอันตราย</p>
+                    <ul class="service-features">
+                        <li>วัตถุอันตรายชนิดที่ 2</li>
+                        <li>วัตถุอันตรายชนิดที่ 3</li>
+                        <li>การจัดหมวดหมู่อันตราย</li>
+                        <li>ฉลากและข้อมูลความปลอดภัย</li>
+                        <li>แผนฉุกเฉิน</li>
+                        <li>การฝึกอบรมบุคลากร</li>
                     </ul>
-                    <a href="#contact" class="btn" onclick="selectService('hazardous')" data-i18n="ask-price">สอบถามราคา</a>
+                    <a href="#contact" class="btn" onclick="selectService('hazardous')">สอบถามราคา</a>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">📊</div>
-                    <h3 data-i18n="consult-title">คำปรึกษาและตรวจสอบ</h3>
-                    <p data-i18n="consult-desc">บริการให้คำปรึกษาและตรวจสอบเอกสาร</p>
-                    <ul class="service-features" data-service="consult">
-                        <li data-i18n="consult-feat1">ตรวจสอบความถูกต้องเอกสาร</li>
-                        <li data-i18n="consult-feat2">คำปรึกษากฎหมายที่เกี่ยวข้อง</li>
-                        <li data-i18n="consult-feat3">วางแผนการขึ้นทะเบียน</li>
-                        <li data-i18n="consult-feat4">ติดตามสถานะการอนุมัติ</li>
-                        <li data-i18n="consult-feat5">แก้ไขปัญหาข้อบกพร่อง</li>
-                        <li data-i18n="consult-feat6">อบรมเจ้าหน้าที่</li>
+                    <h3>คำปรึกษาและตรวจสอบ</h3>
+                    <p>บริการให้คำปรึกษาและตรวจสอบเอกสาร</p>
+                    <ul class="service-features">
+                        <li>ตรวจสอบความถูกต้องเอกสาร</li>
+                        <li>คำปรึกษากฎหมายที่เกี่ยวข้อง</li>
+                        <li>วางแผนการขึ้นทะเบียน</li>
+                        <li>ติดตามสถานะการอนุมัติ</li>
+                        <li>แก้ไขปัญหาข้อบกพร่อง</li>
+                        <li>อบรมเจ้าหน้าที่</li>
                     </ul>
-                    <a href="#contact" class="btn" onclick="selectService('consult')" data-i18n="ask-price">สอบถามราคา</a>
+                    <a href="#contact" class="btn" onclick="selectService('consult')">สอบถามราคา</a>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">📄</div>
-                    <h3 data-i18n="license-title">ต่อใบอนุญาตผลิต</h3>
-                    <p data-i18n="license-desc">บริการต่อใบอนุญาตการผลิตปุ๋ยและสารเคมี</p>
-                    <ul class="service-features" data-service="license">
-                        <li data-i18n="license-feat1">ต่ออายุใบอนุญาตผลิต</li>
-                        <li data-i18n="license-feat2">ตรวจสอบเอกสารความถูกต้อง</li>
-                        <li data-i18n="license-feat3">ประสานงานกับหน่วยงานราชการ</li>
-                        <li data-i18n="license-feat4">ติดตามสถานะการอนุมัติ</li>
-                        <li data-i18n="license-feat5">รับใบอนุญาตใหม่</li>
-                        <li data-i18n="license-feat6">แนะนำการปฏิบัติตามกฎหมาย</li>
+                    <h3>ต่อใบอนุญาตผลิต</h3>
+                    <p>บริการต่อใบอนุญาตการผลิตปุ๋ยและสารเคมี</p>
+                    <ul class="service-features">
+                        <li>ต่ออายุใบอนุญาตผลิต</li>
+                        <li>ตรวจสอบเอกสารความถูกต้อง</li>
+                        <li>ประสานงานกับหน่วยงานราชการ</li>
+                        <li>ติดตามสถานะการอนุมัติ</li>
+                        <li>รับใบอนุญาตใหม่</li>
+                        <li>แนะนำการปฏิบัติตามกฎหมาย</li>
                     </ul>
-                    <a href="#contact" class="btn" onclick="selectService('license')" data-i18n="ask-price">สอบถามราคา</a>
+                    <a href="#contact" class="btn" onclick="selectService('license')">สอบถามราคา</a>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">🌐</div>
-                    <h3 data-i18n="import-title">ใบอนุญาตนำเข้าวัตถุอันตรายทางการเกษตร</h3>
-                    <p data-i18n="import-desc">บริการจัดทำใบอนุญาตนำเข้าสินค้าทางการเกษตร</p>
-                    <ul class="service-features" data-service="import">
-                        <li data-i18n="import-feat1">ใบอนุญาตนำเข้าปุ๋ย</li>
-                        <li data-i18n="import-feat2">ใบอนุญาตนำเข้าวัตถุอันตราย</li>
-                        <li data-i18n="import-feat3">ตรวจสอบเอกสารครบถ้วน</li>
-                        <li data-i18n="import-feat4">ประสานงานด่านศุลกากร</li>
-                        <li data-i18n="import-feat5">รับใบอนุญาตนำเข้า</li>
+                    <h3>ใบอนุญาตนำเข้าวัตถุอันตรายทางการเกษตร</h3>
+                    <p>บริการจัดทำใบอนุญาตนำเข้าสินค้าทางการเกษตร</p>
+                    <ul class="service-features">
+                        <li>ใบอนุญาตนำเข้าปุ๋ย</li>
+                        <li>ใบอนุญาตนำเข้าวัตถุอันตราย</li>
+                        <li>ตรวจสอบเอกสารครบถ้วน</li>
+                        <li>ประสานงานด่านศุลกากร</li>
+                        <li>รับใบอนุญาตนำเข้า</li>
                     </ul>
-                    <a href="#contact" class="btn" onclick="selectService('import')" data-i18n="ask-price">สอบถามราคา</a>
+                    <a href="#contact" class="btn" onclick="selectService('import')">สอบถามราคา</a>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">🔄</div>
-                    <h3 data-i18n="renewal-title">บริการต่ออายุต่างๆ</h3>
-                    <p data-i18n="renewal-desc">บริการต่ออายุและเพิ่มรายชื่อครอบครอง</p>
-                    <ul class="service-features" data-service="renewal">
-                        <li data-i18n="renewal-feat1">ต่ออายุครอบครองวัตถุอันตราย</li>
-                        <li data-i18n="renewal-feat2">เพิ่มรายชื่อครอบครอง</li>
-                        <li data-i18n="renewal-feat3">ต่ออายุอนุญาตผลิตวัตถุอันตรายทางการเกษตร</li>
-                        <li data-i18n="renewal-feat4">ต่ออายุอนุญาตขายปุ๋ย</li>
-                        <li data-i18n="renewal-feat5">ต่ออายุใบอนุญาตผลิตปุ๋ยเคมีเพื่อการค้า</li>
-                        <li data-i18n="renewal-feat6">จัดทำเอกสารต่ออายุและแจ้งเตือนก่อนหมดอายุ</li>
+                    <h3>บริการต่ออายุต่างๆ</h3>
+                    <p>บริการต่ออายุและเพิ่มรายชื่อครอบครอง</p>
+                    <ul class="service-features">
+                        <li>ต่ออายุครอบครองวัตถุอันตราย</li>
+                        <li>เพิ่มรายชื่อครอบครอง</li>
+                        <li>ต่ออายุอนุญาตผลิตวัตถุอันตรายทางการเกษตร</li>
+                        <li>ต่ออายุอนุญาตขายปุ๋ย</li>
+                        <li>ต่ออายุใบอนุญาตผลิตปุ๋ยเคมีเพื่อการค้า</li>
+                        <li>จัดทำเอกสารต่ออายุและแจ้งเตือนก่อนหมดอายุ</li>
                     </ul>
-                    <a href="#contact" class="btn" onclick="selectService('renewal')" data-i18n="ask-price">สอบถามราคา</a>
+                    <a href="#contact" class="btn" onclick="selectService('renewal')">สอบถามราคา</a>
                 </div>
             </div>
         </div>
@@ -1503,425 +1438,13 @@
         // Global Variables
         let uploadedFiles = [];
         let currentServiceSelection = '';
-        let currentLanguage = 'th'; // Default language
-
-        // Language translations
-        const translations = {
-            th: {
-                'page-title': 'บริการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตร',
-                'company-name': 'อาร์.กู้ด เซอร์วิส รีจีสเตรชั่น',
-                'nav-home': 'หน้าแรก',
-                'nav-services': 'บริการ',
-                'nav-process': 'ขั้นตอน',
-                'nav-status': 'ตรวจสถานะ',
-                'nav-contact': 'ติดต่อ',
-                'free-consult': 'ปรึกษาฟรี',
-                'notification-promo': 'โปรโมชั่นพิเศษ! ปรึกษาฟรี + ส่วนลด 20% สำหรับลูกค้าใหม่ ติดต่อเลย!',
-                'hero-title': 'บริการขึ้นทะเบียนปุ๋ยและวัตถุอันตราย',
-                'hero-subtitle': 'ผู้เชี่ยวชาญด้านการขึ้นทะเบียนวัตถุอันตรายทางการเกษตรและปุ๋ยเคมี ครบวงจร รวดเร็ว ถูกต้องตามกฎหมาย พร้อมให้คำปรึกษาทุกขั้นตอน',
-                'view-all-services': 'ดูบริการทั้งหมด',
-                'our-services': 'บริการของเรา',
-                'fertilizer-title': 'ขึ้นทะเบียนปุ๋ย',
-                'fertilizer-desc': 'บริการขึ้นทะเบียนปุ๋ยทุกประเภท ตามมาตรฐาน กษ.',
-                'chemical-title': 'ขึ้นทะเบียนสารเคมีเกษตร',
-                'chemical-desc': 'บริการขึ้นทะเบียนสารป้องกันกำจัดศัตรูพืชและสัตว์',
-                'hazardous-title': 'ขึ้นทะเบียนวัตถุอันตรายทางการเกษตร',
-                'hazardous-desc': 'บริการขึ้นทะเบียนวัตถุอันตรายตาม พรบ.วัตถุอันตราย',
-                'consult-title': 'คำปรึกษาและตรวจสอบ',
-                'consult-desc': 'บริการให้คำปรึกษาและตรวจสอบเอกสาร',
-                'license-title': 'ต่อใบอนุญาตผลิต',
-                'license-desc': 'บริการต่อใบอนุญาตการผลิตปุ๋ยและสารเคมี',
-                'import-title': 'ใบอนุญาตนำเข้าวัตถุอันตรายทางการเกษตร',
-                'import-desc': 'บริการจัดทำใบอนุญาตนำเข้าสินค้าทางการเกษตร',
-                'renewal-title': 'บริการต่ออายุต่างๆ',
-                'renewal-desc': 'บริการต่ออายุและเพิ่มรายชื่อครอบครอง',
-                'ask-price': 'สอบถามราคา',
-                'service-process': 'ขั้นตอนการให้บริการ',
-                'step1-title': 'ปรึกษาและวิเคราะห์',
-                'step1-desc': 'รับฟังความต้องการ วิเคราะห์ผลิตภัณฑ์ แนะนำแนวทางการขึ้นทะเบียนที่เหมาะสม',
-                'step2-title': 'เตรียมเอกสาร',
-                'step2-desc': 'จัดเตรียมเอกสารครบถ้วน ทดสอบห้องปฏิบัติการ จัดทำรายงานผลการทดสอบ',
-                'step3-title': 'ยื่นขออนุมัติ',
-                'step3-desc': 'ยื่นเอกสารต่อหน่วยงานที่เกี่ยวข้อง ติดตามความคืบหน้า ประสานงานกับเจ้าหน้าที่',
-                'step4-title': 'รับใบอนุมัติ',
-                'step4-desc': 'รับใบอนุมัติ/ใบสำคัญการขึ้นทะเบียน พร้อมคำแนะนำการใช้งานและการต่ออายุ',
-                'check-status': 'ตรวจสอบสถานะการขึ้นทะเบียน',
-                'enter-request-id': 'ใส่เลขที่คำขอหรือรหัสติดตาม',
-                'placeholder-request': 'กรอกเลขที่คำขอ เช่น REG-2024-001',
-                'check-btn': 'ตรวจสอบ',
-                // Service Features - Fertilizer
-                'fertilizer-feat1': 'ปุ๋ยเคมี',
-                'fertilizer-feat2': 'ปุ๋ยอินทรีย์',
-                'fertilizer-feat3': 'ปุ๋ยชีวภาพ',
-                'fertilizer-feat4': 'ปุ๋ยผสม',
-                'fertilizer-feat5': 'วิเคราะห์ห้องปฏิบัติการ',
-                'fertilizer-feat6': 'จัดทำเอกสารครบชุด',
-                // Service Features - Chemical
-                'chemical-feat1': 'สารกำจัดแมลง',
-                'chemical-feat2': 'สารกำจัดวัชพืช',
-                'chemical-feat3': 'สารป้องกันกำจัดโรคพืช',
-                'chemical-feat4': 'สารชีวภัณฑ์',
-                'chemical-feat5': 'สารควบคุมการเจริญเติบโตของพืช',
-                'chemical-feat6': 'ทดสอบประสิทธิภาพ',
-                'chemical-feat7': 'การศึกษาความปลอดภัย',
-                // Service Features - Hazardous
-                'hazardous-feat1': 'วัตถุอันตรายชนิดที่ 2',
-                'hazardous-feat2': 'วัตถุอันตรายชนิดที่ 3',
-                'hazardous-feat3': 'การจัดหมวดหมู่อันตราย',
-                'hazardous-feat4': 'ฉลากและข้อมูลความปลอดภัย',
-                'hazardous-feat5': 'แผนฉุกเฉิน',
-                'hazardous-feat6': 'การฝึกอบรมบุคลากร',
-                // Service Features - Consult
-                'consult-feat1': 'ตรวจสอบความถูกต้องเอกสาร',
-                'consult-feat2': 'คำปรึกษากฎหมายที่เกี่ยวข้อง',
-                'consult-feat3': 'วางแผนการขึ้นทะเบียน',
-                'consult-feat4': 'ติดตามสถานะการอนุมัติ',
-                'consult-feat5': 'แก้ไขปัญหาข้อบกพร่อง',
-                'consult-feat6': 'อบรมเจ้าหน้าที่',
-                // Service Features - License
-                'license-feat1': 'ต่ออายุใบอนุญาตผลิต',
-                'license-feat2': 'ตรวจสอบเอกสารความถูกต้อง',
-                'license-feat3': 'ประสานงานกับหน่วยงานราชการ',
-                'license-feat4': 'ติดตามสถานะการอนุมัติ',
-                'license-feat5': 'รับใบอนุญาตใหม่',
-                'license-feat6': 'แนะนำการปฏิบัติตามกฎหมาย',
-                // Service Features - Import
-                'import-feat1': 'ใบอนุญาตนำเข้าปุ๋ย',
-                'import-feat2': 'ใบอนุญาตนำเข้าวัตถุอันตราย',
-                'import-feat3': 'ตรวจสอบเอกสารครบถ้วน',
-                'import-feat4': 'ประสานงานด่านศุลกากร',
-                'import-feat5': 'รับใบอนุญาตนำเข้า',
-                // Service Features - Renewal
-                'renewal-feat1': 'ต่ออายุครอบครองวัตถุอันตราย',
-                'renewal-feat2': 'เพิ่มรายชื่อครอบครอง',
-                'renewal-feat3': 'ต่ออายุอนุญาตผลิตวัตถุอันตรายทางการเกษตร',
-                'renewal-feat4': 'ต่ออายุอนุญาตขายปุ๋ย',
-                'renewal-feat5': 'ต่ออายุใบอนุญาตผลิตปุ๋ยเคมีเพื่อการค้า',
-            },
-            en: {
-                'page-title': 'Agricultural Registration Services - Fertilizers & Hazardous Materials',
-                'company-name': 'R.Good Service Registration',
-                'nav-home': 'Home',
-                'nav-services': 'Services',
-                'nav-process': 'Process',
-                'nav-status': 'Check Status',
-                'nav-contact': 'Contact',
-                'free-consult': 'Free Consultation',
-                'notification-promo': 'Special Promotion! Free consultation + 20% discount for new customers. Contact us now!',
-                'hero-title': 'Agricultural Registration Services',
-                'hero-subtitle': 'Expert in agricultural hazardous materials and fertilizer registration. Comprehensive, fast, legally compliant services with full consultation support.',
-                'view-all-services': 'View All Services',
-                'our-services': 'Our Services',
-                'fertilizer-title': 'Fertilizer Registration',
-                'fertilizer-desc': 'Complete fertilizer registration services according to MOA standards',
-                'chemical-title': 'Agricultural Chemical Registration',
-                'chemical-desc': 'Registration services for plant and animal pest control substances',
-                'hazardous-title': 'Agricultural Hazardous Material Registration',
-                'hazardous-desc': 'Hazardous material registration services under the Hazardous Substances Act',
-                'consult-title': 'Consultation & Verification',
-                'consult-desc': 'Advisory and document verification services',
-                'license-title': 'Production License Renewal',
-                'license-desc': 'Fertilizer and chemical production license renewal services',
-                'import-title': 'Agricultural Import License',
-                'import-desc': 'Import license services for agricultural products',
-                'renewal-title': 'Various Renewal Services',
-                'renewal-desc': 'License renewal and name addition services',
-                'ask-price': 'Inquire Price',
-                'service-process': 'Service Process',
-                'step1-title': 'Consultation & Analysis',
-                'step1-desc': 'Listen to requirements, analyze products, recommend appropriate registration approaches',
-                'step2-title': 'Document Preparation',
-                'step2-desc': 'Prepare complete documents, laboratory testing, compile test reports',
-                'step3-title': 'Submit Application',
-                'step3-desc': 'Submit documents to relevant agencies, track progress, coordinate with officials',
-                'step4-title': 'Receive Approval',
-                'step4-desc': 'Receive approval/registration certificate with usage guidance and renewal advice',
-                'check-status': 'Check Registration Status',
-                'enter-request-id': 'Enter Request Number or Tracking Code',
-                'placeholder-request': 'Enter request number e.g. REG-2024-001',
-                'check-btn': 'Check',
-                // Service Features - Fertilizer
-                'fertilizer-feat1': 'Chemical Fertilizers',
-                'fertilizer-feat2': 'Organic Fertilizers',
-                'fertilizer-feat3': 'Bio Fertilizers',
-                'fertilizer-feat4': 'Mixed Fertilizers',
-                'fertilizer-feat5': 'Laboratory Analysis',
-                'fertilizer-feat6': 'Complete Documentation',
-                // Service Features - Chemical
-                'chemical-feat1': 'Insecticides',
-                'chemical-feat2': 'Herbicides',
-                'chemical-feat3': 'Plant Disease Control',
-                'chemical-feat4': 'Biological Products',
-                'chemical-feat5': 'Plant Growth Regulators',
-                'chemical-feat6': 'Efficacy Testing',
-                'chemical-feat7': 'Safety Studies',
-                // Service Features - Hazardous
-                'hazardous-feat1': 'Type 2 Hazardous Substances',
-                'hazardous-feat2': 'Type 3 Hazardous Substances',
-                'hazardous-feat3': 'Hazard Classification',
-                'hazardous-feat4': 'Labels & Safety Data Sheets',
-                'hazardous-feat5': 'Emergency Response Plans',
-                'hazardous-feat6': 'Personnel Training',
-                // Service Features - Consult
-                'consult-feat1': 'Document Accuracy Verification',
-                'consult-feat2': 'Legal Consultation',
-                'consult-feat3': 'Registration Planning',
-                'consult-feat4': 'Application Status Tracking',
-                'consult-feat5': 'Problem Resolution',
-                'consult-feat6': 'Staff Training',
-                // Service Features - License
-                'license-feat1': 'Production License Renewal',
-                'license-feat2': 'Document Verification',
-                'license-feat3': 'Government Agency Coordination',
-                'license-feat4': 'Approval Status Tracking',
-                'license-feat5': 'New License Acquisition',
-                'license-feat6': 'Legal Compliance Guidance',
-                // Service Features - Import
-                'import-feat1': 'Fertilizer Import Permits',
-                'import-feat2': 'Hazardous Material Import Permits',
-                'import-feat3': 'Complete Documentation Review',
-                'import-feat4': 'Customs Coordination',
-                'import-feat5': 'Import License Acquisition',
-                // Service Features - Renewal
-                'renewal-feat1': 'Hazardous Material Possession Renewal',
-                'renewal-feat2': 'Name List Addition',
-                'renewal-feat3': 'Agricultural Hazardous Material Production Permit Renewal',
-                'renewal-feat4': 'Fertilizer Sales License Renewal',
-                'renewal-feat5': 'Commercial Fertilizer Production License Renewal',
-                'renewal-feat6': 'Renewal Documentation & Expiration Alerts'
-            },
-            cn: {
-                'page-title': '农业登记服务 - 肥料和危险物质',
-                'company-name': 'R.Good 服务登记',
-                'nav-home': '首页',
-                'nav-services': '服务',
-                'nav-process': '流程',
-                'nav-status': '查询状态',
-                'nav-contact': '联系我们',
-                'free-consult': '免费咨询',
-                'notification-promo': '特别促销！免费咨询 + 新客户20%折扣。立即联系我们！',
-                'hero-title': '农业登记服务',
-                'hero-subtitle': '农业危险物质和肥料登记专家。全面、快速、合法合规的服务，提供全程咨询支持。',
-                'view-all-services': '查看所有服务',
-                'our-services': '我们的服务',
-                'fertilizer-title': '肥料登记',
-                'fertilizer-desc': '根据农业部标准提供完整的肥料登记服务',
-                'chemical-title': '农用化学品登记',
-                'chemical-desc': '植物和动物害虫防治物质登记服务',
-                'hazardous-title': '农业危险物质登记',
-                'hazardous-desc': '根据危险物质法的危险物质登记服务',
-                'consult-title': '咨询与验证',
-                'consult-desc': '咨询和文件验证服务',
-                'license-title': '生产许可证续期',
-                'license-desc': '肥料和化学品生产许可证续期服务',
-                'import-title': '农业进口许可证',
-                'import-desc': '农产品进口许可证服务',
-                'renewal-title': '各种续期服务',
-                'renewal-desc': '许可证续期和名称添加服务',
-                'ask-price': '询价',
-                'service-process': '服务流程',
-                'step1-title': '咨询与分析',
-                'step1-desc': '听取需求，分析产品，推荐合适的登记方法',
-                'step2-title': '文件准备',
-                'step2-desc': '准备完整文件，实验室测试，编制测试报告',
-                'step3-title': '提交申请',
-                'step3-desc': '向相关机构提交文件，跟踪进度，与官员协调',
-                'step4-title': '获得批准',
-                'step4-desc': '获得批准/登记证书，提供使用指导和续期建议',
-                'check-status': '查询登记状态',
-                'enter-request-id': '输入申请号或跟踪代码',
-                'placeholder-request': '输入申请号，例如 REG-2024-001',
-                'check-btn': '查询',
-                // Service Features - Fertilizer
-                'fertilizer-feat1': '化学肥料',
-                'fertilizer-feat2': '有机肥料',
-                'fertilizer-feat3': '生物肥料',
-                'fertilizer-feat4': '混合肥料',
-                'fertilizer-feat5': '实验室分析',
-                'fertilizer-feat6': '完整文档',
-                // Service Features - Chemical
-                'chemical-feat1': '杀虫剂',
-                'chemical-feat2': '除草剂',
-                'chemical-feat3': '植物病害防治',
-                'chemical-feat4': '生物制品',
-                'chemical-feat5': '植物生长调节剂',
-                'chemical-feat6': '功效测试',
-                'chemical-feat7': '安全性研究',
-                // Service Features - Hazardous
-                'hazardous-feat1': '2类危险物质',
-                'hazardous-feat2': '3类危险物质',
-                'hazardous-feat3': '危险分类',
-                'hazardous-feat4': '标签和安全数据表',
-                'hazardous-feat5': '应急响应计划',
-                'hazardous-feat6': '人员培训',
-                // Service Features - Consult
-                'consult-feat1': '文件准确性验证',
-                'consult-feat2': '法律咨询',
-                'consult-feat3': '登记规划',
-                'consult-feat4': '申请状态跟踪',
-                'consult-feat5': '问题解决',
-                'consult-feat6': '员工培训',
-                // Service Features - License
-                'license-feat1': '生产许可证续期',
-                'license-feat2': '文件验证',
-                'license-feat3': '政府机构协调',
-                'license-feat4': '批准状态跟踪',
-                'license-feat5': '新许可证获取',
-                'license-feat6': '合规指导',
-                // Service Features - Import
-                'import-feat1': '肥料进口许可',
-                'import-feat2': '危险物质进口许可',
-                'import-feat3': '完整文档审查',
-                'import-feat4': '海关协调',
-                'import-feat5': '进口许可获取',
-                // Service Features - Renewal
-                'renewal-feat1': '危险物质持有续期',
-                'renewal-feat2': '名单添加',
-                'renewal-feat3': '农业危险物质生产许可续期',
-                'renewal-feat4': '肥料销售许可续期',
-                'renewal-feat5': '商业肥料生产许可续期',
-                'renewal-feat6': '续期文档和到期提醒'
-            }
-        };
-            },
-            en: {
-                'page-title': 'Agricultural Registration Services - Fertilizers & Hazardous Materials',
-                'company-name': 'R.Good Service Registration',
-                'nav-home': 'Home',
-                'nav-services': 'Services',
-                'nav-process': 'Process',
-                'nav-status': 'Check Status',
-                'nav-contact': 'Contact',
-                'free-consult': 'Free Consultation',
-                'notification-promo': 'Special Promotion! Free consultation + 20% discount for new customers. Contact us now!',
-                'hero-title': 'Agricultural Registration Services',
-                'hero-subtitle': 'Expert in agricultural hazardous materials and fertilizer registration. Comprehensive, fast, legally compliant services with full consultation support.',
-                'view-all-services': 'View All Services',
-                'our-services': 'Our Services',
-                'fertilizer-title': 'Fertilizer Registration',
-                'fertilizer-desc': 'Complete fertilizer registration services according to MOA standards',
-                'chemical-title': 'Agricultural Chemical Registration',
-                'chemical-desc': 'Registration services for plant and animal pest control substances',
-                'hazardous-title': 'Agricultural Hazardous Material Registration',
-                'hazardous-desc': 'Hazardous material registration services under the Hazardous Substances Act',
-                'consult-title': 'Consultation & Verification',
-                'consult-desc': 'Advisory and document verification services',
-                'license-title': 'Production License Renewal',
-                'license-desc': 'Fertilizer and chemical production license renewal services',
-                'import-title': 'Agricultural Import License',
-                'import-desc': 'Import license services for agricultural products',
-                'renewal-title': 'Various Renewal Services',
-                'renewal-desc': 'License renewal and name addition services',
-                'ask-price': 'Inquire Price',
-                'service-process': 'Service Process',
-                'step1-title': 'Consultation & Analysis',
-                'step1-desc': 'Listen to requirements, analyze products, recommend appropriate registration approaches',
-                'step2-title': 'Document Preparation',
-                'step2-desc': 'Prepare complete documents, laboratory testing, compile test reports',
-                'step3-title': 'Submit Application',
-                'step3-desc': 'Submit documents to relevant agencies, track progress, coordinate with officials',
-                'step4-title': 'Receive Approval',
-                'step4-desc': 'Receive approval/registration certificate with usage guidance and renewal advice',
-                'check-status': 'Check Registration Status',
-                'enter-request-id': 'Enter Request Number or Tracking Code',
-                'placeholder-request': 'Enter request number e.g. REG-2024-001',
-                'check-btn': 'Check'
-            },
-            cn: {
-                'page-title': '农业登记服务 - 肥料和危险物质',
-                'company-name': 'R.Good 服务登记',
-                'nav-home': '首页',
-                'nav-services': '服务',
-                'nav-process': '流程',
-                'nav-status': '查询状态',
-                'nav-contact': '联系我们',
-                'free-consult': '免费咨询',
-                'notification-promo': '特别促销！免费咨询 + 新客户20%折扣。立即联系我们！',
-                'hero-title': '农业登记服务',
-                'hero-subtitle': '农业危险物质和肥料登记专家。全面、快速、合法合规的服务，提供全程咨询支持。',
-                'view-all-services': '查看所有服务',
-                'our-services': '我们的服务',
-                'fertilizer-title': '肥料登记',
-                'fertilizer-desc': '根据农业部标准提供完整的肥料登记服务',
-                'chemical-title': '农用化学品登记',
-                'chemical-desc': '植物和动物害虫防治物质登记服务',
-                'hazardous-title': '农业危险物质登记',
-                'hazardous-desc': '根据危险物质法的危险物质登记服务',
-                'consult-title': '咨询与验证',
-                'consult-desc': '咨询和文件验证服务',
-                'license-title': '生产许可证续期',
-                'license-desc': '肥料和化学品生产许可证续期服务',
-                'import-title': '农业进口许可证',
-                'import-desc': '农产品进口许可证服务',
-                'renewal-title': '各种续期服务',
-                'renewal-desc': '许可证续期和名称添加服务',
-                'ask-price': '询价',
-                'service-process': '服务流程',
-                'step1-title': '咨询与分析',
-                'step1-desc': '听取需求，分析产品，推荐合适的登记方法',
-                'step2-title': '文件准备',
-                'step2-desc': '准备完整文件，实验室测试，编制测试报告',
-                'step3-title': '提交申请',
-                'step3-desc': '向相关机构提交文件，跟踪进度，与官员协调',
-                'step4-title': '获得批准',
-                'step4-desc': '获得批准/登记证书，提供使用指导和续期建议',
-                'check-status': '查询登记状态',
-                'enter-request-id': '输入申请号或跟踪代码',
-                'placeholder-request': '输入申请号，例如 REG-2024-001',
-                'check-btn': '查询'
-            }
-        };
 
         // Page Load Events
         document.addEventListener('DOMContentLoaded', function() {
             initializeWebsite();
             setupEventListeners();
-            loadSavedLanguage();
             showWelcomeMessage();
         });
-
-        // Load saved language from localStorage
-        function loadSavedLanguage() {
-            const savedLang = localStorage.getItem('selectedLanguage') || 'th';
-            switchLanguage(savedLang);
-        }
-
-        // Switch Language Function
-        function switchLanguage(lang) {
-            currentLanguage = lang;
-            localStorage.setItem('selectedLanguage', lang);
-            
-            // Update active language button
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.getAttribute('data-lang') === lang) {
-                    btn.classList.add('active');
-                }
-            });
-            
-            // Update all translatable elements
-            document.querySelectorAll('[data-i18n]').forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                if (translations[lang] && translations[lang][key]) {
-                    if (element.tagName === 'INPUT' && element.type === 'text') {
-                        element.placeholder = translations[lang][key];
-                    } else if (element.tagName === 'TITLE') {
-                        element.textContent = translations[lang][key];
-                    } else {
-                        element.textContent = translations[lang][key];
-                    }
-                }
-            });
-            
-            // Update dynamic content based on language
-            updateDynamicContent(lang);
-        }
-
-        // Update dynamic content (service features, etc.)
-        function updateDynamicContent(lang) {
-            // This will be expanded to update service cards, form labels, etc.
-            console.log(`Language switched to: ${lang}`);
-        }
 
         // Initialize Website
         function initializeWebsite() {
