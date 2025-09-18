@@ -1094,7 +1094,7 @@
 <body>
     <!-- Notification Bar -->
     <div class="notification-bar" id="notificationBar">
-        โปรโมชั่นพิเศษ! ปรึกษาฟรี + ส่วนลด 20% สำหรับลูกค้าใหม่ ติดต่อเลย!
+        โปรโมชั่นพิเศษ! ปรึกษาฟรี สำหรับลูกค้าใหม่ ติดต่อเลย!
         <button class="notification-close" onclick="closeNotification()">×</button>
     </div>
 
@@ -1138,7 +1138,7 @@
 
     <section class="hero" id="home">
         <div class="container">
-            <h1>บริการขึ้นทะเบียนปุ๋ยและวัตถุอันตราย</h1>
+            <h1>บริการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตร</h1>
             <p>ผู้เชี่ยวชาญด้านการขึ้นทะเบียนวัตถุอันตรายทางการเกษตรและปุ๋ยเคมี ครบวงจร รวดเร็ว ถูกต้องตามกฎหมาย พร้อมให้คำปรึกษาทุกขั้นตอน</p>
             <div class="hero-buttons">
                 <a href="#services" class="btn" onclick="scrollToSection('services')">ดูบริการทั้งหมด</a>
@@ -1548,7 +1548,7 @@
                 'nav-status': 'ตรวจสถานะ',
                 'nav-contact': 'ติดต่อ',
                 'free-consult': 'ปรึกษาฟรี',
-                'notification-promo': 'โปรโมชั่นพิเศษ! ปรึกษาฟรี + ส่วนลด 20% สำหรับลูกค้าใหม่ ติดต่อเลย!',
+                'notification-promo': 'โปรโมชั่นพิเศษ! ปรึกษาฟรี + ส่วนลด สำหรับลูกค้าใหม่ ติดต่อเลย!',
                 'hero-title': 'บริการขึ้นทะเบียนปุ๋ยและวัตถุอันตราย',
                 'hero-subtitle': 'ผู้เชี่ยวชาญด้านการขึ้นทะเบียนวัตถุอันตรายทางการเกษตรและปุ๋ยเคมี ครบวงจร รวดเร็ว ถูกต้องตามกฎหมาย พร้อมให้คำปรึกษาทุกขั้นตอน',
                 'view-all-services': 'ดูบริการทั้งหมด',
@@ -1609,7 +1609,7 @@
                 'consult-feat3': 'วางแผนการขึ้นทะเบียน',
                 'consult-feat4': 'ติดตามสถานะการอนุมัติ',
                 'consult-feat5': 'แก้ไขปัญหาข้อบกพร่อง',
-                'consult-feat6': 'อบรมเจ้าหน้าที่',
+               
                 // Service Features - License
                 'license-feat1': 'ต่ออายุใบอนุญาตผลิต',
                 'license-feat2': 'ตรวจสอบเอกสารความถูกต้อง',
@@ -2039,7 +2039,26 @@
                             </div>
                         </div>
                         <div style="margin: 1.5rem 0;">
-                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjEwMCIgeT0iMTA1IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPldlQ2hhdCBRUiBDb2RlPC90ZXh0Pgo8L3N2Zz4K" 
+                           function showWeChatQR() {
+  const popup = document.createElement('div');
+  popup.innerHTML = `
+    <div style="position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index:10002; display:flex; align-items:center; justify-content:center;">
+      <div style="background:white; padding:2rem; border-radius:15px; max-width:400px; width:90%; box-shadow:0 10px 30px rgba(0,0,0,0.3); position:relative; text-align:center;">
+        <h3 style="color:#1aad19; margin-bottom:1rem;">💬 เพิ่มเพื่อนใน WeChat</h3>
+
+        <div style="display:flex; align-items:center; justify-content:center; gap:.75rem; margin-bottom:1rem;">
+          <img src="/path/to/wechat_qr_600.jpg" alt="WeChat QR"
+               style="width: 240px; height: 240px; object-fit:cover; border:1px solid #ddd; border-radius:10px;">
+        </div>
+
+        <p style="font-size:.9rem; color:#666; margin-bottom:1.5rem;">สแกน QR Code เพื่อเพิ่มเพื่อน</p>
+        <button onclick="this.closest('div').closest('div').remove()"
+                style="position:absolute; top:10px; right:15px; background:none; border:none; font-size:1.5rem; cursor:pointer; color:#999;">×</button>
+      </div>
+    </div>`;
+  document.body.appendChild(popup);
+}
+
                                  alt="WeChat QR Code" 
                                  style="width: 200px; height: 200px; border: 1px solid #ddd; border-radius: 10px;">
                         </div>
@@ -2070,7 +2089,7 @@
             const requestId = statusInput.value.trim();
 
             if (!requestId) {
-                alert('กرุณากรอกเลขที่คำขอ');
+                alert('กรุณากรอกเลขที่คำขอ');
                 return;
             }
 
