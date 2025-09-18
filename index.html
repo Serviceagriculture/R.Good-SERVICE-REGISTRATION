@@ -1478,6 +1478,15 @@
             });
         }
 
+        // Line Configuration
+        const LINE_CONFIG = {
+            // ใช้ Line Personal Account
+            personalUrl: 'https://line.me/ti/p/s-pKb_uHuX',
+            // สำหรับ Line OA (ถ้ามี) - เปลี่ยน YOUR_LINE_OA_ID
+            officialUrl: 'https://lin.ee/YOUR_LINE_OA_ID',
+            useOfficial: false // เปลี่ยนเป็น true เมื่อมี Line OA แล้ว
+        };
+
         // Show welcome message
         function showWelcomeMessage() {
             setTimeout(() => {
@@ -1485,6 +1494,108 @@
                     scrollToSection('contact');
                 }
             }, 3000);
+        }
+
+        // Service Selection and Line Integration
+        function selectService(serviceType) {
+            currentServiceSelection = serviceType;
+            
+            // Service messages for Line
+            const serviceMessages = {
+                fertilizer: 'สวัสดีครับ! สนใจสอบถามราคาบริการขึ้นทะเบียนปุ๋ย 🌱\n\nต้องการขึ้นทะเบียน:\n- ปุ๋ยเคมี\n- ปุ๋ยอินทรีย์\n- ปุ๋ยชีวภาพ\n- ปุ๋ยผสม\n\nรบกวนส่งรายละเอียดผลิตภัณฑ์มาด้วยนะครับ',
+                
+                chemical: 'สวัสดีครับ! สนใจสอบถามราคาบริการขึ้นทะเบียนสารเคมีเกษตร 🧪\n\nต้องการขึ้นทะเบียน:\n- สารกำจัดแมลง\n- สารกำจัดวัชพืช\n- สารป้องกันกำจัดโรคพืช\n- สารชีวภัณฑ์\n\nรบกวนส่งรายละเอียดสินค้ามาด้วยนะครับ',
+                
+                hazardous: 'สวัสดีครับ! สนใจสอบถามราคาบริการขึ้นทะเบียนวัตถุอันตรายทางการเกษตร ⚠️\n\nต้องการขึ้นทะเบียน:\n- วัตถุอันตรายชนิดที่ 2\n- วัตถุอันตรายชนิดที่ 3\n- การจัดหมวดหมู่อันตราย\n\nรบกวนส่งข้อมูลสินค้ามาด้วยนะครับ',
+                
+                consult: 'สวัสดีครับ! สนใจบริการคำปรึกษาและตรวจสอบเอกสาร 📊\n\nบริการ:\n- ตรวจสอบความถูกต้องเอกสาร\n- คำปรึกษากฎหมายที่เกี่ยวข้อง\n- วางแผนการขึ้นทะเบียน\n\nมีเอกสารอะไรให้ช่วยตรวจสอบบ้างครับ?',
+                
+                license: 'สวัสดีครับ! สนใจบริการต่อใบอนุญาตผลิต 📄\n\nบริการ:\n- ต่ออายุใบอนุญาตผลิต\n- ตรวจสอบเอกสารความถูกต้อง\n- ประสานงานกับหน่วยงานราชการ\n\nใบอนุญาตหมดอายุเมื่อไหร่ครับ?',
+                
+                import: 'สวัสดีครับ! สนใจบริการใบอนุญาตนำเข้าวัตถุอันตรายทางการเกษตร 🌐\n\nบริการ:\n- ใบอนุญาตนำเข้าปุ๋ย\n- ใบอนุญาตนำเข้าวัตถุอันตราย\n- ประสานงานด่านศุลกากร\n\nต้องการนำเข้าสินค้าประเภทไหนครับ?',
+                
+                renewal: 'สวัสดีครับ! สนใจบริการต่ออายุต่างๆ 🔄\n\nบริการ:\n- ต่ออายุครอบครองวัตถุอันตราย\n- เพิ่มรายชื่อครอบครอง\n- ต่ออายุอนุญาตผลิตวัตถุอันตราย\n\nใบอนุญาตไหนที่ต้องการต่ออายุครับ?'
+            };
+
+            const message = serviceMessages[serviceType] || 'สวัสดีครับ! สนใจสอบถามบริการครับ';
+            
+            // Open Line with pre-filled message
+            openLineWithMessage(message);
+        }
+
+        // Open Line Chat with pre-filled message
+        function openLineWithMessage(message) {
+            if (LINE_CONFIG.useOfficial) {
+                // Use Line Official Account (รองรับข้อความอัตโนมัติ)
+                const lineUrl = `${LINE_CONFIG.officialUrl}?openExternalBrowser=1&text=${encodeURIComponent(message)}`;
+                window.open(lineUrl, '_blank');
+            } else {
+                // Use Line Personal Account
+                const lineUrl = LINE_CONFIG.personalUrl;
+                
+                // แสดงข้อความให้ copy
+                showLineMessage(message, lineUrl);
+            }
+        }
+
+        // Show Line message popup for personal account
+        function showLineMessage(message, lineUrl) {
+            // สร้าง popup
+            const popup = document.createElement('div');
+            popup.innerHTML = `
+                <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+                           background: rgba(0,0,0,0.7); z-index: 10000; display: flex; 
+                           align-items: center; justify-content: center;">
+                    <div style="background: white; padding: 2rem; border-radius: 15px; 
+                               max-width: 500px; width: 90%; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                        <h3 style="color: #1976d2; margin-bottom: 1rem; display: flex; align-items: center;">
+                            💬 ส่งข้อความนี้ใน Line
+                        </h3>
+                        <div style="background: #f0f8ff; padding: 1rem; border-radius: 10px; 
+                                   border-left: 4px solid #2196f3; margin-bottom: 1rem;">
+                            <pre style="white-space: pre-wrap; font-family: inherit; margin: 0; 
+                                       font-size: 0.9rem; line-height: 1.5;">${message}</pre>
+                        </div>
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <button onclick="copyToClipboard('${message.replace(/'/g, "\\'")}'); this.innerHTML='✅ Copy แล้ว!'; this.style.background='#4caf50';" 
+                                    style="flex: 1; padding: 0.8rem; background: #ff9800; color: white; 
+                                           border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
+                                📋 Copy ข้อความ
+                            </button>
+                            <button onclick="window.open('${lineUrl}', '_blank')" 
+                                    style="flex: 1; padding: 0.8rem; background: #00C300; color: white; 
+                                           border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
+                                💬 เปิด Line
+                            </button>
+                        </div>
+                        <button onclick="this.closest('div').closest('div').remove()" 
+                                style="position: absolute; top: 10px; right: 15px; background: none; 
+                                       border: none; font-size: 1.5rem; cursor: pointer; color: #999;">×</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(popup);
+        }
+
+        // Copy text to clipboard
+        function copyToClipboard(text) {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(text);
+            } else {
+                // Fallback for older browsers
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+            }
+        }
+
+        // Quick contact functions
+        function openLineChat() {
+            const message = 'สวัสดีครับ! สนใจสอบถามข้อมูลบริการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตรครับ';
+            openLineWithMessage(message);
         }
 
         // Header scroll effect
@@ -1496,4 +1607,365 @@
                 header.classList.add('scrolled');
                 backToTop.classList.add('show');
             } else {
-                header.classList.remove('scroll
+                header.classList.remove('scrolled');
+                backToTop.classList.remove('show');
+            }
+        }
+
+        // Scroll to section
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                const headerHeight = 100;
+                const targetPosition = element.offsetTop - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Scroll to top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Contact functions
+        function makePhoneCall() {
+            window.location.href = 'tel:0843752399';
+        }
+
+        function sendEmail() {
+            const subject = 'สอบถามบริการขึ้นทะเบียนปุ๋ยและวัตถุอันตราย';
+            const body = 'สวัสดีครับ%0A%0Aสนใจสอบถามบริการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตรครับ%0A%0Aรบกวนติดต่อกลับด้วยนะครับ%0A%0Aขอบคุณครับ';
+            window.location.href = `mailto:parungrung24@gmail.com?subject=${subject}&body=${body}`;
+        }
+
+        function openWhatsApp() {
+            const message = 'สวัสดีครับ! สนใจสอบถามข้อมูลบริการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตรครับ';
+            const whatsappUrl = `https://wa.me/66843752399?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Status check function
+        function checkStatus() {
+            const statusInput = document.getElementById('statusInput');
+            const statusResult = document.getElementById('statusResult');
+            const statusLoading = document.getElementById('statusLoading');
+            const requestId = statusInput.value.trim();
+
+            if (!requestId) {
+                alert('กرุณากรอกเลขที่คำขอ');
+                return;
+            }
+
+            // Show loading
+            statusLoading.style.display = 'block';
+            statusResult.style.display = 'none';
+            statusResult.className = 'status-result';
+
+            // Simulate API call
+            setTimeout(() => {
+                statusLoading.style.display = 'none';
+                statusResult.style.display = 'block';
+
+                // Mock status responses based on input
+                if (requestId.toUpperCase().includes('REG-2024')) {
+                    if (Math.random() > 0.5) {
+                        statusResult.className = 'status-result success';
+                        statusResult.innerHTML = `
+                            <h4>✅ สถานะ: อนุมัติแล้ว</h4>
+                            <p><strong>เลขที่คำขอ:</strong> ${requestId}</p>
+                            <p><strong>วันที่อนุมัติ:</strong> ${new Date().toLocaleDateString('th-TH')}</p>
+                            <p><strong>สถานะ:</strong> รอรับใบสำคัญ</p>
+                            <p><strong>หมายเหตุ:</strong> สามารถมารับใบสำคัญได้แล้ว</p>
+                            <button class="btn" onclick="openLineWithMessage('สวัสดีครับ มาติดตาม ${requestId} ครับ ได้อนุมัติแล้วใช่มั้ยครับ')" style="margin-top: 1rem;">📞 ติดต่อรับใบสำคัญ</button>
+                        `;
+                    } else {
+                        statusResult.className = 'status-result pending';
+                        statusResult.innerHTML = `
+                            <h4>⏳ สถานะ: อยู่ระหว่างดำเนินการ</h4>
+                            <p><strong>เลขที่คำขอ:</strong> ${requestId}</p>
+                            <p><strong>วันที่ยื่น:</strong> ${new Date(Date.now() - 7*24*60*60*1000).toLocaleDateString('th-TH')}</p>
+                            <p><strong>สถานะ:</strong> รอผลการตรวจสอบเอกสาร</p>
+                            <p><strong>ระยะเวลาโดยประมาณ:</strong> 15-30 วันทำการ</p>
+                            <button class="btn" onclick="openLineWithMessage('สวัสดีครับ อยากทราบความคืบหน้า ${requestId} ครับ')" style="margin-top: 1rem;">📞 สอบถามความคืบหน้า</button>
+                        `;
+                    }
+                } else {
+                    statusResult.className = 'status-result error';
+                    statusResult.innerHTML = `
+                        <h4>❌ ไม่พบข้อมูลคำขอ</h4>
+                        <p><strong>เลขที่คำขอ:</strong> ${requestId}</p>
+                        <p>กรุณาตรวจสอบเลขที่คำขออีกครั้ง หรือติดต่อเจ้าหน้าที่</p>
+                        <button class="btn" onclick="openLineWithMessage('สวัสดีครับ ไม่พบข้อมูล ${requestId} ช่วยตรวจสอบให้หน่อยครับ')" style="margin-top: 1rem;">📞 ติดต่อสอบถาม</button>
+                    `;
+                }
+            }, 2000);
+        }
+
+        // File Upload Setup
+        function setupFileUpload() {
+            const uploadArea = document.getElementById('uploadArea');
+            const fileInput = document.getElementById('fileInput');
+            const uploadedImages = document.getElementById('uploadedImages');
+
+            // Click to upload
+            uploadArea.addEventListener('click', () => fileInput.click());
+
+            // Drag and drop events
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.classList.add('dragover');
+            });
+
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.classList.remove('dragover');
+            });
+
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('dragover');
+                handleFiles(e.dataTransfer.files);
+            });
+
+            // File input change
+            fileInput.addEventListener('change', (e) => {
+                handleFiles(e.target.files);
+            });
+        }
+
+        // Handle uploaded files
+        function handleFiles(files) {
+            for (let file of files) {
+                if (file.size > 10 * 1024 * 1024) {
+                    alert(`ไฟล์ ${file.name} ใหญ่เกิน 10MB`);
+                    continue;
+                }
+
+                if (!file.type.match('image.*') && !file.type.match('application/pdf')) {
+                    alert(`ไฟล์ ${file.name} ไม่ใช่รูปภาพหรือ PDF`);
+                    continue;
+                }
+
+                uploadedFiles.push(file);
+                displayUploadedFile(file);
+            }
+        }
+
+        // Display uploaded file
+        function displayUploadedFile(file) {
+            const uploadedImages = document.getElementById('uploadedImages');
+            const preview = document.createElement('div');
+            preview.className = 'image-preview';
+            
+            if (file.type.match('image.*')) {
+                const img = document.createElement('img');
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+                preview.appendChild(img);
+            } else if (file.type === 'application/pdf') {
+                const pdfIcon = document.createElement('div');
+                pdfIcon.innerHTML = `
+                    <div style="display: flex; flex-direction: column; align-items: center; 
+                                justify-content: center; height: 150px; background: #f5f5f5;">
+                        <div style="font-size: 3rem;">📄</div>
+                        <div style="font-size: 0.8rem; margin-top: 0.5rem;">${file.name}</div>
+                    </div>
+                `;
+                preview.appendChild(pdfIcon);
+            }
+
+            const removeBtn = document.createElement('button');
+            removeBtn.className = 'image-remove';
+            removeBtn.innerHTML = '×';
+            removeBtn.onclick = () => {
+                uploadedFiles = uploadedFiles.filter(f => f !== file);
+                preview.remove();
+            };
+
+            preview.appendChild(removeBtn);
+            uploadedImages.appendChild(preview);
+        }
+
+        // Form validation setup
+        function setupFormValidation() {
+            const form = document.getElementById('contactForm');
+            const inputs = form.querySelectorAll('input[required], select[required]');
+
+            inputs.forEach(input => {
+                input.addEventListener('blur', validateField);
+                input.addEventListener('input', clearFieldError);
+            });
+        }
+
+        // Validate individual field
+        function validateField(e) {
+            const field = e.target;
+            const value = field.value.trim();
+
+            // Remove previous error styling
+            clearFieldError(e);
+
+            // Validate required fields
+            if (field.hasAttribute('required') && !value) {
+                showFieldError(field, 'กรุณากรอกข้อมูลนี้');
+                return false;
+            }
+
+            // Validate phone number
+            if (field.type === 'tel' && value) {
+                const phonePattern = /^[0-9]{9,10}$/;
+                if (!phonePattern.test(value)) {
+                    showFieldError(field, 'กรุณากรอกเบอร์โทรให้ถูกต้อง');
+                    return false;
+                }
+            }
+
+            // Validate email
+            if (field.type === 'email' && value) {
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(value)) {
+                    showFieldError(field, 'กรุณากรอกอีเมลให้ถูกต้อง');
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        // Show field error
+        function showFieldError(field, message) {
+            field.style.borderColor = '#f44336';
+            field.style.boxShadow = '0 0 10px rgba(244, 67, 54, 0.2)';
+            
+            // Add error message
+            let errorMsg = field.parentNode.querySelector('.error-message');
+            if (!errorMsg) {
+                errorMsg = document.createElement('div');
+                errorMsg.className = 'error-message';
+                errorMsg.style.color = '#f44336';
+                errorMsg.style.fontSize = '0.8rem';
+                errorMsg.style.marginTop = '0.25rem';
+                field.parentNode.appendChild(errorMsg);
+            }
+            errorMsg.textContent = message;
+        }
+
+        // Clear field error
+        function clearFieldError(e) {
+            const field = e.target;
+            field.style.borderColor = '#ddd';
+            field.style.boxShadow = '';
+            
+            const errorMsg = field.parentNode.querySelector('.error-message');
+            if (errorMsg) {
+                errorMsg.remove();
+            }
+        }
+
+        // Submit contact form
+        function submitForm(e) {
+            e.preventDefault();
+            
+            const form = document.getElementById('contactForm');
+            const formData = new FormData(form);
+            const loading = document.getElementById('formLoading');
+            const success = document.getElementById('formSuccess');
+
+            // Validate all fields
+            let isValid = true;
+            const inputs = form.querySelectorAll('input[required], select[required]');
+            inputs.forEach(input => {
+                if (!validateField({target: input})) {
+                    isValid = false;
+                }
+            });
+
+            if (!isValid) {
+                alert('กรุณากรอกข้อมูลให้ครบถ้วนและถูกต้อง');
+                return;
+            }
+
+            // Show loading
+            loading.style.display = 'block';
+            success.style.display = 'none';
+
+            // Prepare message for Line
+            const name = formData.get('name');
+            const company = formData.get('company');
+            const phone = formData.get('phone');
+            const email = formData.get('email');
+            const service = formData.get('service');
+            const message = formData.get('message');
+
+            const serviceNames = {
+                fertilizer: 'ขึ้นทะเบียนปุ๋ย',
+                chemical: 'ขึ้นทะเบียนสารเคมีเกษตร',
+                hazardous: 'ขึ้นทะเบียนวัตถุอันตราย',
+                consult: 'คำปรึกษาและตรวจสอบ',
+                license: 'ต่อใบอนุญาตผลิต',
+                import: 'ใบอนุญาตนำเข้า',
+                renewal: 'บริการต่ออายุต่างๆ'
+            };
+
+            const lineMessage = `📝 แบบฟอร์มใหม่จากเว็บไซต์
+            
+👤 ชื่อ: ${name}
+🏢 บริษัท: ${company || 'ไม่ระบุ'}
+📱 โทร: ${phone}
+📧 อีเมล: ${email || 'ไม่ระบุ'}
+🔧 บริการ: ${serviceNames[service] || service}
+💬 รายละเอียด: ${message || 'ไม่ระบุ'}
+📎 แนบไฟล์: ${uploadedFiles.length} ไฟล์`;
+
+            // Simulate form submission
+            setTimeout(() => {
+                loading.style.display = 'none';
+                success.style.display = 'block';
+                
+                // Auto-open Line with message
+                setTimeout(() => {
+                    openLineWithMessage(lineMessage);
+                }, 1000);
+
+                // Reset form after 3 seconds
+                setTimeout(() => {
+                    form.reset();
+                    success.style.display = 'none';
+                    uploadedFiles = [];
+                    document.getElementById('uploadedImages').innerHTML = '';
+                }, 3000);
+            }, 2000);
+        }
+
+        // Close notification
+        function closeNotification() {
+            const notification = document.getElementById('notificationBar');
+            notification.style.transform = 'translateY(-100%)';
+            setTimeout(() => {
+                notification.remove();
+            }, 300);
+        }
+
+        // Show privacy policy
+        function showPrivacyPolicy() {
+            alert('นโยบายความเป็นส่วนตัว:\n\nเราเก็บรักษาข้อมูลส่วนบุคคลของท่านอย่างปลอดภัย และใช้เพื่อการติดต่อและให้บริการเท่านั้น\n\nหากต้องการข้อมูลเพิ่มเติม กรุณาติดต่อเรา');
+        }
+
+        // Mobile menu toggle (for future enhancement)
+        function toggleMobileMenu() {
+            // This can be enhanced for mobile responsive menu
+            console.log('Mobile menu toggled');
+        }
+
+    </script>
+</body>
+</html>
