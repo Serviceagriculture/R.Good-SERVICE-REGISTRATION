@@ -1,0 +1,1912 @@
+<a href="#contact" class="contact-btn" onclick="scrollToSection('contact')">Free Consultation</a>
+                </div>
+                <div class="mobile-menu" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Agricultural Registration Services</h1>
+            <p>Expert in agricultural hazardous materials and fertilizer registration. Comprehensive, fast, legally compliant services with full consultation support for all regulatory requirements.</p>
+            <div class="hero-buttons">
+                <a href="#services" class="btn" onclick="scrollToSection('services')">View All Services</a>
+                <a href="#contact" class="btn btn-secondary" onclick="scrollToSection('contact')">Free Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-section" id="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🌱</div>
+                    <h3>Fertilizer Registration</h3>
+                    <p>Complete fertilizer registration services according to MOA standards</p>
+                    <ul class="service-features">
+                        <li>Chemical Fertilizers</li>
+                        <li>Organic Fertilizers</li>
+                        <li>Bio-fertilizers</li>
+                        <li>Mixed Fertilizers</li>
+                        <li>Laboratory Analysis</li>
+                        <li>Complete Documentation</li>
+                    </ul>
+                    <a href="#contact" class="btn" onclick="selectService('fertilizer')">Get Quote</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🧪</div>
+                    <h3>Agricultural Chemical Registration</h3>
+                    <p>Registration services for plant and animal pest control substances</p>
+                    <ul class="service-features">
+                        <li>Insecticides</li>
+                        <li>Herbicides</li>
+                        <li>Fungicides</li>
+                        <li>Biological Products</li>
+                        <li>Plant Growth Regulators</li>
+                        <li>Efficacy Testing</li>
+                        <li>Safety Studies</li>
+                    </ul>
+                    <a href="#contact" class="btn" onclick="selectService('chemical')">Get Quote</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">⚠️</div>
+                    <h3>Hazardous Material Registration</h3>
+                    <p>Hazardous material registration services under the Hazardous Substances Act</p>
+                    <ul class="service-features">
+                        <li>Type 2 Hazardous Materials</li>
+                        <li>Type 3 Hazardous Materials</li>
+                        <li>Hazard Classification</li>
+                        <li>Safety Data Sheets</li>
+                        <li>Emergency Plans</li>
+                        <li>Staff Training</li>
+                    </ul>
+                    <a href="#contact" class="btn" onclick="selectService('hazardous')">Get Quote</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Consultation & Verification</h3>
+                    <p>Advisory and document verification services</p>
+                    <ul class="service-features">
+                        <li>Document Accuracy Check</li>
+                        <li>Legal Compliance Consulting</li>
+                        <li>Registration Planning</li>
+                        <li>Status Tracking</li>
+                        <li>Problem Resolution</li>
+                        <li>Staff Training</li>
+                    </ul>
+                    <a href="#contact" class="btn" onclick="selectService('consult')">Get Quote</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📄</div>
+                    <h3>Production License Renewal</h3>
+                    <p>Fertilizer and chemical production license renewal services</p>
+                    <ul class="service-features">
+                        <li>License Renewal</li>
+                        <li>Document Verification</li>
+                        <li>Government Coordination</li>
+                        <li>Approval Tracking</li>
+                        <li>New License Application</li>
+                        <li>Compliance Guidance</li>
+                    </ul>
+                    <a href="#contact" class="btn" onclick="selectService('license')">Get Quote</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3>Import Permit Services</h3>
+                    <p>Import permit services for agricultural products</p>
+                    <ul class="service-features">
+                        <li>Fertilizer Import Permits</li>
+                        <li>Chemical Import Permits</li>
+                        <li>Document Verification</li>
+                        <li>Customs Coordination</li>
+                        <li>Permit Collection</li>
+                    </ul>
+                    <a href="#contact" class="btn" onclick="selectService('import')">Get Quote</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process-section" id="process">
+        <div class="container">
+            <h2 class="section-title">Our Service Process</h2>
+            <div class="process-steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Consultation & Analysis</h3>
+                    <p>Listen to requirements, analyze products, recommend appropriate registration approaches</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Document Preparation</h3>
+                    <p>Prepare complete documents, laboratory testing, compile test reports</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Submit Application</h3>
+                    <p>Submit documents to relevant agencies, track progress, coordinate with officials</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>Receive Approval</h3>
+                    <p>Receive approval/registration certificate with usage guidance and renewal advice</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="status-section" id="status">
+        <div class="container">
+            <h2 class="section-title">Check Registration Status</h2>
+            <div class="status-checker">
+                <h3>Enter Request Number or Tracking Code</h3>
+                <div class="status-input">
+                    <input type="text" id="statusInput" placeholder="Enter request number e.g. REG-2024-001">
+                    <button class="btn" onclick="checkStatus()">Check</button>
+                </div>
+                <div class="loading-spinner" id="statusLoading"></div>
+                <div id="statusResult" class="status-result">
+                    <!-- Status results will be displayed here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            
+            <!-- Quick Contact Cards -->
+            <div class="quick-contact">
+                <div class="contact-card" onclick="makePhoneCall()">
+                    <div class="contact-card-icon">📱</div>
+                    <h4>Call Now</h4>
+                    <a href="tel:0843752399">084-375-2399</a>
+                    <p>Call us during business hours</p>
+                </div>
+                
+                <div class="contact-card" onclick="openLineChat()">
+                    <div class="contact-card-icon">💬</div>
+                    <h4>Line Official</h4>
+                    <a href="https://line.me/R/ti/p/@991cyisb" target="_blank">@991cyisb</a>
+                    <p>Chat with us on Line OA</p>
+                </div>
+                
+                <div class="contact-card" onclick="sendEmail()">
+                    <div class="contact-card-icon">📧</div>
+                    <h4>Send Email</h4>
+                    <a href="mailto:parungrung24@gmail.com">parungrung24@gmail.com</a>
+                    <p>Send documents and details</p>
+                </div>
+                
+                <div class="contact-card" onclick="openWeChat()">
+                    <div class="contact-card-icon">🇨🇳</div>
+                    <h4>WeChat</h4>
+                    <a href="javascript:void(0)">Ruby</a>
+                    <p>For Chinese customers</p>
+                </div>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Company</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Interested *</label>
+                            <select id="service" name="service" required>
+                                <option value="">Select Service</option>
+                                <option value="fertilizer">Fertilizer Registration</option>
+                                <option value="chemical">Agricultural Chemical Registration</option>
+                                <option value="hazardous">Hazardous Material Registration</option>
+                                <option value="consult">Consultation & Verification</option>
+                                <option value="license">Production License Renewal</option>
+                                <option value="import">Import Permits</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Details</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Describe your product and requirements"></textarea>
+                        </div>
+                        <div class="loading-spinner" id="formLoading"></div>
+                        <div class="success-message" id="formSuccess">
+                            ✅ Message sent successfully! We will contact you soon.
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📍</div>
+                        <div>
+                            <strong>Office Address</strong><br>
+                            8, 68 Theprak Road<br>
+                            Tha Raeng, Bang Khen<br>
+                            Bangkok 10220, Thailand
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📞</div>
+                        <div>
+                            <strong>Phone</strong><br>
+                            <a href="tel:0843752399" style="color: #bbdefb;">084-375-2399</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📧</div>
+                        <div>
+                            <strong>Email</strong><br>
+                            <a href="mailto:parungrung24@gmail.com" style="color: #bbdefb;">parungrung24@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">🕒</div>
+                        <div>
+                            <strong>Business Hours</strong><br>
+                            Monday-Friday: 9:00-17:00<br>
+                            Saturday-Sunday: Closed
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Chat Button -->
+    <a href="https://line.me/R/ti/p/@991cyisb" target="_blank" class="live-chat-btn">
+        💬 Chat Line
+    </a>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        ↑
+    </button>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>Agricultural product registration specialists with over 25 years of experience and professional team - R.Good Service Registration</p>
+                    <div class="social-icons">
+                        <a href="https://line.me/R/ti/p/@991cyisb" class="social-icon" target="_blank" title="Line Official">💬</a>
+                        <a href="javascript:void(0)" onclick="openWeChat()" class="social-icon" title="WeChat">🇨🇳</a>
+                        <a href="mailto:parungrung24@gmail.com" class="social-icon" target="_blank" title="Email">📧</a>
+                        <a href="tel:0843752399" class="social-icon" target="_blank" title="Phone">📞</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Main Services</h3>
+                    <ul>
+                        <li><a href="#services" onclick="selectService('fertilizer')">Fertilizer Registration</a></li>
+                        <li><a href="#services" onclick="selectService('chemical')">Agricultural Chemical Registration</a></li>
+                        <li><a href="#services" onclick="selectService('hazardous')">Hazardous Material Registration</a></li>
+                        <li><a href="#services" onclick="selectService('consult')">Free Consultation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Additional Services</h3>
+                    <ul>
+                        <li><a href="#services" onclick="selectService('license')">Production License Renewal</a></li>
+                        <li><a href="#services" onclick="selectService('import')">Import Permits</a></li>
+                        <li><a href="#status" onclick="scrollToSection('status')">Check Status</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="https://line.me/R/ti/p/@991cyisb" target="_blank">Line Official @991cyisb</a></li>
+                        <li><a href="javascript:void(0)" onclick="openWeChat()">WeChat: Ruby</a></li>
+                        <li><a href="#contact" onclick="scrollToSection('contact')">Contact Us</a></li>
+                        <li><a href="#" onclick="showPrivacyPolicy()">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 R.Good Service Registration - Agricultural Registration Services | Designed with ❤️ for customers</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Global Variables
+        let uploadedFiles = [];
+        let currentServiceSelection = '';
+
+        // Page Load Events
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeWebsite();
+            setupEventListeners();
+            showWelcomeMessage();
+        });
+
+        // Initialize Website
+        function initializeWebsite() {
+            // Add smooth scrolling
+            document.documentElement.style.scrollBehavior = 'smooth';
+            
+            // Setup header scroll effect
+            window.addEventListener('scroll', handleScroll);
+            
+            // Setup form validation
+            setupFormValidation();
+            
+            console.log('🚀 English Website initialized successfully!');
+        }
+
+        // Setup Event Listeners
+        function setupEventListeners() {
+            // Contact form submission
+            const contactForm = document.getElementById('contactForm');
+            contactForm.addEventListener('submit', submitForm);
+            
+            // Status check
+            const statusInput = document.getElementById('statusInput');
+            statusInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    checkStatus();
+                }
+            });
+        }
+
+        // Go back to Thai version
+        function goToThaiPage() {
+            // Go back to the Thai version (close this tab or redirect)
+            window.close(); // Try to close if opened in new tab
+            // If can't close, redirect to Thai version
+            setTimeout(() => {
+                window.location.href = 'index.html'; // or whatever the Thai file is named
+            }, 100);
+        }
+
+        // Line Configuration
+        const LINE_CONFIG = {
+            officialUrl: 'https://line.me/R/ti/p/@991cyisb',
+            useOfficial: true
+        };
+
+        // Show welcome message
+        function showWelcomeMessage() {
+            setTimeout(() => {
+                if (window.confirm('🎉 Welcome to our website! How can we help you today?')) {
+                    scrollToSection('contact');
+                }
+            }, 3000);
+        }
+
+        // Service Selection and Line Integration
+        function selectService(serviceType) {
+            currentServiceSelection = serviceType;
+            
+            // Service messages for Line in English
+            const serviceMessages = {
+                fertilizer: 'Hello! I\'m interested in fertilizer registration services 🌱\n\nLooking to register:\n- Chemical Fertilizers\n- Organic Fertilizers\n- Bio-fertilizers\n- Mixed Fertilizers\n\nPlease send me more details.',
+                
+                chemical: 'Hello! I\'m interested in agricultural chemical registration services 🧪\n\nLooking to register:\n- Insecticides\n- Herbicides\n- Fungicides\n- Biological Products\n\nPlease provide more information.',
+                
+                hazardous: 'Hello! I\'m interested in hazardous material registration services ⚠️\n\nLooking to register:\n- Type 2 Hazardous Materials\n- Type 3 Hazardous Materials\n- Hazard Classification\n\nPlease send me details.',
+                
+                consult: 'Hello! I\'m interested in consultation and verification services 📊\n\nServices needed:\n- Document verification\n- Legal compliance consulting\n- Registration planning\n\nWhat documents can you help check?',
+                
+                license: 'Hello! I\'m interested in production license renewal services 📄\n\nServices:\n- License renewal\n- Document verification\n- Government coordination\n\nWhen does my license expire?',
+                
+                import: 'Hello! I\'m interested in import permit services 🌐\n\nServices:\n- Fertilizer import permits\n- Chemical import permits\n- Customs coordination\n\nWhat type of products do I need to import?'
+            };
+
+            const message = serviceMessages[serviceType] || 'Hello! I\'m interested in your services.';
+            
+            // Open Line with pre-filled message
+            openLineWithMessage(message);
+        }
+
+        // Open Line Chat with pre-filled message
+        function openLineWithMessage(message) {
+            const lineUrl = `${LINE_CONFIG.officialUrl}?openExternalBrowser=1`;
+            
+            // Open Line OA
+            window.open(lineUrl, '_blank');
+            
+            // Show popup to copy message
+            setTimeout(() => {
+                showLineOAMessage(message);
+            }, 500);
+        }
+
+        // Show Line OA message popup
+        function showLineOAMessage(message) {
+            // Remove existing popup
+            const existingPopup = document.getElementById('line-popup');
+            if (existingPopup) {
+                existingPopup.remove();
+            }
+
+            const popup = document.createElement('div');
+            popup.id = 'line-popup';
+            popup.style.cssText = `
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+                background: rgba(0,0,0,0.8); z-index: 10001; display: flex; 
+                align-items: center; justify-content: center;
+            `;
+
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                background: white; padding: 2rem; border-radius: 15px; 
+                max-width: 500px; width: 90%; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                position: relative;
+            `;
+
+            // Close button
+            const closeBtn = document.createElement('button');
+            closeBtn.innerHTML = '×';
+            closeBtn.style.cssText = `
+                position: absolute; top: 10px; right: 15px; background: none; 
+                border: none; font-size: 1.5rem; cursor: pointer; color: #999;
+                z-index: 10002;
+            `;
+            closeBtn.onclick = function() {
+                popup.remove();
+            };
+
+            // Content
+            const content = document.createElement('div');
+            content.innerHTML = `
+                <h3 style="color: #00C300; margin-bottom: 1rem; display: flex; align-items: center;">
+                    💚 Send this message in Line OA
+                </h3>
+                <div style="background: #f0fff0; padding: 1rem; border-radius: 10px; 
+                           border-left: 4px solid #00C300; margin-bottom: 1rem; max-height: 200px; overflow-y: auto;">
+                    <pre style="white-space: pre-wrap; font-family: inherit; margin: 0; 
+                               font-size: 0.9rem; line-height: 1.5;">${message}</pre>
+                </div>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button id="copyBtn" 
+                            style="flex: 1; padding: 0.8rem; background: #ff9800; color: white; 
+                                   border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
+                        📋 Copy Message
+                    </button>
+                    <button id="closeBtn2"
+                            style="padding: 0.8rem 1.5rem; background: #666; color: white; 
+                                   border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
+                        Close
+                    </button>
+                </div>
+                <p style="font-size: 0.8rem; color: #666; margin-top: 1rem; text-align: center;">
+                    📱 Line OA is open, paste and send the message
+                </p>
+            `;
+
+            modal.appendChild(closeBtn);
+            modal.appendChild(content);
+            popup.appendChild(modal);
+
+            // Event listeners
+            const copyBtn = content.querySelector('#copyBtn');
+            copyBtn.onclick = function() {
+                copyToClipboard(message);
+                this.innerHTML = '✅ Copied!';
+                this.style.background = '#4caf50';
+            };
+
+            const closeBtn2 = content.querySelector('#closeBtn2');
+            closeBtn2.onclick = function() {
+                popup.remove();
+            };
+
+            // Close on background click
+            popup.addEventListener('click', function(e) {
+                if (e.target === popup) {
+                    popup.remove();
+                }
+            });
+
+            // ESC key to close
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && document.getElementById('line-popup')) {
+                    popup.remove();
+                }
+            });
+
+            document.body.appendChild(popup);
+        }
+
+        // Copy text to clipboard
+        function copyToClipboard(text) {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(text);
+            } else {
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+            }
+        }
+
+        // Quick contact functions
+        function openLineChat() {
+            const message = 'Hello! I\'m interested in agricultural registration services. Could you provide more information?';
+            openLineWithMessage(message);
+        }
+
+        function makePhoneCall() {
+            window.location.href = 'tel:0843752399';
+        }
+
+        function sendEmail() {
+            const subject = 'Inquiry about Agricultural Registration Services';
+            const body = 'Hello,%0A%0AI am interested in your agricultural registration services.%0A%0APlease contact me back.%0A%0AThank you';
+            window.location.href = `mailto:parungrung24@gmail.com?subject=${subject}&body=${body}`;
+        }
+
+        function openWeChat() {
+            showWeChatQR();
+        }
+
+        // Show WeChat QR Code popup
+        function showWeChatQR() {
+            // Remove existing popup
+            const existingOverlay = document.getElementById('wechat-overlay');
+            if (existingOverlay) {
+                existingOverlay.remove();
+            }
+
+            const overlay = document.createElement('div');
+            overlay.id = "wechat-overlay";
+            overlay.style.cssText = `
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0,0,0,0.8); z-index: 10002;
+                display: flex; align-items: center; justify-content: center;
+            `;
+
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                background: white; padding: 2rem; border-radius: 15px;
+                max-width: 400px; width: 90%; text-align: center; position: relative;
+            `;
+
+            // Close button
+            const closeBtn = document.createElement('button');
+            closeBtn.innerHTML = "×";
+            closeBtn.style.cssText = `
+                position:absolute; top:10px; right:15px; font-size:1.5rem;
+                background:none; border:none; cursor:pointer; color:#999;
+                z-index: 10003;
+            `;
+            closeBtn.onclick = function() {
+                overlay.remove();
+            };
+
+            // Content
+            const content = document.createElement('div');
+            content.innerHTML = `
+                <h3 style="color:#1aad19; margin-bottom:1rem;">💬 Add WeChat Friend</h3>
+                <p>WeChat ID: <b>wxid_kh9jrtenwgw522</b></p>
+                <div style="margin: 1rem 0;">
+                    <img src="https://i.ibb.co/gMvJPf9q/IMG-3907.jpg" width="200px" height="200px" style="border-radius: 10px;" />
+                </div>
+                <p style="font-size: 0.9rem; color: #666; margin-bottom: 1.5rem;">Scan QR Code to add friend</p>
+                <button id="closeWeChatBtn" style="padding: 0.8rem 1.5rem; background: #666; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
+                    Close
+                </button>
+            `;
+
+            modal.appendChild(closeBtn);
+            modal.appendChild(content);
+            overlay.appendChild(modal);
+
+            // Event listener for close button
+            const closeBtn2 = content.querySelector('#closeWeChatBtn');
+            closeBtn2.onclick = function() {
+                overlay.remove();
+            };
+
+            // Close on background click
+            overlay.addEventListener('click', function(e) {
+                if (e.target === overlay) {
+                    overlay.remove();
+                }
+            });
+
+            // ESC key to close
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && document.getElementById('wechat-overlay')) {
+                    overlay.remove();
+                }
+            });
+
+            document.body.appendChild(overlay);
+        }
+
+        // Header scroll effect
+        function handleScroll() {
+            const header = document.getElementById('header');
+            const backToTop = document.getElementById('backToTop');
+            
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+                backToTop.classList.add('show');
+            } else {
+                header.classList.remove('scrolled');
+                backToTop.classList.remove('show');
+            }
+        }
+
+        // Scroll to section
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                const headerHeight = 100;
+                const targetPosition = element.offsetTop - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Scroll to top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Status check function
+        function checkStatus() {
+            const statusInput = document.getElementById('statusInput');
+            const statusResult = document.getElementById('statusResult');
+            const statusLoading = document.getElementById('statusLoading');
+            const requestId = statusInput.value.trim();
+
+            if (!requestId) {
+                alert('Please enter request number');
+                return;
+            }
+
+            // Show loading
+            statusLoading.style.display = 'block';
+            statusResult.style.display = 'none';
+            statusResult.className = 'status-result';
+
+            // Simulate API call
+            setTimeout(() => {
+                statusLoading.style.display = 'none';
+                statusResult.style.display = 'block';
+
+                // Mock status responses
+                if (requestId.toUpperCase().includes('REG-2024')) {
+                    if (Math.random() > 0.5) {
+                        statusResult.className = 'status-result success';
+                        statusResult.innerHTML = `
+                            <h4>✅ Status: Approved</h4>
+                            <p><strong>Request ID:</strong> ${requestId}</p>
+                            <p><strong>Approval Date:</strong> ${new Date().toLocaleDateString('en-US')}</p>
+                            <p><strong>Status:</strong> Ready for certificate collection</p>
+                            <p><strong>Note:</strong> Certificate is ready for collection</p>
+                            <button class="btn" onclick="openLineWithMessage('Hello, I want to follow up on ${requestId}. Is it approved?')" style="margin-top: 1rem;">📞 Contact for Certificate</button>
+                        `;
+                    } else {
+                        statusResult.className = 'status-result pending';
+                        statusResult.innerHTML = `
+                            <h4>⏳ Status: Under Review</h4>
+                            <p><strong>Request ID:</strong> ${requestId}</p>
+                            <p><strong>Submission Date:</strong> ${new Date(Date.now() - 7*24*60*60*1000).toLocaleDateString('en-US')}</p>
+                            <p><strong>Status:</strong> Document review in progress</p>
+                            <p><strong>Estimated Time:</strong> 15-30 business days</p>
+                            <button class="btn" onclick="openLineWithMessage('Hello, I would like to know the progress of ${requestId}.')" style="margin-top: 1rem;">📞 Check Progress</button>
+                        `;
+                    }
+                } else {
+                    statusResult.className = 'status-result error';
+                    statusResult.innerHTML = `
+                        <h4>❌ Request Not Found</h4>
+                        <p><strong>Request ID:</strong> ${requestId}</p>
+                        <p>Please check the request number again or contact our staff</p>
+                        <button class="btn" onclick="openLineWithMessage('Hello, I cannot find information for ${requestId}. Can you help check?')" style="margin-top: 1rem;">📞 Contact Support</button>
+                    `;
+                }
+            }, 2000);
+        }
+
+        // Form validation setup
+        function setupFormValidation() {
+            const form = document.getElementById('contactForm');
+            const inputs = form.querySelectorAll('input[required], select[required]');
+
+            inputs.forEach(input => {
+                input.addEventListener('blur', validateField);
+                input.addEventListener('input', clearFieldError);
+            });
+        }
+
+        // Validate individual field
+        function validateField(e) {
+            const field = e.target;
+            const value = field.value.trim();
+
+            clearFieldError(e);
+
+            if (field.hasAttribute('required') && !value) {
+                showFieldError(field, 'This field is required');
+                return false;
+            }
+
+            if (field.type === 'tel' && value) {
+                const phonePattern = /^[0-9]{9,10}$/;
+                if (!phonePattern.test(value)) {
+                    showFieldError(field, 'Please enter a valid phone number');
+                    return false;
+                }
+            }
+
+            if (field.type === 'email' && value) {
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(value)) {
+                    showFieldError(field, 'Please enter a valid email address');
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        // Show field error
+        function showFieldError(field, message) {
+            field.style.borderColor = '#f44336';
+            field.style.boxShadow = '0 0 10px rgba(244, 67, 54, 0.2)';
+            
+            let errorMsg = field.parentNode.querySelector('.error-message');
+            if (!errorMsg) {
+                errorMsg = document.createElement('div');
+                errorMsg.className = 'error-message';
+                errorMsg.style.color = '#f44336';
+                errorMsg.style.fontSize = '0.8rem';
+                errorMsg.style.marginTop = '0.25rem';
+                field.parentNode.appendChild(errorMsg);
+            }
+            errorMsg.textContent = message;
+        }
+
+        // Clear field error
+        function clearFieldError(e) {
+            const field = e.target;
+            field.style.borderColor = '#ddd';
+            field.style.boxShadow = '';
+            
+            const errorMsg = field.parentNode.querySelector('.error-message');
+            if (errorMsg) {
+                errorMsg.remove();
+            }
+        }
+
+        // Submit contact form
+        function submitForm(e) {
+            e.preventDefault();
+            
+            const form = document.getElementById('contactForm');
+            const formData = new FormData(form);
+            const loading = document.getElementById('formLoading');
+            const success = document.getElementById('formSuccess');
+
+            // Validate all fields
+            let isValid = true;
+            const inputs = form.querySelectorAll('input[required], select[required]');
+            inputs.forEach(input => {
+                if (!validateField({target: input})) {
+                    isValid = false;
+                }
+            });
+
+            if (!isValid) {
+                alert('Please fill in all required fields correctly');
+                return;
+            }
+
+            // Show loading
+            loading.style.display = 'block';
+            success.style.display = 'none';
+
+            // Prepare message for Line
+            const name = formData.get('name');
+            const company = formData.get('company');
+            const phone = formData.get('phone');
+            const email = formData.get('email');
+            const service = formData.get('service');
+            const message = formData.get('message');
+
+            const serviceNames = {
+                fertilizer: 'Fertilizer Registration',
+                chemical: 'Agricultural Chemical Registration',
+                hazardous: 'Hazardous Material Registration',
+                consult: 'Consultation & Verification',
+                license: 'Production License Renewal',
+                import: 'Import Permits'
+            };
+
+            const lineMessage = `Hello! New customer inquiry from website\n\n` +
+                `👤 Name: ${name}\n` +
+                `🏢 Company: ${company || 'Not specified'}\n` +
+                `📞 Phone: ${phone}\n` +
+                `📧 Email: ${email || 'Not specified'}\n` +
+                `🎯 Service Interest: ${serviceNames[service] || service}\n` +
+                `💬 Details: ${message || 'None'}\n\n` +
+                `Please contact back.`;
+
+            // Simulate form submission
+            setTimeout(() => {
+                loading.style.display = 'none';
+                success.style.display = 'block';
+                
+                // Auto-open Line with message
+                setTimeout(() => {
+                    openLineWithMessage(lineMessage);
+                }, 1000);
+
+                // Reset form after 3 seconds
+                setTimeout(() => {
+                    form.reset();
+                    success.style.display = 'none';
+                }, 3000);
+            }, 2000);
+        }
+
+        // Close notification
+        function closeNotification() {
+            const notification = document.getElementById('notificationBar');
+            notification.style.transform = 'translateY(-100%)';
+            setTimeout(() => {
+                notification.remove();
+            }, 300);
+        }
+
+        // Show privacy policy
+        function showPrivacyPolicy() {
+            alert('Privacy Policy:\n\nWe securely store your personal information and use it only for contact and service purposes.\n\nFor more information, please contact us.');
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            console.log('Mobile menu toggled');
+        }
+    </script>
+    
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agricultural Registration Services - Fertilizers & Hazardous Materials</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1976d2, #2196f3);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 0.5rem 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .logo::before {
+            content: "📋";
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        nav a:hover {
+            background-color: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 80%;
+        }
+
+        .contact-btn {
+            background: #ff5722;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .contact-btn:hover::before {
+            left: 100%;
+        }
+
+        .contact-btn:hover {
+            background: #e64a19;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,87,34,0.4);
+        }
+
+        /* Thai Version Button */
+        .thai-btn {
+            background: #4caf50;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+        }
+
+        .thai-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .thai-btn:hover::before {
+            left: 100%;
+        }
+
+        .thai-btn:hover {
+            background: #388e3c;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76,175,80,0.4);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(25, 118, 210, 0.9), rgba(33, 150, 243, 0.9)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23e3f2fd" width="1200" height="600"/><path fill="%23bbdefb" d="M0 200h1200v200H0z"/><circle fill="%232196f3" cx="200" cy="150" r="50"/><circle fill="%2364b5f6" cx="600" cy="180" r="40"/><circle fill="%2390caf9" cx="1000" cy="140" r="60"/></svg>');
+            color: white;
+            text-align: center;
+            padding: 8rem 0 4rem 0;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="25" cy="25" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="75" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(1deg); }
+            66% { transform: translateY(10px) rotate(-1deg); }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: slideInDown 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: slideInUp 1s ease-out 0.3s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: slideInUp 1s ease-out 0.6s both;
+        }
+
+        @keyframes slideInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .btn {
+            display: inline-block;
+            background: #ff5722;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.5s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn:hover {
+            background: #e64a19;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255,87,34,0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #1976d2;
+        }
+
+        /* Notification Bar */
+        .notification-bar {
+            background: #ff9800;
+            color: white;
+            text-align: center;
+            padding: 0.5rem;
+            font-size: 0.9rem;
+            animation: slideDown 0.5s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .notification-bar::before {
+            content: '📢';
+            margin-right: 0.5rem;
+        }
+
+        .notification-close {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1976d2;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(45deg, #ff5722, #2196f3);
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .service-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border: 3px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(33,150,243,0.1), transparent);
+            transition: left 0.8s;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            border-color: #2196f3;
+        }
+
+        .service-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .service-card h3 {
+            color: #1976d2;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .service-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            list-style: none;
+            text-align: left;
+            margin: 1rem 0;
+        }
+
+        .service-features li {
+            padding: 0.3rem 0;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .service-features li:hover {
+            transform: translateX(5px);
+            color: #1976d2;
+        }
+
+        .service-features li::before {
+            content: "✓";
+            color: #4caf50;
+            font-weight: bold;
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .step-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .step-number {
+            background: linear-gradient(45deg, #2196f3, #1976d2);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem auto;
+            box-shadow: 0 4px 10px rgba(33,150,243,0.3);
+            transition: all 0.3s;
+        }
+
+        .step-card:hover .step-number {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(33,150,243,0.5);
+        }
+
+        .step-card h3 {
+            color: #1976d2;
+            margin-bottom: 1rem;
+        }
+
+        /* Status Check Section */
+        .status-section {
+            padding: 4rem 0;
+            background: #e3f2fd;
+        }
+
+        .status-checker {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .status-input {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .status-input input {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            min-width: 250px;
+        }
+
+        .status-input input:focus {
+            outline: none;
+            border-color: #2196f3;
+            box-shadow: 0 0 10px rgba(33,150,243,0.2);
+        }
+
+        .status-result {
+            margin-top: 2rem;
+            padding: 1rem;
+            border-radius: 10px;
+            display: none;
+            animation: slideInUp 0.5s ease-out;
+        }
+
+        .status-result.success {
+            background: #e8f5e8;
+            border: 2px solid #4caf50;
+            color: #2e7d32;
+        }
+
+        .status-result.pending {
+            background: #fff3e0;
+            border: 2px solid #ff9800;
+            color: #e65100;
+        }
+
+        .status-result.error {
+            background: #ffebee;
+            border: 2px solid #f44336;
+            color: #c62828;
+        }
+
+        /* Contact Form Section */
+        .contact-section {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-form {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2196f3;
+            box-shadow: 0 0 10px rgba(33,150,243,0.2);
+            transform: translateY(-2px);
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #1976d2, #2196f3);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .contact-info h3 {
+            margin-bottom: 2rem;
+            color: #bbdefb;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .contact-item:hover {
+            transform: translateX(5px);
+        }
+
+        .contact-item-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            width: 40px;
+        }
+
+        /* Quick Contact Cards */
+        .quick-contact {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(33,150,243,0.1), transparent);
+            transition: left 0.8s;
+        }
+
+        .contact-card:hover::before {
+            left: 100%;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-color: #2196f3;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .contact-card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .contact-card:hover .contact-card-icon {
+            transform: scale(1.2);
+        }
+
+        .contact-card h4 {
+            color: #1976d2;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card a {
+            color: #2196f3;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .contact-card a:hover {
+            color: #1976d2;
+        }
+
+        /* Live Chat Button */
+        .live-chat-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #25d366, #20ba5a);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(37,211,102,0.4);
+            z-index: 1000;
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+            text-decoration: none;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 4px 15px rgba(37,211,102,0.4); }
+            50% { box-shadow: 0 4px 25px rgba(37,211,102,0.8); }
+            100% { box-shadow: 0 4px 15px rgba(37,211,102,0.4); }
+        }
+
+        .live-chat-btn:hover {
+            background: linear-gradient(45deg, #20ba5a, #1ea84c);
+            transform: translateY(-3px) scale(1.05);
+            animation: none;
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #1976d2, #1565c0);
+            color: white;
+            padding: 3rem 0 1rem 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #bbdefb;
+            position: relative;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: #bbdefb;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+            transition: transform 0.3s;
+        }
+
+        .footer-section ul li:hover {
+            transform: translateX(5px);
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #bbdefb;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-icon:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #1565c0;
+            position: relative;
+        }
+
+        /* Loading Spinner */
+        .loading-spinner {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #2196f3;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Success Message */
+        .success-message {
+            background: #e8f5e8;
+            border: 2px solid #4caf50;
+            color: #2e7d32;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            display: none;
+            animation: slideInUp 0.5s ease-out;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background: #1976d2;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: #1565c0;
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav {
+                width: 100%;
+            }
+
+            nav ul {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .status-input {
+                flex-direction: column;
+            }
+
+            .status-input input {
+                min-width: auto;
+            }
+
+            .quick-contact {
+                grid-template-columns: 1fr;
+            }
+
+            .live-chat-btn {
+                bottom: 15px;
+                right: 15px;
+                padding: 12px 16px;
+                font-size: 0.9rem;
+            }
+
+            .back-to-top {
+                bottom: 70px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Notification Bar -->
+    <div class="notification-bar" id="notificationBar">
+        Special Promotion! Free consultation for new customers. Contact us now!
+        <button class="notification-close" onclick="closeNotification()">×</button>
+    </div>
+
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-left">
+                    <div class="logo" onclick="scrollToSection('home')">R.Good Service Registration</div>
+                    <nav>
+                        <ul>
+                            <li><a href="#home" onclick="scrollToSection('home')">Home</a></li>
+                            <li><a href="#services" onclick="scrollToSection('services')">Services</a></li>
+                            <li><a href="#process" onclick="scrollToSection('process')">Process</a></li>
+                            <li><a href="#status" onclick="scrollToSection('status')">Check Status</a></li>
+                            <li><a href="#contact" onclick="scrollToSection('contact')">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="header-right">
+                    <!-- Thai Version Button -->
+                    <button class="thai-btn" onclick="goToThaiPage()">
+                        🇹🇭 Thai Version
+                    </button>
+                    <a href="#
