@@ -1599,38 +1599,98 @@
 
         // Show Line OA message popup
         function showLineOAMessage(message) {
+            // ลบ popup เก่าก่อน (ถ้ามี)
+            const existingPopup = document.getElementById('line-popup');
+            if (existingPopup) {
+                existingPopup.remove();
+            }
+
             const popup = document.createElement('div');
-            popup.innerHTML = `
-                <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-                           background: rgba(0,0,0,0.8); z-index: 10001; display: flex; 
-                           align-items: center; justify-content: center;">
-                    <div style="background: white; padding: 2rem; border-radius: 15px; 
-                               max-width: 500px; width: 90%; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-                               position: relative;">
-                        <h3 style="color: #00C300; margin-bottom: 1rem; display: flex; align-items: center;">
-                            💚 ส่งข้อความนี้ใน Line OA
-                        </h3>
-                        <div style="background: #f0fff0; padding: 1rem; border-radius: 10px; 
-                                   border-left: 4px solid #00C300; margin-bottom: 1rem; max-height: 200px; overflow-y: auto;">
-                            <pre style="white-space: pre-wrap; font-family: inherit; margin: 0; 
-                                       font-size: 0.9rem; line-height: 1.5;">${message}</pre>
-                        </div>
-                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                            <button onclick="copyToClipboard(\`${message.replace(/`/g, '\\`').replace(/'/g, "\\'")}\`); this.innerHTML='✅ Copy แล้ว!'; this.style.background='#4caf50';" 
-                                    style="flex: 1; padding: 0.8rem; background: #ff9800; color: white; 
-                                           border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
-                                📋 Copy ข้อความ
-                            </button>
-                        </div>
-                        <p style="font-size: 0.8rem; color: #666; margin-top: 1rem; text-align: center;">
-                            📱 Line OA เปิดแล้ว ให้ paste ข้อความไปส่งได้เลย
-                        </p>
-                        <button onclick="this.closest('div').closest('div').remove()" 
-                                style="position: absolute; top: 10px; right: 15px; background: none; 
-                                       border: none; font-size: 1.5rem; cursor: pointer; color: #999;">×</button>
-                    </div>
-                </div>
+            popup.id = 'line-popup';
+            popup.style.cssText = `
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+                background: rgba(0,0,0,0.8); z-index: 10001; display: flex; 
+                align-items: center; justify-content: center;
             `;
+
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                background: white; padding: 2rem; border-radius: 15px; 
+                max-width: 500px; width: 90%; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                position: relative;
+            `;
+
+            // ปุ่มปิด
+            const closeBtn = document.createElement('button');
+            closeBtn.innerHTML = '×';
+            closeBtn.style.cssText = `
+                position: absolute; top: 10px; right: 15px; background: none; 
+                border: none; font-size: 1.5rem; cursor: pointer; color: #999;
+                z-index: 10002;
+            `;
+            closeBtn.onclick = function() {
+                popup.remove();
+            };
+
+            // เนื้อหา
+            const content = document.createElement('div');
+            content.innerHTML = `
+                <h3 style="color: #00C300; margin-bottom: 1rem; display: flex; align-items: center;">
+                    💚 ส่งข้อความนี้ใน Line OA
+                </h3>
+                <div style="background: #f0fff0; padding: 1rem; border-radius: 10px; 
+                           border-left: 4px solid #00C300; margin-bottom: 1rem; max-height: 200px; overflow-y: auto;">
+                    <pre style="white-space: pre-wrap; font-family: inherit; margin: 0; 
+                               font-size: 0.9rem; line-height: 1.5;">${message}</pre>
+                </div>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button id="copyBtn" 
+                            style="flex: 1; padding: 0.8rem; background: #ff9800; color: white; 
+                                   border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
+                        📋 Copy ข้อความ
+                    </button>
+                    <button id="closeBtn2"
+                            style="padding: 0.8rem 1.5rem; background: #666; color: white; 
+                                   border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
+                        ปิด
+                    </button>
+                </div>
+                <p style="font-size: 0.8rem; color: #666; margin-top: 1rem; text-align: center;">
+                    📱 Line OA เปิดแล้ว ให้ paste ข้อความไปส่งได้เลย
+                </p>
+            `;
+
+            modal.appendChild(closeBtn);
+            modal.appendChild(content);
+            popup.appendChild(modal);
+
+            // Event listeners
+            const copyBtn = content.querySelector('#copyBtn');
+            copyBtn.onclick = function() {
+                copyToClipboard(message);
+                this.innerHTML = '✅ Copy แล้ว!';
+                this.style.background = '#4caf50';
+            };
+
+            const closeBtn2 = content.querySelector('#closeBtn2');
+            closeBtn2.onclick = function() {
+                popup.remove();
+            };
+
+            // ปิดเมื่อคลิกพื้นหลัง
+            popup.addEventListener('click', function(e) {
+                if (e.target === popup) {
+                    popup.remove();
+                }
+            });
+
+            // เพิ่ม ESC key เพื่อปิด
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && document.getElementById('line-popup')) {
+                    popup.remove();
+                }
+            });
+
             document.body.appendChild(popup);
         }
 
@@ -1709,8 +1769,11 @@
 
         // Show WeChat QR Code popup
         function showWeChatQR() {
-            // ป้องกันไม่ให้สร้างซ้ำ
-            if (document.getElementById('wechat-overlay')) return;
+            // ลบ popup เก่าก่อน (ถ้ามี)
+            const existingOverlay = document.getElementById('wechat-overlay');
+            if (existingOverlay) {
+                existingOverlay.remove();
+            }
 
             const overlay = document.createElement('div');
             overlay.id = "wechat-overlay";
@@ -1728,28 +1791,52 @@
 
             // ปุ่มปิด
             const closeBtn = document.createElement('button');
-            closeBtn.innerHTML = "&times;";
+            closeBtn.innerHTML = "×";
             closeBtn.style.cssText = `
                 position:absolute; top:10px; right:15px; font-size:1.5rem;
                 background:none; border:none; cursor:pointer; color:#999;
+                z-index: 10003;
             `;
+            closeBtn.onclick = function() {
+                overlay.remove();
+            };
 
-            // เวลาปิด ต้องลบ overlay ทั้งก้อน
-            closeBtn.onclick = () => overlay.remove();
-
-            modal.appendChild(closeBtn);
-            modal.innerHTML += `<h3>💬 เพิ่มเพื่อนใน WeChat</h3>
+            // เนื้อหา
+            const content = document.createElement('div');
+            content.innerHTML = `
+                <h3 style="color:#1aad19; margin-bottom:1rem;">💬 เพิ่มเพื่อนใน WeChat</h3>
                 <p>WeChat ID: <b>wxid_kh9jrtenwgw522</b></p>
                 <div style="margin: 1rem 0;">
                     <img src="https://i.ibb.co/gMvJPf9q/IMG-3907.jpg" width="200px" height="200px" style="border-radius: 10px;" />
                 </div>
-                <p style="font-size: 0.9rem; color: #666;">สแกน QR Code เพื่อเพิ่มเพื่อน</p>`;
+                <p style="font-size: 0.9rem; color: #666; margin-bottom: 1.5rem;">สแกน QR Code เพื่อเพิ่มเพื่อน</p>
+                <button id="closeWeChatBtn" style="padding: 0.8rem 1.5rem; background: #666; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
+                    ปิด
+                </button>
+            `;
 
+            modal.appendChild(closeBtn);
+            modal.appendChild(content);
             overlay.appendChild(modal);
 
-            // ปิดเมื่อคลิกนอกกล่อง
-            overlay.addEventListener('click', (e) => {
-                if (e.target === overlay) overlay.remove();
+            // Event listener สำหรับปุ่มปิด
+            const closeBtn2 = content.querySelector('#closeWeChatBtn');
+            closeBtn2.onclick = function() {
+                overlay.remove();
+            };
+
+            // ปิดเมื่อคลิกพื้นหลัง
+            overlay.addEventListener('click', function(e) {
+                if (e.target === overlay) {
+                    overlay.remove();
+                }
+            });
+
+            // เพิ่ม ESC key เพื่อปิด
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && document.getElementById('wechat-overlay')) {
+                    overlay.remove();
+                }
             });
 
             document.body.appendChild(overlay);
