@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://serviceagriculture.github.io/R.Good-SERVICE-REGISTRATION/sitemap.xml
