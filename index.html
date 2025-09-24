@@ -1089,29 +1089,6 @@
             }
         }
     </style>
-    <style>
-  .toggle-box {
-    background: #fff;
-    border-radius: 12px;
-    padding: 1rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,.08);
-    margin-bottom: 1rem;
-  }
-  .toggle-header {
-    font-weight: bold;
-    font-size: 1.2rem;
-    cursor: pointer;
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  .toggle-content {
-    margin-top: 0.8rem;
-    display: none;
-  }
-  .toggle-box.active .toggle-content {
-    display: block;
-  }
-</style>
-
 </head>
 <body>
     <!-- Notification Bar -->
@@ -1152,27 +1129,15 @@
     </header>
 
     <section class="hero" id="home">
-  <div class="container">
-
-    <div class="toggle-box" id="companyBox">
-      <div class="toggle-header">
-        บริษัท อาร์.กู้ด เซอร์วิส รีจีส เตรชั่น จำกัด
-        <span id="toggleIcon">▼</span>
-      </div>
-      <div class="toggle-content">
-        <h1>ผู้เชี่ยวชาญด้านการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตร</h1>
-        <p>ผู้เชี่ยวชาญด้านการขึ้นทะเบียนวัตถุอันตรายทางการเกษตรและปุ๋ยเคมี ครบวงจร รวดเร็ว ถูกต้องตามกฎหมาย พร้อมให้คำปรึกษาทุกขั้นตอน</p>
-      </div>
-    </div>
-
-    <div class="hero-buttons">
-      <a href="#services" class="btn" onclick="scrollToSection('services')">ดูบริการทั้งหมด</a>
-      <a href="#contact" class="btn btn-secondary" onclick="scrollToSection('contact')">ปรึกษาฟรี</a>
-    </div>
-
-  </div>
-</section>
-
+        <div class="container">
+            <h1>ผู้เชี่ยวชาญด้านบริการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตร</h1>
+            <p>ผู้เชี่ยวชาญด้านการขึ้นทะเบียนวัตถุอันตรายทางการเกษตรและปุ๋ยเคมี ครบวงจร รวดเร็ว ถูกต้องตามกฎหมาย พร้อมให้คำปรึกษาทุกขั้นตอน</p>
+            <div class="hero-buttons">
+                <a href="#services" class="btn" onclick="scrollToSection('services')">ดูบริการทั้งหมด</a>
+                <a href="#contact" class="btn btn-secondary" onclick="scrollToSection('contact')">ปรึกษาฟรี</a>
+            </div>
+        </div>
+    </section>
 
     <section class="services-section" id="services">
         <div class="container">
@@ -1333,7 +1298,26 @@
         </div>
     </section>
 
-   
+    <section class="image-upload-section">
+        <div class="container">
+            <h2 class="section-title">แนบรูปภาพเอกสาร</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 2rem;">
+                แนบรูปภาพเอกสาร ฉลากสินค้า หรือข้อมูลที่เกี่ยวข้องเพื่อให้เราช่วยวิเคราะห์และให้คำแนะนำ
+            </p>
+            
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">📎</div>
+                <div class="upload-text">คลิกเพื่อเลือกไฟล์หรือลากไฟล์มาวางที่นี่</div>
+                <small style="color: #999;">รองรับไฟล์: JPG, PNG, PDF (ขนาดไม่เกิน 10MB)</small>
+                <input type="file" id="fileInput" class="file-input" multiple accept="image/*,.pdf">
+            </div>
+            
+            <div id="uploadedImages" class="uploaded-images">
+                <!-- รูปภาพที่อัปโหลดจะแสดงที่นี่ -->
+            </div>
+        </div>
+    </section>
+
     <section class="contact-section" id="contact">
         <div class="container">
             <h2 class="section-title">ติดต่อเราได้ทันที</h2>
@@ -1410,8 +1394,6 @@
                         <div class="success-message" id="formSuccess">
                             ✅ ส่งข้อความเรียบร้อยแล้ว! เราจะติดต่อกลับในเร็วๆ นี้
                         </div>
-                        
-</div>
                         <button type="submit" class="btn" style="width: 100%;">ส่งข้อความพร้อมรูปภาพ</button>
                     </form>
                 </div>
@@ -1451,9 +1433,8 @@
                     </div>
                 </div>
             </div>
-        </div>                 
+        </div>
     </section>
-                        
 
     <!-- Live Chat Button -->
     <button class="live-chat-btn" onclick="openLineChat()">
@@ -1507,7 +1488,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 บริษัท อาร์.กู๊ด เซอร์วิส รีจีสเตรชั่น จำกัด - บริการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตร | ออกแบบด้วย ❤️ เพื่อลูกค้า</p>
+                <p>&copy; 2024 บริษัท อาร์.กู้ด เซอร์วิส รีจีสเตรชั่น จำกัด - บริการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตร | ออกแบบด้วย ❤️ เพื่อลูกค้า</p>
             </div>
         </div>
     </footer>
@@ -1681,6 +1662,7 @@
     <a href="#contact" class="btn" onclick="selectService('fertilizer'); return false;">
     สอบถามราคา + LINE
 </a>
+
 </div>
                 <p style="font-size: 0.8rem; color: #666; margin-top: 1rem; text-align: center;">
                     📱 Line OA เปิดแล้ว ให้ paste ข้อความไปส่งได้เลย
@@ -2183,91 +2165,7 @@
             // This can be enhanced for mobile responsive menu
             console.log('Mobile menu toggled');
         }
-        // ==============================
-        // Quick File Upload Functions
-        // ==============================
-        function triggerFileUpload() {
-            document.getElementById('quickFileInput').click();
-        }
-
-        // เพิ่มใน initializeWebsite function
-        function setupQuickFileUpload() {
-            const quickFileInput = document.getElementById('quickFileInput');
-            if (quickFileInput) {
-                quickFileInput.addEventListener('change', function(e) {
-                    const files = e.target.files;
-                    if (files.length > 0) {
-                        handleQuickFiles(files);
-                    }
-                });
-            }
-        }
-
-        function handleQuickFiles(files) {
-            let fileNames = [];
-            let totalSize = 0;
-            
-            for (let file of files) {
-                // ตรวจสอบขนาดไฟล์
-                if (file.size > 10 * 1024 * 1024) {
-                    alert(`ไฟล์ ${file.name} ใหญ่เกิน 10MB`);
-                    continue;
-                }
-                
-                // ตรวจสอบประเภทไฟล์
-                if (!file.type.match('image.*') && !file.type.match('application/pdf')) {
-                    alert(`ไฟล์ ${file.name} ไม่ใช่รูปภาพหรือ PDF`);
-                    continue;
-                }
-                
-                fileNames.push(file.name);
-                totalSize += file.size;
-                
-                // เพิ่มเข้าระบบเดิม
-                uploadedFiles.push(file);
-                displayUploadedFile(file);
-            }
-            
-            if (fileNames.length > 0) {
-                // แสดงข้อความสำเร็จ
-                showToast(`เลือกไฟล์แล้ว: ${fileNames.length} ไฟล์`, 'success');
-                
-                // เลื่อนไปยังส่วนแสดงรูป
-                const uploadSection = document.getElementById('uploadedImages');
-                if (uploadSection) {
-                    uploadSection.scrollIntoView({behavior: 'smooth', block: 'center'});
-                }
-                
-                // เปิด LINE พร้อมข้อความ
-                const message = `สวัสดีครับ! มีเอกสาร/รูปภาพจะส่งให้ดูครับ
-
-📁 ไฟล์ที่เลือก: ${fileNames.join(', ')} (${fileNames.length} ไฟล์)
-
-รบกวนรอสักครู่ จะส่งรูปตามไปในไลน์นะครับ
-📞 Tel: 084-375-2399`;
-                
-                setTimeout(() => {
-                    if (confirm('ต้องการเปิด LINE เพื่อแจ้งว่ามีรูปจะส่งไหม?')) {
-                        openLineWithMessage(message);
-                    }
-                }, 1000);
-            }
-        }
-document.addEventListener('DOMContentLoaded', function() {
-    setupQuickFileUpload();
-});
-  
     </script>
-  <script>
-  const box = document.getElementById("companyBox");
-  const header = box.querySelector(".toggle-header");
-  const icon = document.getElementById("toggleIcon");
-
-  header.addEventListener("click", () => {
-    box.classList.toggle("active");
-    icon.textContent = box.classList.contains("active") ? "▲" : "▼";
-  });
-</script>
-
+    
 </body>
 </html>
