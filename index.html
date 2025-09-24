@@ -1121,19 +1121,10 @@
     </div>
 
     <header id="header">
-        <div class="toggle-box" id="companyBox">
-  <div class="toggle-header">
-    บริษัท อาร์.กู้ด เซอร์วิส รีจีส เตรชั่น จำกัด
-    <span id="toggleIcon">▼</span>
-  </div>
-  <div class="toggle-content">
-    <p>
-      ผู้เชี่ยวชาญด้านการขึ้นทะเบียนวัตถุอันตรายทางการเกษตรและปุ๋ยเคมี
-      ครบวงจร รวดเร็ว ถูกต้องตามกฎหมาย พร้อมให้คำปรึกษาทุกขั้นตอน
-    </p>
-  </div>
-</div>
-
+        <div class="container">
+            <div class="header-content">
+                <div class="header-left">
+                    <div class="logo" onclick="scrollToSection('home')">บริษัท อาร์.กู้ด เซอร์วิส รีจีสเตรชั่น จำกัด</div>
                     <nav>
                         <ul>
                             <li><a href="#home" onclick="scrollToSection('home')">หน้าแรก</a></li>
@@ -1161,15 +1152,27 @@
     </header>
 
     <section class="hero" id="home">
-        <div class="container">
-            <h1>ผู้เชี่ยวชาญด้านบริการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตร</h1>
-            <p>ผู้เชี่ยวชาญด้านการขึ้นทะเบียนวัตถุอันตรายทางการเกษตรและปุ๋ยเคมี ครบวงจร รวดเร็ว ถูกต้องตามกฎหมาย พร้อมให้คำปรึกษาทุกขั้นตอน</p>
-            <div class="hero-buttons">
-                <a href="#services" class="btn" onclick="scrollToSection('services')">ดูบริการทั้งหมด</a>
-                <a href="#contact" class="btn btn-secondary" onclick="scrollToSection('contact')">ปรึกษาฟรี</a>
-            </div>
-        </div>
-    </section>
+  <div class="container">
+
+    <div class="toggle-box" id="companyBox">
+      <div class="toggle-header">
+        บริษัท อาร์.กู้ด เซอร์วิส รีจีส เตรชั่น จำกัด
+        <span id="toggleIcon">▼</span>
+      </div>
+      <div class="toggle-content">
+        <h1>ผู้เชี่ยวชาญด้านการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตร</h1>
+        <p>ผู้เชี่ยวชาญด้านการขึ้นทะเบียนวัตถุอันตรายทางการเกษตรและปุ๋ยเคมี ครบวงจร รวดเร็ว ถูกต้องตามกฎหมาย พร้อมให้คำปรึกษาทุกขั้นตอน</p>
+      </div>
+    </div>
+
+    <div class="hero-buttons">
+      <a href="#services" class="btn" onclick="scrollToSection('services')">ดูบริการทั้งหมด</a>
+      <a href="#contact" class="btn btn-secondary" onclick="scrollToSection('contact')">ปรึกษาฟรี</a>
+    </div>
+
+  </div>
+</section>
+
 
     <section class="services-section" id="services">
         <div class="container">
@@ -2253,7 +2256,9 @@
 document.addEventListener('DOMContentLoaded', function() {
     setupQuickFileUpload();
 });
-    
+  
+    </script>
+  <script>
   const box = document.getElementById("companyBox");
   const header = box.querySelector(".toggle-header");
   const icon = document.getElementById("toggleIcon");
@@ -2262,9 +2267,7 @@ document.addEventListener('DOMContentLoaded', function() {
     box.classList.toggle("active");
     icon.textContent = box.classList.contains("active") ? "▲" : "▼";
   });
+</script>
 
-
-    </script>
-    
 </body>
 </html>
