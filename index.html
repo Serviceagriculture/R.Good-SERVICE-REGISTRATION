@@ -1101,7 +1101,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="header-left">
-                    <div class="logo" onclick="scrollToSection('home')">บริษัท อาร์.กู๊ด เซอร์วิส รีจีสเตรชั่น จำกัด</div>
+                    <div class="logo" onclick="scrollToSection('home')">บริษัท อาร์.กู้ด เซอร์วิส รีจีสเตรชั่น จำกัด</div>
                     <nav>
                         <ul>
                             <li><a href="#home" onclick="scrollToSection('home')">หน้าแรก</a></li>
@@ -1298,7 +1298,27 @@
         </div>
     </section>
 
-        <section class="contact-section" id="contact">
+    <section class="image-upload-section">
+        <div class="container">
+            <h2 class="section-title">แนบรูปภาพเอกสาร</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 2rem;">
+                แนบรูปภาพเอกสาร ฉลากสินค้า หรือข้อมูลที่เกี่ยวข้องเพื่อให้เราช่วยวิเคราะห์และให้คำแนะนำ
+            </p>
+            
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">📎</div>
+                <div class="upload-text">คลิกเพื่อเลือกไฟล์หรือลากไฟล์มาวางที่นี่</div>
+                <small style="color: #999;">รองรับไฟล์: JPG, PNG, PDF (ขนาดไม่เกิน 10MB)</small>
+                <input type="file" id="fileInput" class="file-input" multiple accept="image/*,.pdf">
+            </div>
+            
+            <div id="uploadedImages" class="uploaded-images">
+                <!-- รูปภาพที่อัปโหลดจะแสดงที่นี่ -->
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
         <div class="container">
             <h2 class="section-title">ติดต่อเราได้ทันที</h2>
             
@@ -1374,7 +1394,7 @@
                         <div class="success-message" id="formSuccess">
                             ✅ ส่งข้อความเรียบร้อยแล้ว! เราจะติดต่อกลับในเร็วๆ นี้
                         </div>
-                        <button type="submit" class="btn" style="width: 100%;">ส่งข้อความ</button>
+                        <button type="submit" class="btn" style="width: 100%;">ส่งข้อความพร้อมรูปภาพ</button>
                     </form>
                 </div>
 
@@ -1414,7 +1434,23 @@
                 </div>
             </div>
         </div>
+                         <!-- เพิ่มส่วนนี้ก่อน </div> ปิดท้าย contact-info -->
+    <div style="background: #e3f2fd; padding: 1rem; border-radius: 10px; margin-top: 2rem; border-left: 4px solid #2196f3;">
+        <h4 style="margin: 0 0 0.5rem 0; color: #1976d2;">📎 ส่งรูปเอกสาร</h4>
+        <p style="margin: 0 0 1rem 0; font-size: 0.9rem; color: #666;">
+            แนบรูปฉลากสินค้า หรือเอกสารที่เกี่ยวข้อง เพื่อให้เราช่วยวิเคราะห์และแนะนำได้แม่นยำขึ้น
+        </p>
+        <button class="btn" onclick="triggerFileUpload()" style="background: #2196f3; width: 100%;">
+            📷 เลือกรูปภาพ/เอกสาร
+        </button>
+        <input type="file" id="quickFileInput" multiple accept="image/*,.pdf" style="display: none;">
+        <p style="margin: 0.5rem 0 0 0; font-size: 0.8rem; color: #999; text-align: center;">
+            รองรับไฟล์: JPG, PNG, PDF (ขนาดไม่เกิน 10MB)
+        </p>
+    </div>
+</div>
     </section>
+                        
 
     <!-- Live Chat Button -->
     <button class="live-chat-btn" onclick="openLineChat()">
@@ -1431,7 +1467,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>เกี่ยวกับเรา</h3>
-                    <p>ผู้เชี่ยวชาญด้านการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตร มีประสบการณ์กว่า 25 ปี พร้อมทีมงานมืออาชีพ - บริษัท อาร์.กู๊ด เซอร์วิส รีจีสเตรชั่น จำกัด</p>
+                    <p>ผู้เชี่ยวชาญด้านการขึ้นทะเบียนผลิตภัณฑ์เกษตรกรรม มีประสบการณ์กว่า 25 ปี พร้อมทีมงานมืออาชีพ - บริษัท อาร์.กู้ด เซอร์วิส รีจีสเตรชั่น จำกัด</p>
                     <div class="social-icons">
                         <a href="https://line.me/R/ti/p/@991cyisb" class="social-icon" target="_blank" title="Line Official">💬</a>
                         <a href="javascript:void(0)" onclick="openWeChat()" class="social-icon" title="WeChat">🇨🇳</a>
@@ -1443,7 +1479,7 @@
                     <h3>บริการหลัก</h3>
                     <ul>
                         <li><a href="#services" onclick="selectService('fertilizer')">ขึ้นทะเบียนปุ๋ย</a></li>
-                        <li><a href="#services" onclick="selectService('chemical')">ขึ้นทะเบียนสารเคมีทางการเกษตร</a></li>
+                        <li><a href="#services" onclick="selectService('chemical')">ขึ้นทะเบียนสารเคมีเกษตร</a></li>
                         <li><a href="#services" onclick="selectService('hazardous')">ขึ้นทะเบียนวัตถุอันตรายทางการเกษตร</a></li>
                         <li><a href="#services" onclick="selectService('consult')">คำปรึกษาฟรี</a></li>
                     </ul>
@@ -1468,7 +1504,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 บริษัท อาร์.กู๊ด เซอร์วิส รีจีสเตรชั่น จำกัด - บริการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตร | ออกแบบด้วย ❤️ เพื่อลูกค้า</p>
+                <p>&copy; 2024 บริษัท อาร์.กู้ด เซอร์วิส รีจีสเตรชั่น จำกัด - บริการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตร | ออกแบบด้วย ❤️ เพื่อลูกค้า</p>
             </div>
         </div>
     </footer>
@@ -1642,7 +1678,6 @@
     <a href="#contact" class="btn" onclick="selectService('fertilizer'); return false;">
     สอบถามราคา + LINE
 </a>
-
 </div>
                 <p style="font-size: 0.8rem; color: #666; margin-top: 1rem; text-align: center;">
                     📱 Line OA เปิดแล้ว ให้ paste ข้อความไปส่งได้เลย
@@ -2144,6 +2179,76 @@
         function toggleMobileMenu() {
             // This can be enhanced for mobile responsive menu
             console.log('Mobile menu toggled');
+        }
+        // ==============================
+        // Quick File Upload Functions
+        // ==============================
+        function triggerFileUpload() {
+            document.getElementById('quickFileInput').click();
+        }
+
+        // เพิ่มใน initializeWebsite function
+        function setupQuickFileUpload() {
+            const quickFileInput = document.getElementById('quickFileInput');
+            if (quickFileInput) {
+                quickFileInput.addEventListener('change', function(e) {
+                    const files = e.target.files;
+                    if (files.length > 0) {
+                        handleQuickFiles(files);
+                    }
+                });
+            }
+        }
+
+        function handleQuickFiles(files) {
+            let fileNames = [];
+            let totalSize = 0;
+            
+            for (let file of files) {
+                // ตรวจสอบขนาดไฟล์
+                if (file.size > 10 * 1024 * 1024) {
+                    alert(`ไฟล์ ${file.name} ใหญ่เกิน 10MB`);
+                    continue;
+                }
+                
+                // ตรวจสอบประเภทไฟล์
+                if (!file.type.match('image.*') && !file.type.match('application/pdf')) {
+                    alert(`ไฟล์ ${file.name} ไม่ใช่รูปภาพหรือ PDF`);
+                    continue;
+                }
+                
+                fileNames.push(file.name);
+                totalSize += file.size;
+                
+                // เพิ่มเข้าระบบเดิม
+                uploadedFiles.push(file);
+                displayUploadedFile(file);
+            }
+            
+            if (fileNames.length > 0) {
+                // แสดงข้อความสำเร็จ
+                showToast(`เลือกไฟล์แล้ว: ${fileNames.length} ไฟล์`, 'success');
+                
+                // เลื่อนไปยังส่วนแสดงรูป
+                const uploadSection = document.getElementById('uploadedImages');
+                if (uploadSection) {
+                    uploadSection.scrollIntoView({behavior: 'smooth', block: 'center'});
+                }
+                
+                // เปิด LINE พร้อมข้อความ
+                const message = `สวัสดีครับ! มีเอกสาร/รูปภาพจะส่งให้ดูครับ
+
+📁 ไฟล์ที่เลือก: ${fileNames.join(', ')} (${fileNames.length} ไฟล์)
+
+รบกวนรอสักครู่ จะส่งรูปตามไปในไลน์นะครับ
+📞 Tel: 084-375-2399`;
+                
+                setTimeout(() => {
+                    if (confirm('ต้องการเปิด LINE เพื่อแจ้งว่ามีรูปจะส่งไหม?')) {
+                        openLineWithMessage(message);
+                    }
+                }, 1000);
+            }
         }
     </script>
     
