@@ -1089,6 +1089,29 @@
             }
         }
     </style>
+    <style>
+  .toggle-box {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+    margin-bottom: 1rem;
+  }
+  .toggle-header {
+    font-weight: bold;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .toggle-content {
+    margin-top: 0.8rem;
+    display: none;
+  }
+  .toggle-box.active .toggle-content {
+    display: block;
+  }
+</style>
+
 </head>
 <body>
     <!-- Notification Bar -->
@@ -1098,10 +1121,19 @@
     </div>
 
     <header id="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="header-left">
-                    <div class="logo" onclick="scrollToSection('home')">บริษัท อาร์.กู้ด เซอร์วิส รีจีสเตรชั่น จำกัด</div>
+        <div class="toggle-box" id="companyBox">
+  <div class="toggle-header">
+    บริษัท อาร์.กู้ด เซอร์วิส รีจีส เตรชั่น จำกัด
+    <span id="toggleIcon">▼</span>
+  </div>
+  <div class="toggle-content">
+    <p>
+      ผู้เชี่ยวชาญด้านการขึ้นทะเบียนวัตถุอันตรายทางการเกษตรและปุ๋ยเคมี
+      ครบวงจร รวดเร็ว ถูกต้องตามกฎหมาย พร้อมให้คำปรึกษาทุกขั้นตอน
+    </p>
+  </div>
+</div>
+
                     <nav>
                         <ul>
                             <li><a href="#home" onclick="scrollToSection('home')">หน้าแรก</a></li>
@@ -1298,26 +1330,7 @@
         </div>
     </section>
 
-    <section class="image-upload-section">
-        <div class="container">
-            <h2 class="section-title">แนบรูปภาพเอกสาร</h2>
-            <p style="text-align: center; color: #666; margin-bottom: 2rem;">
-                แนบรูปภาพเอกสาร ฉลากสินค้า หรือข้อมูลที่เกี่ยวข้องเพื่อให้เราช่วยวิเคราะห์และให้คำแนะนำ
-            </p>
-            
-            <div class="upload-area" id="uploadArea">
-                <div class="upload-icon">📎</div>
-                <div class="upload-text">คลิกเพื่อเลือกไฟล์หรือลากไฟล์มาวางที่นี่</div>
-                <small style="color: #999;">รองรับไฟล์: JPG, PNG, PDF (ขนาดไม่เกิน 10MB)</small>
-                <input type="file" id="fileInput" class="file-input" multiple accept="image/*,.pdf">
-            </div>
-            
-            <div id="uploadedImages" class="uploaded-images">
-                <!-- รูปภาพที่อัปโหลดจะแสดงที่นี่ -->
-            </div>
-        </div>
-    </section>
-
+   
     <section class="contact-section" id="contact">
         <div class="container">
             <h2 class="section-title">ติดต่อเราได้ทันที</h2>
@@ -1394,20 +1407,7 @@
                         <div class="success-message" id="formSuccess">
                             ✅ ส่งข้อความเรียบร้อยแล้ว! เราจะติดต่อกลับในเร็วๆ นี้
                         </div>
-                        <!-- เพิ่มส่วนนี้ก่อน </div> ปิดท้าย contact-info -->
-    <div style="background: #e3f2fd; padding: 1rem; border-radius: 10px; margin-top: 2rem; border-left: 4px solid #2196f3;">
-        <h4 style="margin: 0 0 0.5rem 0; color: #1976d2;">📎 ส่งรูปเอกสาร</h4>
-        <p style="margin: 0 0 1rem 0; font-size: 0.9rem; color: #666;">
-            แนบรูปฉลากสินค้า หรือเอกสารที่เกี่ยวข้อง เพื่อให้เราช่วยวิเคราะห์และแนะนำได้แม่นยำขึ้น
-        </p>
-        <button class="btn" onclick="triggerFileUpload()" style="background: #2196f3; width: 100%;">
-            📷 เลือกรูปภาพ/เอกสาร
-        </button>
-        <input type="file" id="quickFileInput" multiple accept="image/*,.pdf" style="display: none;">
-        <p style="margin: 0.5rem 0 0 0; font-size: 0.8rem; color: #999; text-align: center;">
-            รองรับไฟล์: JPG, PNG, PDF (ขนาดไม่เกิน 10MB)
-        </p>
-    </div>
+                        
 </div>
                         <button type="submit" class="btn" style="width: 100%;">ส่งข้อความพร้อมรูปภาพ</button>
                     </form>
@@ -2253,6 +2253,17 @@
 document.addEventListener('DOMContentLoaded', function() {
     setupQuickFileUpload();
 });
+        <script>
+  const box = document.getElementById("companyBox");
+  const header = box.querySelector(".toggle-header");
+  const icon = document.getElementById("toggleIcon");
+
+  header.addEventListener("click", () => {
+    box.classList.toggle("active");
+    icon.textContent = box.classList.contains("active") ? "▲" : "▼";
+  });
+</script>
+
     </script>
     
 </body>
