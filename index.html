@@ -16,7 +16,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            background-color: #f8f9fa;
+            background-color: #f8fdf8;
             scroll-behavior: smooth;
         }
 
@@ -26,11 +26,11 @@
             padding: 0 20px;
         }
 
-        /* Header */
+        /* Header - ปรับให้เหมาะกับมือถือ */
         header {
-            background: linear-gradient(135deg, #1976d2, #2196f3);
+            background: linear-gradient(135deg, #2e7d32, #4caf50);
             color: white;
-            padding: 1rem 0;
+            padding: 0.8rem 0;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: fixed;
             width: 100%;
@@ -40,7 +40,7 @@
         }
 
         header.scrolled {
-            padding: 0.5rem 0;
+            padding: 0.4rem 0;
             backdrop-filter: blur(10px);
         }
 
@@ -56,6 +56,7 @@
             display: flex;
             align-items: center;
             gap: 2rem;
+            flex: 1;
         }
 
         .header-right {
@@ -65,7 +66,7 @@
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.4rem;
             font-weight: bold;
             display: flex;
             align-items: center;
@@ -73,22 +74,22 @@
         }
 
         .logo::before {
-            content: "📋";
-            margin-right: 10px;
-            font-size: 2rem;
+            content: "🌱";
+            margin-right: 8px;
+            font-size: 1.6rem;
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 1.5rem;
         }
 
         nav a {
             color: white;
             text-decoration: none;
             font-weight: 500;
-            padding: 0.5rem 1rem;
+            padding: 0.4rem 0.8rem;
             border-radius: 5px;
             transition: all 0.3s;
             position: relative;
@@ -99,60 +100,29 @@
             transform: translateY(-2px);
         }
 
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 2px;
-            background: white;
-            transition: width 0.3s;
-        }
-
-        nav a:hover::after {
-            width: 80%;
-        }
-
         .contact-btn {
-            background: #ff5722;
+            background: #ff6f00;
             color: white;
-            padding: 0.8rem 1.5rem;
+            padding: 0.7rem 1.3rem;
             text-decoration: none;
             border-radius: 25px;
             font-weight: bold;
             transition: all 0.3s;
             position: relative;
             overflow: hidden;
-        }
-
-        .contact-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .contact-btn:hover::before {
-            left: 100%;
+            font-size: 0.9rem;
         }
 
         .contact-btn:hover {
-            background: #e64a19;
+            background: #e65100;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255,87,34,0.4);
+            box-shadow: 0 5px 15px rgba(255,111,0,0.4);
         }
 
-        /* ปุ่มเด้งไปหน้าอังกฤษ */
         .english-btn {
-            background: #4caf50;
+            background: #8bc34a;
             color: white;
-            padding: 0.8rem 1.5rem;
+            padding: 0.7rem 1.3rem;
             text-decoration: none;
             border-radius: 25px;
             font-weight: bold;
@@ -161,27 +131,13 @@
             overflow: hidden;
             border: none;
             cursor: pointer;
-        }
-
-        .english-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .english-btn:hover::before {
-            left: 100%;
+            font-size: 0.9rem;
         }
 
         .english-btn:hover {
-            background: #388e3c;
+            background: #689f38;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(76,175,80,0.4);
+            box-shadow: 0 5px 15px rgba(139,195,74,0.4);
         }
 
         .mobile-menu {
@@ -198,44 +154,27 @@
             transition: 0.3s;
         }
 
-        /* Hero Section */
+        /* Hero Section - เพิ่มข้อมูลแบรนด์ */
         .hero {
-            background: linear-gradient(rgba(25, 118, 210, 0.9), rgba(33, 150, 243, 0.9)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23e3f2fd" width="1200" height="600"/><path fill="%23bbdefb" d="M0 200h1200v200H0z"/><circle fill="%232196f3" cx="200" cy="150" r="50"/><circle fill="%2364b5f6" cx="600" cy="180" r="40"/><circle fill="%2390caf9" cx="1000" cy="140" r="60"/></svg>');
+            background: linear-gradient(rgba(46, 125, 50, 0.9), rgba(76, 175, 80, 0.9)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23e8f5e8" width="1200" height="600"/><path fill="%23c8e6c9" d="M0 200h1200v200H0z"/><circle fill="%234caf50" cx="200" cy="150" r="50"/><circle fill="%2366bb6a" cx="600" cy="180" r="40"/><circle fill="%2381c784" cx="1000" cy="140" r="60"/></svg>');
             color: white;
             text-align: center;
-            padding: 8rem 0 4rem 0;
-            margin-top: 80px;
+            padding: 6rem 0 4rem 0;
+            margin-top: 70px;
             position: relative;
             overflow: hidden;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="25" cy="25" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="75" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>');
-            animation: float 20s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            33% { transform: translateY(-20px) rotate(1deg); }
-            66% { transform: translateY(10px) rotate(-1deg); }
-        }
-
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             animation: slideInDown 1s ease-out;
         }
 
         .hero p {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin-bottom: 2rem;
             max-width: 800px;
             margin-left: auto;
@@ -243,12 +182,47 @@
             animation: slideInUp 1s ease-out 0.3s both;
         }
 
+        /* แสดงข้อมูลแบรนด์ */
+        .brand-info {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255,255,255,0.2);
+            animation: slideInUp 1s ease-out 0.6s both;
+        }
+
+        .brand-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff3e0;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #c8e6c9;
+            margin-top: 0.5rem;
+        }
+
         .hero-buttons {
             display: flex;
             gap: 2rem;
             justify-content: center;
             flex-wrap: wrap;
-            animation: slideInUp 1s ease-out 0.6s both;
+            animation: slideInUp 1s ease-out 0.9s both;
         }
 
         @keyframes slideInDown {
@@ -263,7 +237,7 @@
 
         .btn {
             display: inline-block;
-            background: #ff5722;
+            background: #ff6f00;
             color: white;
             padding: 1rem 2rem;
             text-decoration: none;
@@ -277,28 +251,10 @@
             overflow: hidden;
         }
 
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255,255,255,0.2);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: all 0.5s;
-        }
-
-        .btn:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-
         .btn:hover {
-            background: #e64a19;
+            background: #e65100;
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(255,87,34,0.3);
+            box-shadow: 0 10px 25px rgba(255,111,0,0.3);
         }
 
         .btn-secondary {
@@ -308,24 +264,40 @@
 
         .btn-secondary:hover {
             background: white;
-            color: #1976d2;
+            color: #2e7d32;
         }
 
-        /* Notification Bar */
+        /* Notification Bar - โปรโมชั่น/ส่วนลด */
         .notification-bar {
-            background: #ff9800;
+            background: linear-gradient(45deg, #ff6f00, #ff8f00);
             color: white;
             text-align: center;
-            padding: 0.5rem;
-            font-size: 0.9rem;
+            padding: 1rem;
+            font-size: 1rem;
             animation: slideDown 0.5s ease-out;
             position: relative;
             overflow: hidden;
+            font-weight: bold;
         }
 
         .notification-bar::before {
-            content: '📢';
+            content: '🎉';
             margin-right: 0.5rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .discount-highlight {
+            background: rgba(255,255,255,0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            margin: 0 0.5rem;
+            display: inline-block;
         }
 
         .notification-close {
@@ -354,7 +326,7 @@
         .section-title {
             text-align: center;
             font-size: 2.5rem;
-            color: #1976d2;
+            color: #2e7d32;
             margin-bottom: 3rem;
             position: relative;
         }
@@ -367,7 +339,7 @@
             transform: translateX(-50%);
             width: 100px;
             height: 3px;
-            background: linear-gradient(45deg, #ff5722, #2196f3);
+            background: linear-gradient(45deg, #ff6f00, #4caf50);
             border-radius: 2px;
         }
 
@@ -379,7 +351,7 @@
         }
 
         .service-card {
-            background: #f8f9fa;
+            background: #f1f8e9;
             border-radius: 15px;
             padding: 2rem;
             text-align: center;
@@ -390,25 +362,10 @@
             overflow: hidden;
         }
 
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(33,150,243,0.1), transparent);
-            transition: left 0.8s;
-        }
-
-        .service-card:hover::before {
-            left: 100%;
-        }
-
         .service-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            border-color: #2196f3;
+            border-color: #4caf50;
         }
 
         .service-icon {
@@ -422,7 +379,7 @@
         }
 
         .service-card h3 {
-            color: #1976d2;
+            color: #2e7d32;
             margin-bottom: 1rem;
             font-size: 1.5rem;
         }
@@ -447,7 +404,7 @@
 
         .service-features li:hover {
             transform: translateX(5px);
-            color: #1976d2;
+            color: #2e7d32;
         }
 
         .service-features li::before {
@@ -461,7 +418,7 @@
         /* Process Section */
         .process-section {
             padding: 4rem 0;
-            background: #f8f9fa;
+            background: #f1f8e9;
         }
 
         .process-steps {
@@ -486,7 +443,7 @@
         }
 
         .step-number {
-            background: linear-gradient(45deg, #2196f3, #1976d2);
+            background: linear-gradient(45deg, #4caf50, #2e7d32);
             color: white;
             width: 60px;
             height: 60px;
@@ -497,24 +454,24 @@
             font-size: 1.5rem;
             font-weight: bold;
             margin: 0 auto 1rem auto;
-            box-shadow: 0 4px 10px rgba(33,150,243,0.3);
+            box-shadow: 0 4px 10px rgba(76,175,80,0.3);
             transition: all 0.3s;
         }
 
         .step-card:hover .step-number {
             transform: scale(1.1);
-            box-shadow: 0 6px 15px rgba(33,150,243,0.5);
+            box-shadow: 0 6px 15px rgba(76,175,80,0.5);
         }
 
         .step-card h3 {
-            color: #1976d2;
+            color: #2e7d32;
             margin-bottom: 1rem;
         }
 
         /* Status Check Section */
         .status-section {
             padding: 4rem 0;
-            background: #e3f2fd;
+            background: #e8f5e8;
         }
 
         .status-checker {
@@ -546,8 +503,8 @@
 
         .status-input input:focus {
             outline: none;
-            border-color: #2196f3;
-            box-shadow: 0 0 10px rgba(33,150,243,0.2);
+            border-color: #4caf50;
+            box-shadow: 0 0 10px rgba(76,175,80,0.2);
         }
 
         .status-result {
@@ -565,8 +522,8 @@
         }
 
         .status-result.pending {
-            background: #fff3e0;
-            border: 2px solid #ff9800;
+            background: #fff8e1;
+            border: 2px solid #ff8f00;
             color: #e65100;
         }
 
@@ -574,118 +531,6 @@
             background: #ffebee;
             border: 2px solid #f44336;
             color: #c62828;
-        }
-
-        /* Image Upload Section */
-        .image-upload-section {
-            padding: 4rem 0;
-            background: #f8f9fa;
-        }
-
-        .upload-area {
-            background: white;
-            border: 3px dashed #2196f3;
-            border-radius: 15px;
-            padding: 3rem;
-            text-align: center;
-            margin: 2rem 0;
-            transition: all 0.3s;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .upload-area::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(33,150,243,0.1), transparent);
-            transition: left 0.8s;
-        }
-
-        .upload-area:hover::before {
-            left: 100%;
-        }
-
-        .upload-area:hover {
-            border-color: #1976d2;
-            background: #f0f8ff;
-            transform: translateY(-2px);
-        }
-
-        .upload-area.dragover {
-            border-color: #1976d2;
-            background: #e3f2fd;
-            transform: scale(1.02);
-        }
-
-        .upload-icon {
-            font-size: 4rem;
-            color: #2196f3;
-            margin-bottom: 1rem;
-            transition: transform 0.3s;
-        }
-
-        .upload-area:hover .upload-icon {
-            transform: scale(1.1);
-        }
-
-        .upload-text {
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 1rem;
-        }
-
-        .file-input {
-            display: none;
-        }
-
-        .uploaded-images {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .image-preview {
-            position: relative;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .image-preview:hover {
-            transform: scale(1.05);
-        }
-
-        .image-preview img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-
-        .image-remove {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            background: #f44336;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: all 0.3s;
-        }
-
-        .image-remove:hover {
-            background: #d32f2f;
-            transform: scale(1.1);
         }
 
         /* Contact Form Section */
@@ -702,7 +547,7 @@
         }
 
         .contact-form {
-            background: #f8f9fa;
+            background: #f1f8e9;
             padding: 2rem;
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
@@ -734,13 +579,13 @@
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: #2196f3;
-            box-shadow: 0 0 10px rgba(33,150,243,0.2);
+            border-color: #4caf50;
+            box-shadow: 0 0 10px rgba(76,175,80,0.2);
             transform: translateY(-2px);
         }
 
         .contact-info {
-            background: linear-gradient(135deg, #1976d2, #2196f3);
+            background: linear-gradient(135deg, #2e7d32, #4caf50);
             color: white;
             padding: 2rem;
             border-radius: 15px;
@@ -749,7 +594,7 @@
 
         .contact-info h3 {
             margin-bottom: 2rem;
-            color: #bbdefb;
+            color: #c8e6c9;
         }
 
         .contact-item {
@@ -789,24 +634,9 @@
             overflow: hidden;
         }
 
-        .contact-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(33,150,243,0.1), transparent);
-            transition: left 0.8s;
-        }
-
-        .contact-card:hover::before {
-            left: 100%;
-        }
-
         .contact-card:hover {
             transform: translateY(-5px);
-            border-color: #2196f3;
+            border-color: #4caf50;
             box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
 
@@ -821,19 +651,19 @@
         }
 
         .contact-card h4 {
-            color: #1976d2;
+            color: #2e7d32;
             margin-bottom: 0.5rem;
         }
 
         .contact-card a {
-            color: #2196f3;
+            color: #4caf50;
             text-decoration: none;
             font-weight: bold;
             transition: color 0.3s;
         }
 
         .contact-card a:hover {
-            color: #1976d2;
+            color: #2e7d32;
         }
 
         /* Live Chat Button */
@@ -868,7 +698,7 @@
 
         /* Footer */
         footer {
-            background: linear-gradient(135deg, #1976d2, #1565c0);
+            background: linear-gradient(135deg, #2e7d32, #1b5e20);
             color: white;
             padding: 3rem 0 1rem 0;
         }
@@ -882,7 +712,7 @@
 
         .footer-section h3 {
             margin-bottom: 1rem;
-            color: #bbdefb;
+            color: #c8e6c9;
             position: relative;
         }
 
@@ -893,7 +723,7 @@
             left: 0;
             width: 50px;
             height: 2px;
-            background: #bbdefb;
+            background: #c8e6c9;
         }
 
         .footer-section ul {
@@ -916,7 +746,7 @@
         }
 
         .footer-section ul li a:hover {
-            color: #bbdefb;
+            color: #c8e6c9;
         }
 
         .social-icons {
@@ -946,7 +776,7 @@
         .footer-bottom {
             text-align: center;
             padding-top: 2rem;
-            border-top: 1px solid #1565c0;
+            border-top: 1px solid #1b5e20;
             position: relative;
         }
 
@@ -956,7 +786,7 @@
             width: 40px;
             height: 40px;
             border: 4px solid #f3f3f3;
-            border-top: 4px solid #2196f3;
+            border-top: 4px solid #4caf50;
             border-radius: 50%;
             animation: spin 1s linear infinite;
             margin: 0 auto;
@@ -984,7 +814,7 @@
             position: fixed;
             bottom: 80px;
             right: 20px;
-            background: #1976d2;
+            background: #2e7d32;
             color: white;
             border: none;
             border-radius: 50%;
@@ -1005,38 +835,91 @@
         }
 
         .back-to-top:hover {
-            background: #1565c0;
+            background: #1b5e20;
             transform: translateY(-3px);
         }
 
-        /* Responsive Design */
+        /* Responsive Design - ปรับให้เหมาะกับมือถือ */
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
+            header {
+                padding: 0.5rem 0;
             }
 
-            nav {
+            .header-content {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .header-left {
+                gap: 1rem;
+                justify-content: center;
                 width: 100%;
+            }
+
+            .logo {
+                font-size: 1rem;
             }
 
             nav ul {
                 justify-content: center;
                 flex-wrap: wrap;
-                gap: 1rem;
+                gap: 0.5rem;
+            }
+
+            nav a {
+                padding: 0.3rem 0.5rem;
+                font-size: 0.8rem;
+            }
+
+            .contact-btn, .english-btn {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .hero {
+                padding: 3rem 0 2rem 0;
+                margin-top: 120px; /* เพิ่มพื้นที่สำหรับ header ที่สูงขึ้น */
             }
 
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 1.8rem;
+                line-height: 1.3;
+            }
+
+            .hero h2 {
+                font-size: 1.3rem;
             }
 
             .hero p {
-                font-size: 1.1rem;
+                font-size: 0.95rem;
+            }
+
+            .company-logo img {
+                width: 80px !important;
+                height: 80px !important;
+            }
+
+            .brand-info {
+                padding: 1rem;
+            }
+
+            .brand-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+            }
+
+            .stat-number {
+                font-size: 1.3rem;
+            }
+
+            .stat-label {
+                font-size: 0.8rem;
             }
 
             .hero-buttons {
                 flex-direction: column;
                 align-items: center;
+                gap: 1rem;
             }
 
             .contact-content {
@@ -1053,27 +936,34 @@
             }
 
             .quick-contact {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+            }
+
+            .contact-card {
+                padding: 1rem;
+            }
+
+            .contact-card h4 {
+                font-size: 0.9rem;
+            }
+
+            .contact-card p {
+                font-size: 0.8rem;
             }
 
             .live-chat-btn {
                 bottom: 15px;
                 right: 15px;
-                padding: 12px 16px;
-                font-size: 0.9rem;
+                padding: 10px 14px;
+                font-size: 0.85rem;
             }
 
             .back-to-top {
-                bottom: 70px;
+                bottom: 65px;
                 right: 15px;
-                width: 45px;
-                height: 45px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 2rem;
+                width: 40px;
+                height: 40px;
             }
 
             .services-grid {
@@ -1085,15 +975,39 @@
             }
 
             .section-title {
-                font-size: 2rem;
+                font-size: 1.8rem;
+            }
+
+            .service-card {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero h2 {
+                font-size: 1.1rem;
+            }
+
+            .brand-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-contact {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Notification Bar -->
+    <!-- Notification Bar - เพิ่มโปรโมชั่น -->
     <div class="notification-bar" id="notificationBar">
-        โปรโมชั่นพิเศษ! ปรึกษาฟรี สำหรับลูกค้าใหม่ ติดต่อเลย!
+        <span class="discount-highlight">🔥 โปรโมชั่นพิเศษ!</span>
+        ปรึกษาฟรี + ลดค่าบริการ 15% สำหรับลูกค้าใหม่ 
+        <span class="discount-highlight">สิ้นสุด 31 ธ.ค. 2567</span>
         <button class="notification-close" onclick="closeNotification()">×</button>
     </div>
 
@@ -1101,7 +1015,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="header-left">
-                    <div class="logo" onclick="scrollToSection('home')">บริษัท อาร์.กู้ด เซอร์วิส รีจีสเตรชั่น จำกัด</div>
+                    <div class="logo" onclick="scrollToSection('home')">อาร์.กู๊ด เซอร์วิส</div>
                     <nav>
                         <ul>
                             <li><a href="#home" onclick="scrollToSection('home')">หน้าแรก</a></li>
@@ -1113,9 +1027,8 @@
                     </nav>
                 </div>
                 <div class="header-right">
-                    <!-- ปุ่มเด้งไปหน้าอังกฤษ -->
                     <button class="english-btn" onclick="goToEnglishPage()">
-                        🇺🇸 English Version
+                        🇺🇸 English
                     </button>
                     <a href="#contact" class="contact-btn" onclick="scrollToSection('contact')">ปรึกษาฟรี</a>
                 </div>
@@ -1130,11 +1043,50 @@
 
     <section class="hero" id="home">
         <div class="container">
-            <h1>ผู้เชี่ยวชาญด้านบริการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตร</h1>
-            <p>ผู้เชี่ยวชาญด้านการขึ้นทะเบียนวัตถุอันตรายทางการเกษตรและปุ๋ยเคมี ครบวงจร รวดเร็ว ถูกต้องตามกฎหมาย พร้อมให้คำปรึกษาทุกขั้นตอน</p>
+            <!-- โลโก้บริษัท -->
+            <div class="company-logo" style="margin-bottom: 2rem;">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDE1MCAxNTAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGNpcmNsZSBjeD0iNzUiIGN5PSI3NSIgcj0iNzMiIGZpbGw9IiNkZGY0ZmYiLz4KICA8Y2lyY2xlIGN4PSI3NSIgY3k9Ijc1IiByPSI2NSIgZmlsbD0idXJsKCNncmFkKSIvPgogIDxkZWZzPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiNlNTM5MzU7c3RvcC1vcGFjaXR5OjEiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzJlN2QzMjtzdG9wLW9wYWNpdHk6MSIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDx0ZXh0IHg9Ijc1IiB5PSI4NSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjQ1IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UjwvdGV4dD4KICA8cGF0aCBkPSJNOTAgNjBMOTUgNjVMOTAgNzAiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIi8+CiAgPGVsbGlwc2UgY3g9Ijg4IiBjeT0iNzgiIHJ4PSI0IiByeT0iMiIgZmlsbD0iI2ZmZmZmZiIvPgo8L3N2Zz4=" 
+                     alt="R.Good Service Logo" 
+                     style="width: 120px; height: 120px; margin-bottom: 1rem;">
+            </div>
+
+            <h1 style="font-size: 2.8rem; margin-bottom: 0.5rem;">บริษัท อาร์.กู๊ด เซอร์วิส รีจีสเตรชั่น จำกัด</h1>
+            <h2 style="font-size: 1.8rem; color: #fff3e0; font-weight: normal; margin-bottom: 1.5rem;">ผู้เชี่ยวชาญด้านการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตร</h2>
+            <p>มืออาชีพด้วยประสบการณ์กว่า 25 ปี ทีมงานเชี่ยวชาญพร้อมให้คำปรึกษา รับประกันความถูกต้องตามกฎหมาย</p>
+            
+            <!-- ข้อมูลแบรนด์ - เพิ่มการขยาย/หุบได้ -->
+            <div class="brand-info">
+                <div class="brand-header" onclick="toggleBrandInfo()" style="cursor: pointer; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+                    <h3 style="margin: 0;">🏆 ข้อมูลบริษัท</h3>
+                    <span id="brandToggle" style="margin-left: 10px; font-size: 1.2rem; transition: transform 0.3s;">▼</span>
+                </div>
+                <div id="brandDetails" class="brand-details" style="overflow: hidden; transition: all 0.5s ease;">
+                    <p style="margin-bottom: 1rem;">ผู้นำด้านการขึ้นทะเบียนผลิตภัณฑ์เกษตรกรรมของไทย พร้อมแปลงทดลองและห้องปฏิบัติการมาตรฐาน</p>
+                <p>ผู้นำด้านการขึ้นทะเบียนผลิตภัณฑ์เกษตรกรรมของไทย พร้อมแปลงทดลองและห้องปฏิบัติการมาตรฐาน</p>
+                
+                <div class="brand-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">25+</span>
+                        <div class="stat-label">ปีประสบการณ์</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">1,500+</span>
+                        <div class="stat-label">ผลิตภัณฑ์ที่ขึ้นทะเบียนสำเร็จ</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">98%</span>
+                        <div class="stat-label">อัตราความสำเร็จ</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">500+</span>
+                        <div class="stat-label">ลูกค้าที่ไว้วางใจ</div>
+                    </div>
+                </div>
+            </div>
+
             <div class="hero-buttons">
                 <a href="#services" class="btn" onclick="scrollToSection('services')">ดูบริการทั้งหมด</a>
-                <a href="#contact" class="btn btn-secondary" onclick="scrollToSection('contact')">ปรึกษาฟรี</a>
+                <a href="#contact" class="btn btn-secondary" onclick="scrollToSection('contact')">ปรึกษาฟรีวันนี้</a>
             </div>
         </div>
     </section>
@@ -1176,7 +1128,7 @@
 
                 <div class="service-card">
                     <div class="service-icon">⚠️</div>
-                    <h3>ขึ้นทะเบียนวัตถุอันตรายทางการเกษตร</h3>
+                    <h3>ขึ้นทะเบียนวัตถุอันตรายทางอุตสาหกรรม</h3>
                     <p>บริการขึ้นทะเบียนวัตถุอันตรายตาม พรบ.วัตถุอันตราย</p>
                     <ul class="service-features">
                         <li>ขึ้นทะเบียนวัตถุอันตรายชนิดที่ 2</li>
@@ -1232,21 +1184,6 @@
                     </ul>
                     <a href="#contact" class="btn" onclick="selectService('import')">สอบถามราคา</a>
                 </div>
-
-                <div class="service-card">
-                    <div class="service-icon">🔄</div>
-                    <h3>บริการต่ออายุต่างๆ</h3>
-                    <p>บริการต่ออายุและเพิ่มรายชื่อครอบครอง</p>
-                    <ul class="service-features">
-                        <li>ต่ออายุใบอนุญาตครอบครองวัตถุอันตรายทางการเกษตร</li>
-                        <li>เพิ่มรายชื่อในใบอนุญาตครอบครอง</li>
-                        <li>ต่ออายุอนุญาตผลิตวัตถุอันตรายทางการเกษตร</li>
-                        <li>ต่ออายุใบอนุญาตขายปุ๋ย</li>
-                        <li>ต่ออายุใบอนุญาตผลิตปุ๋ยเคมีเพื่อการค้า</li>
-                        <li>จัดทำเอกสารต่ออายุและแจ้งเตือนก่อนหมดอายุ</li>
-                    </ul>
-                    <a href="#contact" class="btn" onclick="selectService('renewal')">สอบถามราคา</a>
-                </div>
             </div>
         </div>
     </section>
@@ -1258,9 +1195,7 @@
                 <div class="step-card">
                     <div class="step-number">1</div>
                     <h3>ปรึกษาและวิเคราะห์</h3>
-                    <p>รับฟังความต้องการ วิเคราะห์วัตถุอันตรายทางการเกษตรและ แนะนำแนวทางการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตรที่เหมาะสม อีกทั้งเรามีการลงทุนในแปลงทดลองของบริษัท เพื่อทดสอบคุณภาพการใช้ปุ๋ยและวัตถุอันตราย  
-  ทางการเกษตรก่อนนำไปสู่กระบวนการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตรจริง ทำให้ลูกค้ามั่นใจได้ว่าข้อมูลและผลการทดลองถูกต้องและครบท้วน</p>
-                    
+                    <p>รับฟังความต้องการ วิเคราะห์ผลิตภัณฑ์ และแนะนำแนวทางการขึ้นทะเบียนที่เหมาะสม พร้อมทดสอบในแปลงทดลองของบริษัทเพื่อความแม่นยำ</p>
                 </div>
                 <div class="step-card">
                     <div class="step-number">2</div>
@@ -1275,7 +1210,7 @@
                 <div class="step-card">
                     <div class="step-number">4</div>
                     <h3>รับใบอนุมัติ</h3>
-                    <p>รับใบอนุมัติ/ใบสำคัญการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตร พร้อมคำแนะนำการใช้งานและการต่ออายุ</p>
+                    <p>รับใบอนุมัติ/ใบสำคัญการขึ้นทะเบียน พร้อมคำแนะนำการใช้งานและการต่ออายุ</p>
                 </div>
             </div>
         </div>
@@ -1283,7 +1218,7 @@
 
     <section class="status-section" id="status">
         <div class="container">
-            <h2 class="section-title">ตรวจสอบสถานะการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตร</h2>
+            <h2 class="section-title">ตรวจสอบสถานะการขึ้นทะเบียน</h2>
             <div class="status-checker">
                 <h3>ใส่เลขที่คำขอหรือรหัสติดตาม</h3>
                 <div class="status-input">
@@ -1294,26 +1229,6 @@
                 <div id="statusResult" class="status-result">
                     <!-- ผลการตรวจสอบจะแสดงที่นี่ -->
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="image-upload-section">
-        <div class="container">
-            <h2 class="section-title">แนบรูปภาพเอกสาร</h2>
-            <p style="text-align: center; color: #666; margin-bottom: 2rem;">
-                แนบรูปภาพเอกสาร ฉลากสินค้า หรือข้อมูลที่เกี่ยวข้องเพื่อให้เราช่วยวิเคราะห์และให้คำแนะนำ
-            </p>
-            
-            <div class="upload-area" id="uploadArea">
-                <div class="upload-icon">📎</div>
-                <div class="upload-text">คลิกเพื่อเลือกไฟล์หรือลากไฟล์มาวางที่นี่</div>
-                <small style="color: #999;">รองรับไฟล์: JPG, PNG, PDF (ขนาดไม่เกิน 10MB)</small>
-                <input type="file" id="fileInput" class="file-input" multiple accept="image/*,.pdf">
-            </div>
-            
-            <div id="uploadedImages" class="uploaded-images">
-                <!-- รูปภาพที่อัปโหลดจะแสดงที่นี่ -->
             </div>
         </div>
     </section>
@@ -1345,7 +1260,6 @@
                     <p>ส่งเอกสารและรายละเอียด</p>
                 </div>
                 
-                <!-- WeChat quick add -->
                 <div class="contact-card" onclick="openWeChat()">
                     <div class="contact-card-icon">🇨🇳</div>
                     <h4>WeChat</h4>
@@ -1394,7 +1308,7 @@
                         <div class="success-message" id="formSuccess">
                             ✅ ส่งข้อความเรียบร้อยแล้ว! เราจะติดต่อกลับในเร็วๆ นี้
                         </div>
-                        <button type="submit" class="btn" style="width: 100%;">ส่งข้อความพร้อมรูปภาพ</button>
+                        <button type="submit" class="btn" style="width: 100%;">ส่งข้อความ</button>
                     </form>
                 </div>
 
@@ -1413,14 +1327,14 @@
                         <div class="contact-item-icon">📞</div>
                         <div>
                             <strong>โทรศัพท์</strong><br>
-                            <a href="tel:0843752399" style="color: #bbdefb;">084-375-2399</a>
+                            <a href="tel:0843752399" style="color: #c8e6c9;">084-375-2399</a>
                         </div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-item-icon">📧</div>
                         <div>
                             <strong>อีเมล</strong><br>
-                            <a href="mailto:parungrung24@gmail.com" style="color: #bbdefb;">parungrung24@gmail.com</a>
+                            <a href="mailto:parungrung24@gmail.com" style="color: #c8e6c9;">parungrung24@gmail.com</a>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -1434,9 +1348,7 @@
                 </div>
             </div>
         </div>
-                       
     </section>
-                        
 
     <!-- Live Chat Button -->
     <button class="live-chat-btn" onclick="openLineChat()">
@@ -1490,15 +1402,15 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 บริษัท อาร์.กู๊ด เซอร์วิส รีจีสเตรชั่น จำกัด - บริการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตร | ออกแบบด้วย ❤️ เพื่อลูกค้า</p>
+                <p>&copy; 2024 บริษัท อาร์.กู๊ด เซอร์วิส รีจีสเตรชั่น จำกัด - บริการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตร | ออกแบบด้วยความใส่ใจเพื่อลูกค้า</p>
             </div>
         </div>
     </footer>
 
     <script>
         // Global Variables
-        let uploadedFiles = [];
         let currentServiceSelection = '';
+        let brandExpanded = true; // สถานะการขยายข้อมูลแบรนด์
 
         // Page Load Events
         document.addEventListener('DOMContentLoaded', function() {
@@ -1509,28 +1421,39 @@
 
         // Initialize Website
         function initializeWebsite() {
-            // Add smooth scrolling
             document.documentElement.style.scrollBehavior = 'smooth';
-            
-            // Setup header scroll effect
             window.addEventListener('scroll', handleScroll);
-            
-            // Setup file upload
-            setupFileUpload();
-            
-            // Setup form validation
             setupFormValidation();
-            
             console.log('🚀 Website initialized successfully!');
+        }
+
+        // Toggle Brand Info function
+        function toggleBrandInfo() {
+            const details = document.getElementById('brandDetails');
+            const toggle = document.getElementById('brandToggle');
+            
+            if (brandExpanded) {
+                details.style.maxHeight = '0px';
+                details.style.opacity = '0';
+                details.style.marginTop = '0';
+                toggle.style.transform = 'rotate(-90deg)';
+                toggle.textContent = '▶';
+                brandExpanded = false;
+            } else {
+                details.style.maxHeight = '500px';
+                details.style.opacity = '1';
+                details.style.marginTop = '1rem';
+                toggle.style.transform = 'rotate(0deg)';
+                toggle.textContent = '▼';
+                brandExpanded = true;
+            }
         }
 
         // Setup Event Listeners
         function setupEventListeners() {
-            // Contact form submission
             const contactForm = document.getElementById('contactForm');
             contactForm.addEventListener('submit', submitForm);
             
-            // Status check
             const statusInput = document.getElementById('statusInput');
             statusInput.addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
@@ -1539,23 +1462,21 @@
             });
         }
 
-        // ฟังก์ชันเด้งไปหน้าอังกฤษ
+        // English page redirect
         function goToEnglishPage() {
-            // สร้างหน้าอังกฤษใหม่ในแท็บใหม่
             window.open('english.html', '_blank');
         }
 
         // Line Configuration
         const LINE_CONFIG = {
-            // Line Official Account ของคุณ
             officialUrl: 'https://line.me/R/ti/p/@991cyisb',
-            useOfficial: true // ใช้ Line OA หลัก
+            useOfficial: true
         };
 
         // Show welcome message
         function showWelcomeMessage() {
             setTimeout(() => {
-                if (window.confirm('🎉 ยินดีต้อนรับสู่เว็บไซต์ของเรา! ต้องการให้เราช่วยอะไรไหมครับ?')) {
+                if (window.confirm('ยินดีต้อนรับสู่เว็บไซต์ของเรา! ต้องการให้เราช่วยอะไรไหมครับ?')) {
                     scrollToSection('contact');
                 }
             }, 3000);
@@ -1565,7 +1486,6 @@
         function selectService(serviceType) {
             currentServiceSelection = serviceType;
             
-            // Service messages for Line
             const serviceMessages = {
                 fertilizer: 'สวัสดีครับ! สนใจสอบถามราคาบริการขึ้นทะเบียนปุ๋ย 🌱\n\nต้องการขึ้นทะเบียน:\n- ปุ๋ยเคมี\n- ปุ๋ยอินทรีย์\n- ปุ๋ยชีวภาพ\n- ปุ๋ยผสม\n\nรบกวนส่งรายละเอียดผลิตภัณฑ์มาด้วยนะครับ',
                 
@@ -1583,20 +1503,14 @@
             };
 
             const message = serviceMessages[serviceType] || 'สวัสดีครับ! สนใจสอบถามบริการครับ';
-            
-            // Open Line with pre-filled message
             openLineWithMessage(message);
         }
 
         // Open Line Chat with pre-filled message
         function openLineWithMessage(message) {
-            // Use Line Official Account - ส่งข้อความได้ตรงๆ
             const lineUrl = `${LINE_CONFIG.officialUrl}?openExternalBrowser=1`;
-            
-            // เปิด Line OA พร้อมแสดงข้อความให้ส่ง
             window.open(lineUrl, '_blank');
             
-            // แสดง popup เพื่อให้ copy ข้อความ (เพราะ Line OA บางครั้งไม่รับ text parameter)
             setTimeout(() => {
                 showLineOAMessage(message);
             }, 500);
@@ -1604,7 +1518,6 @@
 
         // Show Line OA message popup
         function showLineOAMessage(message) {
-            // ลบ popup เก่าก่อน (ถ้ามี)
             const existingPopup = document.getElementById('line-popup');
             if (existingPopup) {
                 existingPopup.remove();
@@ -1625,7 +1538,6 @@
                 position: relative;
             `;
 
-            // ปุ่มปิด
             const closeBtn = document.createElement('button');
             closeBtn.innerHTML = '×';
             closeBtn.style.cssText = `
@@ -1637,7 +1549,6 @@
                 popup.remove();
             };
 
-            // เนื้อหา
             const content = document.createElement('div');
             content.innerHTML = `
                 <h3 style="color: #00C300; margin-bottom: 1rem; display: flex; align-items: center;">
@@ -1654,17 +1565,12 @@
                                    border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
                         📋 Copy ข้อความ
                     </button> 
-                        <button id="closeBtn2" 
+                    <button id="closeBtn2" 
                             style="flex: 1; padding: 0.8rem; background: #f44336; color: white; 
                                    border: none; border-radius: 8px; cursor: pointer;">
                         ❌ ปิด
                     </button>
                 </div>
-                <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
-    <a href="#contact" class="btn" onclick="selectService('fertilizer'); return false;">
-    สอบถามราคา + LINE
-</a>
-</div>
                 <p style="font-size: 0.8rem; color: #666; margin-top: 1rem; text-align: center;">
                     📱 Line OA เปิดแล้ว ให้ paste ข้อความไปส่งได้เลย
                 </p>
@@ -1674,7 +1580,6 @@
             modal.appendChild(content);
             popup.appendChild(modal);
 
-            // Event listeners
             const copyBtn = content.querySelector('#copyBtn');
             copyBtn.onclick = function() {
                 copyToClipboard(message);
@@ -1687,14 +1592,12 @@
                 popup.remove();
             };
 
-            // ปิดเมื่อคลิกพื้นหลัง
             popup.addEventListener('click', function(e) {
                 if (e.target === popup) {
                     popup.remove();
                 }
             });
 
-            // เพิ่ม ESC key เพื่อปิด
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape' && document.getElementById('line-popup')) {
                     popup.remove();
@@ -1709,7 +1612,6 @@
             if (navigator.clipboard) {
                 navigator.clipboard.writeText(text);
             } else {
-                // Fallback for older browsers
                 const textarea = document.createElement('textarea');
                 textarea.value = text;
                 document.body.appendChild(textarea);
@@ -1773,13 +1675,11 @@
         }
 
         function openWeChat() {
-            // แสดง QR Code สำหรับ WeChat
             showWeChatQR();
         }
 
         // Show WeChat QR Code popup
         function showWeChatQR() {
-            // ลบ popup เก่าก่อน (ถ้ามี)
             const existingOverlay = document.getElementById('wechat-overlay');
             if (existingOverlay) {
                 existingOverlay.remove();
@@ -1799,7 +1699,6 @@
                 max-width: 400px; width: 90%; text-align: center; position: relative;
             `;
 
-            // ปุ่มปิด
             const closeBtn = document.createElement('button');
             closeBtn.innerHTML = "×";
             closeBtn.style.cssText = `
@@ -1811,7 +1710,6 @@
                 overlay.remove();
             };
 
-            // เนื้อหา
             const content = document.createElement('div');
             content.innerHTML = `
                 <h3 style="color:#1aad19; margin-bottom:1rem;">💬 เพิ่มเพื่อนใน WeChat</h3>
@@ -1829,20 +1727,17 @@
             modal.appendChild(content);
             overlay.appendChild(modal);
 
-            // Event listener สำหรับปุ่มปิด
             const closeBtn2 = content.querySelector('#closeWeChatBtn');
             closeBtn2.onclick = function() {
                 overlay.remove();
             };
 
-            // ปิดเมื่อคลิกพื้นหลัง
             overlay.addEventListener('click', function(e) {
                 if (e.target === overlay) {
                     overlay.remove();
                 }
             });
 
-            // เพิ่ม ESC key เพื่อปิด
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape' && document.getElementById('wechat-overlay')) {
                     overlay.remove();
@@ -1864,17 +1759,14 @@
                 return;
             }
 
-            // Show loading
             statusLoading.style.display = 'block';
             statusResult.style.display = 'none';
             statusResult.className = 'status-result';
 
-            // Simulate API call
             setTimeout(() => {
                 statusLoading.style.display = 'none';
                 statusResult.style.display = 'block';
 
-                // Mock status responses based on input
                 if (requestId.toUpperCase().includes('REG-2024')) {
                     if (Math.random() > 0.5) {
                         statusResult.className = 'status-result success';
@@ -1909,93 +1801,6 @@
             }, 2000);
         }
 
-        // File Upload Setup
-        function setupFileUpload() {
-            const uploadArea = document.getElementById('uploadArea');
-            const fileInput = document.getElementById('fileInput');
-            const uploadedImages = document.getElementById('uploadedImages');
-
-            // Click to upload
-            uploadArea.addEventListener('click', () => fileInput.click());
-
-            // Drag and drop events
-            uploadArea.addEventListener('dragover', (e) => {
-                e.preventDefault();
-                uploadArea.classList.add('dragover');
-            });
-
-            uploadArea.addEventListener('dragleave', () => {
-                uploadArea.classList.remove('dragover');
-            });
-
-            uploadArea.addEventListener('drop', (e) => {
-                e.preventDefault();
-                uploadArea.classList.remove('dragover');
-                handleFiles(e.dataTransfer.files);
-            });
-
-            // File input change
-            fileInput.addEventListener('change', (e) => {
-                handleFiles(e.target.files);
-            });
-        }
-
-        // Handle uploaded files
-        function handleFiles(files) {
-            for (let file of files) {
-                if (file.size > 10 * 1024 * 1024) {
-                    alert(`ไฟล์ ${file.name} ใหญ่เกิน 10MB`);
-                    continue;
-                }
-
-                if (!file.type.match('image.*') && !file.type.match('application/pdf')) {
-                    alert(`ไฟล์ ${file.name} ไม่ใช่รูปภาพหรือ PDF`);
-                    continue;
-                }
-
-                uploadedFiles.push(file);
-                displayUploadedFile(file);
-            }
-        }
-
-        // Display uploaded file
-        function displayUploadedFile(file) {
-            const uploadedImages = document.getElementById('uploadedImages');
-            const preview = document.createElement('div');
-            preview.className = 'image-preview';
-            
-            if (file.type.match('image.*')) {
-                const img = document.createElement('img');
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    img.src = e.target.result;
-                };
-                reader.readAsDataURL(file);
-                preview.appendChild(img);
-            } else if (file.type === 'application/pdf') {
-                const pdfIcon = document.createElement('div');
-                pdfIcon.innerHTML = `
-                    <div style="display: flex; flex-direction: column; align-items: center; 
-                                justify-content: center; height: 150px; background: #f5f5f5;">
-                        <div style="font-size: 3rem;">📄</div>
-                        <div style="font-size: 0.8rem; margin-top: 0.5rem;">${file.name}</div>
-                    </div>
-                `;
-                preview.appendChild(pdfIcon);
-            }
-
-            const removeBtn = document.createElement('button');
-            removeBtn.className = 'image-remove';
-            removeBtn.innerHTML = '×';
-            removeBtn.onclick = () => {
-                uploadedFiles = uploadedFiles.filter(f => f !== file);
-                preview.remove();
-            };
-
-            preview.appendChild(removeBtn);
-            uploadedImages.appendChild(preview);
-        }
-
         // Form validation setup
         function setupFormValidation() {
             const form = document.getElementById('contactForm');
@@ -2012,16 +1817,13 @@
             const field = e.target;
             const value = field.value.trim();
 
-            // Remove previous error styling
             clearFieldError(e);
 
-            // Validate required fields
             if (field.hasAttribute('required') && !value) {
                 showFieldError(field, 'กรุณากรอกข้อมูลนี้');
                 return false;
             }
 
-            // Validate phone number
             if (field.type === 'tel' && value) {
                 const phonePattern = /^[0-9]{9,10}$/;
                 if (!phonePattern.test(value)) {
@@ -2030,7 +1832,6 @@
                 }
             }
 
-            // Validate email
             if (field.type === 'email' && value) {
                 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (!emailPattern.test(value)) {
@@ -2047,7 +1848,6 @@
             field.style.borderColor = '#f44336';
             field.style.boxShadow = '0 0 10px rgba(244, 67, 54, 0.2)';
             
-            // Add error message
             let errorMsg = field.parentNode.querySelector('.error-message');
             if (!errorMsg) {
                 errorMsg = document.createElement('div');
@@ -2081,7 +1881,6 @@
             const loading = document.getElementById('formLoading');
             const success = document.getElementById('formSuccess');
 
-            // Validate all fields
             let isValid = true;
             const inputs = form.querySelectorAll('input[required], select[required]');
             inputs.forEach(input => {
@@ -2095,11 +1894,9 @@
                 return;
             }
 
-            // Show loading
             loading.style.display = 'block';
             success.style.display = 'none';
 
-            // Prepare message for Line
             const name = formData.get('name');
             const company = formData.get('company');
             const phone = formData.get('phone');
@@ -2123,26 +1920,20 @@
                 `📞 เบอร์: ${phone}\n` +
                 `📧 อีเมล: ${email || 'ไม่ระบุ'}\n` +
                 `🎯 บริการที่สนใจ: ${serviceNames[service] || service}\n` +
-                `💬 รายละเอียด: ${message || 'ไม่มี'}\n` +
-                `📁 ไฟล์แนบ: ${uploadedFiles.length} ไฟล์\n\n` +
+                `💬 รายละเอียด: ${message || 'ไม่มี'}\n\n` +
                 `รบกวนติดต่อกลับครับ`;
 
-            // Simulate form submission
             setTimeout(() => {
                 loading.style.display = 'none';
                 success.style.display = 'block';
                 
-                // Auto-open Line with message
                 setTimeout(() => {
                     openLineWithMessage(lineMessage);
                 }, 1000);
 
-                // Reset form after 3 seconds
                 setTimeout(() => {
                     form.reset();
                     success.style.display = 'none';
-                    uploadedFiles = [];
-                    document.getElementById('uploadedImages').innerHTML = '';
                 }, 3000);
             }, 2000);
         }
@@ -2161,13 +1952,10 @@
             alert('นโยบายความเป็นส่วนตัว:\n\nเราเก็บรักษาข้อมูลส่วนบุคคลของท่านอย่างปลอดภัย และใช้เพื่อการติดต่อและให้บริการเท่านั้น\n\nหากต้องการข้อมูลเพิ่มเติม กรุณาติดต่อเรา');
         }
 
-        // Mobile menu toggle (for future enhancement)
+        // Mobile menu toggle
         function toggleMobileMenu() {
-            // This can be enhanced for mobile responsive menu
             console.log('Mobile menu toggled');
         }
-        
-
 
     </script>
     
