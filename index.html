@@ -344,7 +344,38 @@
             from { transform: translateY(-100%); }
             to { transform: translateY(0); }
         }
+        </style>
+<style>
+        
+/* navbar */
+.navbar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1rem 2rem; background: #1976d2; color: #fff;
+}
+.logo { font-weight: bold; }
 
+/* menu links */
+.nav-links { list-style: none; display: flex; gap: 1rem; }
+.nav-links li a { color: #fff; text-decoration: none; }
+
+/* hamburger button */
+.menu-toggle {
+  display: none; font-size: 1.8rem; cursor: pointer;
+}
+
+/* mobile responsive */
+@media (max-width: 768px) {
+  .menu-toggle { display: block; }
+  .nav-links {
+    display: none; position: absolute; top: 60px; right: 0;
+    background: #1976d2; flex-direction: column; width: 200px;
+    padding: 1rem; border-radius: 0 0 0 12px;
+  }
+  .nav-links.show { display: flex; }
+}
+</style>
+
+<style>
         /* Services Section */
         .services-section {
             padding: 4rem 0;
@@ -1097,22 +1128,20 @@
         <button class="notification-close" onclick="closeNotification()">×</button>
     </div>
 
-    <header id="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="header-left">
-                    <div class="logo" onclick="scrollToSection('home')">บริษัท อาร์.กู๊ด เซอร์วิส รีจีสเตรชั่น จำกัด</div>
-                    <nav>
-                        <ul>
-                            <li><a href="#home" onclick="scrollToSection('home')">หน้าแรก</a></li>
-                            <li><a href="#services" onclick="scrollToSection('services')">บริการ</a></li>
-                            <li><a href="#process" onclick="scrollToSection('process')">ขั้นตอน</a></li>
-                            <li><a href="#status" onclick="scrollToSection('status')">ตรวจสถานะ</a></li>
-                            <li><a href="#contact" onclick="scrollToSection('contact')">ติดต่อ</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="header-right">
+    <header>
+  <nav class="navbar">
+    <div class="logo">บริษัท อาร์กู๊ดเซอร์วิส รีจีสเตรชั่น จำกัด</div>
+    <div class="menu-toggle" id="menuToggle">☰</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">หน้าแรก</a></li>
+      <li><a href="#services">บริการ</a></li>
+      <li><a href="#process">ขั้นตอน</a></li>
+      <li><a href="#status">ตรวจสอบสถานะ</a></li>
+      <li><a href="#contact">ติดต่อเรา</a></li>
+    </ul>
+  </nav>
+</header right>
+
                     <!-- ปุ่มเด้งไปหน้าอังกฤษ -->
                     <button class="english-btn" onclick="goToEnglishPage()">
                         🇺🇸 English Version
@@ -1394,21 +1423,6 @@
                         <div class="success-message" id="formSuccess">
                             ✅ ส่งข้อความเรียบร้อยแล้ว! เราจะติดต่อกลับในเร็วๆ นี้
                         </div>
-                        <!-- เพิ่มส่วนนี้ก่อน </div> ปิดท้าย contact-info -->
-    <div style="background: #e3f2fd; padding: 1rem; border-radius: 10px; margin-top: 2rem; border-left: 4px solid #2196f3;">
-        <h4 style="margin: 0 0 0.5rem 0; color: #1976d2;">📎 ส่งรูปเอกสาร</h4>
-        <p style="margin: 0 0 1rem 0; font-size: 0.9rem; color: #666;">
-            แนบรูปฉลากสินค้า หรือเอกสารที่เกี่ยวข้อง เพื่อให้เราช่วยวิเคราะห์และแนะนำได้แม่นยำขึ้น
-        </p>
-        <button class="btn" onclick="triggerFileUpload()" style="background: #2196f3; width: 100%;">
-            📷 เลือกรูปภาพ/เอกสาร
-        </button>
-        <input type="file" id="quickFileInput" multiple accept="image/*,.pdf" style="display: none;">
-        <p style="margin: 0.5rem 0 0 0; font-size: 0.8rem; color: #999; text-align: center;">
-            รองรับไฟล์: JPG, PNG, PDF (ขนาดไม่เกิน 10MB)
-        </p>
-    </div>
-</div>
                         <button type="submit" class="btn" style="width: 100%;">ส่งข้อความพร้อมรูปภาพ</button>
                     </form>
                 </div>
@@ -1448,7 +1462,22 @@
                     </div>
                 </div>
             </div>
-        </div>                 
+        </div>
+                         <!-- เพิ่มส่วนนี้ก่อน </div> ปิดท้าย contact-info -->
+    <div style="background: #e3f2fd; padding: 1rem; border-radius: 10px; margin-top: 2rem; border-left: 4px solid #2196f3;">
+        <h4 style="margin: 0 0 0.5rem 0; color: #1976d2;">📎 ส่งรูปเอกสาร</h4>
+        <p style="margin: 0 0 1rem 0; font-size: 0.9rem; color: #666;">
+            แนบรูปฉลากสินค้า หรือเอกสารที่เกี่ยวข้อง เพื่อให้เราช่วยวิเคราะห์และแนะนำได้แม่นยำขึ้น
+        </p>
+        <button class="btn" onclick="triggerFileUpload()" style="background: #2196f3; width: 100%;">
+            📷 เลือกรูปภาพ/เอกสาร
+        </button>
+        <input type="file" id="quickFileInput" multiple accept="image/*,.pdf" style="display: none;">
+        <p style="margin: 0.5rem 0 0 0; font-size: 0.8rem; color: #999; text-align: center;">
+            รองรับไฟล์: JPG, PNG, PDF (ขนาดไม่เกิน 10MB)
+        </p>
+    </div>
+</div>
     </section>
                         
 
@@ -1504,7 +1533,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 บริษัท อาร์.กู๊ด เซอร์วิส รีจีสเตรชั่น จำกัด - บริการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตร | ออกแบบด้วย ❤️ เพื่อลูกค้า</p>
+                <p>&copy; 2024 บริษัท อาร์.กู้ด เซอร์วิส รีจีสเตรชั่น จำกัด - บริการขึ้นทะเบียนปุ๋ยและวัตถุอันตรายทางการเกษตร | ออกแบบด้วย ❤️ เพื่อลูกค้า</p>
             </div>
         </div>
     </footer>
@@ -1552,6 +1581,7 @@
                 }
             });
         }
+       
 
         // ฟังก์ชันเด้งไปหน้าอังกฤษ
         function goToEnglishPage() {
@@ -2250,10 +2280,13 @@
                 }, 1000);
             }
         }
-document.addEventListener('DOMContentLoaded', function() {
-    setupQuickFileUpload();
-});
     </script>
+    <script>
+document.getElementById("menuToggle").addEventListener("click", function(){
+  document.getElementById("navLinks").classList.toggle("show");
+});
+</script>
+
     
 </body>
 </html>
