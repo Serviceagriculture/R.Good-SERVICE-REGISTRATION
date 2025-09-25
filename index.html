@@ -12,7 +12,10 @@
             box-sizing: border-box;
         }
 
-        body {
+        body 
+        
+
+        {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
@@ -2286,6 +2289,52 @@ document.getElementById("menuToggle").addEventListener("click", function(){
   document.getElementById("navLinks").classList.toggle("show");
 });
 </script>
+<!-- HAMBURGER TEST: วางไว้หลัง <body> -->
+<header id="testHeader">
+  <nav class="navbar-test">
+    <div class="logo">บริษัท อาร์กู๊ดเซอร์วิส รีจีสเตรชั่น จำกัด</div>
+    <div class="menu-toggle" id="menuToggle">☰</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">หน้าแรก</a></li>
+      <li><a href="#services">บริการ</a></li>
+      <li><a href="#process">ขั้นตอน</a></li>
+      <li><a href="#status">สถานะ</a></li>
+      <li><a href="#contact">ติดต่อ</a></li>
+    </ul>
+  </nav>
+</header>
+
+<style>
+/* สไตล์เฉพาะของบล็อกทดสอบ เพื่อไม่ชนของเดิม */
+.navbar-test{
+  position:sticky; top:0; z-index:9999;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:10px 16px; background:#1976d2; color:#fff;
+}
+.navbar-test .logo{font-weight:700}
+#testHeader .nav-links{list-style:none; display:flex; gap:14px; margin:0; padding:0}
+#testHeader .nav-links a{color:#fff; text-decoration:none}
+#testHeader .menu-toggle{display:none; font-size:22px; cursor:pointer; user-select:none}
+
+/* มือถือ: โชว์ปุ่ม 3 ขีด + ซ่อนเมนู */
+@media (max-width: 768px){
+  #testHeader .menu-toggle{display:block}
+  #testHeader .nav-links{
+    display:none; position:absolute; top:48px; right:10px;
+    background:#1976d2; flex-direction:column; width:210px;
+    padding:12px; border-radius:10px; box-shadow:0 10px 24px rgba(0,0,0,.2);
+  }
+  #testHeader .nav-links.show{display:flex}
+}
+</style>
+
+<script>
+  // ให้แน่ใจว่า JS ทำงาน
+  console.log('hamburger test loaded');
+  document.getElementById('menuToggle')?.addEventListener('click', ()=>{
+    document.getElementById('navLinks')?.classList.toggle('show');
+  });
+</script> 
 
     
 </body>
