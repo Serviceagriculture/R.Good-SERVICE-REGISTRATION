@@ -2166,76 +2166,9 @@
             // This can be enhanced for mobile responsive menu
             console.log('Mobile menu toggled');
         }
-        // ==============================
-        // Quick File Upload Functions
-        // ==============================
-        function triggerFileUpload() {
-            document.getElementById('quickFileInput').click();
-        }
+        
 
-        // เพิ่มใน initializeWebsite function
-        function setupQuickFileUpload() {
-            const quickFileInput = document.getElementById('quickFileInput');
-            if (quickFileInput) {
-                quickFileInput.addEventListener('change', function(e) {
-                    const files = e.target.files;
-                    if (files.length > 0) {
-                        handleQuickFiles(files);
-                    }
-                });
-            }
-        }
 
-        function handleQuickFiles(files) {
-            let fileNames = [];
-            let totalSize = 0;
-            
-            for (let file of files) {
-                // ตรวจสอบขนาดไฟล์
-                if (file.size > 10 * 1024 * 1024) {
-                    alert(`ไฟล์ ${file.name} ใหญ่เกิน 10MB`);
-                    continue;
-                }
-                
-                // ตรวจสอบประเภทไฟล์
-                if (!file.type.match('image.*') && !file.type.match('application/pdf')) {
-                    alert(`ไฟล์ ${file.name} ไม่ใช่รูปภาพหรือ PDF`);
-                    continue;
-                }
-                
-                fileNames.push(file.name);
-                totalSize += file.size;
-                
-                // เพิ่มเข้าระบบเดิม
-                uploadedFiles.push(file);
-                displayUploadedFile(file);
-            }
-            
-            if (fileNames.length > 0) {
-                // แสดงข้อความสำเร็จ
-                showToast(`เลือกไฟล์แล้ว: ${fileNames.length} ไฟล์`, 'success');
-                
-                // เลื่อนไปยังส่วนแสดงรูป
-                const uploadSection = document.getElementById('uploadedImages');
-                if (uploadSection) {
-                    uploadSection.scrollIntoView({behavior: 'smooth', block: 'center'});
-                }
-                
-                // เปิด LINE พร้อมข้อความ
-                const message = `สวัสดีครับ! มีเอกสาร/รูปภาพจะส่งให้ดูครับ
-
-📁 ไฟล์ที่เลือก: ${fileNames.join(', ')} (${fileNames.length} ไฟล์)
-
-รบกวนรอสักครู่ จะส่งรูปตามไปในไลน์นะครับ
-📞 Tel: 084-375-2399`;
-                
-                setTimeout(() => {
-                    if (confirm('ต้องการเปิด LINE เพื่อแจ้งว่ามีรูปจะส่งไหม?')) {
-                        openLineWithMessage(message);
-                    }
-                }, 1000);
-            }
-        }
     </script>
     
 </body>
