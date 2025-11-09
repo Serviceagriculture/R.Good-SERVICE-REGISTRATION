@@ -12,11 +12,12 @@
             box-sizing: border-box;
         }
 
-        body {
+       body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #f8fdf8;
+            color: #333; /* Default text color, will be overridden */
+            /* 📌 การแก้ไขหลัก: เปลี่ยนพื้นหลัง Body เป็นสีเดียวกับ Hero Section */
+            background: linear-gradient(135deg, #2e7d32, #1b5e20); /* Deep Green/Dark Olive */
             scroll-behavior: smooth;
         }
 
@@ -120,7 +121,7 @@
         }
 
         .english-btn {
-            background: #8bc34a;
+            background: #465b2e;
             color: white;
             padding: 0.7rem 1.3rem;
             text-decoration: none;
@@ -135,7 +136,7 @@
         }
 
         .english-btn:hover {
-            background: #689f38;
+            background: #384d25;
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(139,195,74,0.4);
         }
@@ -156,8 +157,8 @@
 
         /* Hero Section - เพิ่มข้อมูลแบรนด์ */
         .hero {
-            background: linear-gradient(rgba(46, 125, 50, 0.9), rgba(76, 175, 80, 0.9)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23e8f5e8" width="1200" height="600"/><path fill="%23c8e6c9" d="M0 200h1200v200H0z"/><circle fill="%234caf50" cx="200" cy="150" r="50"/><circle fill="%2366bb6a" cx="600" cy="180" r="40"/><circle fill="%2381c784" cx="1000" cy="140" r="60"/></svg>');
+            /* ลบพื้นหลังซ้ำออก และปรับ Opacity ของ Overlay ให้ดูเข้มข้นขึ้น */
+            background: linear-gradient(rgba(46, 125, 50, 0.95), rgba(46, 125, 50, 0.95)); /* ปรับให้เป็นสีเข้มเกือบดำเพื่อเน้นข้อความขาว */
             color: white;
             text-align: center;
             padding: 6rem 0 4rem 0;
@@ -188,10 +189,10 @@
             backdrop-filter: blur(10px);
             border-radius: 15px;
             padding: 2rem;
-            margin: 2rem 0;
-            border: 1px solid rgba(255,255,255,0.2);
-            animation: slideInUp 1s ease-out 0.6s both;
-        }
+            margin: 2rem 0 3rem 0; 
+    border: 1px solid rgba(255,255,255,0.2);
+    animation: slideInUp 1s ease-out 0.6s both;
+}
 
         .brand-stats {
             display: grid;
@@ -222,8 +223,9 @@
             gap: 2rem;
             justify-content: center;
             flex-wrap: wrap;
-            animation: slideInUp 1s ease-out 0.9s both;
-        }
+            margin-top: 2.5rem; 
+    animation: slideInUp 1s ease-out 0.9s both;
+}
 
         @keyframes slideInDown {
             from { opacity: 0; transform: translateY(-50px); }
@@ -264,7 +266,7 @@
 
         .btn-secondary:hover {
             background: white;
-            color: #2e7d32;
+            color: #2d582f;
         }
 
         /* Notification Bar - โปรโมชั่น/ส่วนลด */
@@ -365,7 +367,7 @@
         .service-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            border-color: #4caf50;
+            border-color: #2f5330;
         }
 
         .service-icon {
@@ -409,7 +411,7 @@
 
         .service-features li::before {
             content: "✓";
-            color: #4caf50;
+            color: #3568373a;
             font-weight: bold;
             margin-right: 0.5rem;
             font-size: 1.2rem;
@@ -517,7 +519,7 @@
 
         .status-result.success {
             background: #e8f5e8;
-            border: 2px solid #4caf50;
+            border: 2px solid #294c2a;
             color: #2e7d32;
         }
 
@@ -579,7 +581,7 @@
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: #4caf50;
+            border-color: #284829;
             box-shadow: 0 0 10px rgba(76,175,80,0.2);
             transform: translateY(-2px);
         }
@@ -636,7 +638,7 @@
 
         .contact-card:hover {
             transform: translateY(-5px);
-            border-color: #4caf50;
+            border-color: #274c28;
             box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
 
